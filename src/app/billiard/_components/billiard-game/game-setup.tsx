@@ -66,7 +66,7 @@ export const GameSetup = ({ options, disabled, onChange, onApply, onCancel }: Ga
             <path d="M84 90H96 M90 84V96" stroke="var(--foreground)" strokeOpacity="0.6" />
           </svg>
           <span className="flex items-center justify-between text-base font-semibold">{preset.name}{options.tableId === preset.id && <Check className="size-4 text-primary" />}</span>
-          <span className="text-xs leading-relaxed text-muted-foreground">{preset.id === "mr-sung" ? "Nỉ xám · Bi Black" : "Nỉ blue · Bi Arcos II"}<br />290 × {Math.round(preset.outerWidth * 100)} cm · 9 feet</span>
+          <span className="text-xs leading-relaxed text-muted-foreground">290 × {Math.round(preset.outerWidth * 100)} cm · 9 feet</span>
         </Button>
       ))}
     </div>

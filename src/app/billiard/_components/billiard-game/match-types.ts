@@ -1,8 +1,9 @@
-import type { CueLoadout, CueMode, CueType, GameRule, GameState, Spin, TableId, Vector2 } from "./type";
+import type { GuestDetails } from "../../../_components/lobby/hall-types";
+import type { CueLoadout, CueMode, CueType, GameRule, GameState, Spin, Vector2 } from "./type";
 
 export type Seat = 0 | 1;
 export type MatchKind = "online" | "ai";
-export type MatchOptions = { rule: GameRule; table: TableId };
+export type MatchOptions = { rule: GameRule };
 export type ShotCommand = {
   angle: number;
   power: number;
@@ -34,7 +35,7 @@ export type MatchHistory = MatchResult & {
   kind: MatchKind;
   rule: GameRule;
 };
-export type PlayerProfile = { id: string; name: string; coins: number; points: number; loadout: CueLoadout };
+export type PlayerProfile = { id: string; name: string; coins: number; points: number; loadout: CueLoadout } & Partial<GuestDetails>;
 export type ShopCue = { id: string; name: string; type: CueType; price: number; owned: boolean };
 export type LobbyView = {
   player: PlayerProfile | null;

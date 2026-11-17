@@ -14,7 +14,8 @@ registerHooks({
 });
 
 const { openDatabase } = await import("../src/lib/billiard/db.ts");
-const { createPlayer, readPlayer, updateCueInventory, userBySession } = await import("../src/lib/billiard/players.ts");
+const { createPlayer, readPlayer, savePlayer, updateCueInventory, userBySession } = await import("../src/lib/billiard/players.ts");
+const { readHall, openHallTable, joinHallTable, postHallMessage } = await import("../src/lib/billiard/hall.ts");
 const { requestMatch, lobby, playMatch, manageMatch, touchQueue, leaveQueue } = await import("../src/lib/billiard/matches.ts");
 const { chooseComputerShot, replayShot, resolveMatchShot } = await import("../src/app/billiard/_components/billiard-game/match-play.ts");
 const { createGame, stepPhysics } = await import("../src/app/billiard/_components/billiard-game/engine.ts");
@@ -22,7 +23,7 @@ const { DEFAULT_OPTIONS } = await import("../src/app/billiard/_components/billia
 const { DEFAULT_LOADOUT } = await import("../src/app/billiard/_components/billiard-game/cues.ts");
 const { PHYSICS_CONFIG } = await import("../src/app/billiard/_components/billiard-game/constants.ts");
 
-const options = { rule: "nine", table: "mr-sung" };
+const options = { rule: "nine" };
 const command = { angle: Math.PI, power: 30, spin: { x: 0, y: 0 }, elevation: 0, mode: "glide", pushOut: false };
 const testUri = process.env.MONGODB_TEST_URI;
 const mongoTest = { skip: testUri ? false : "Set MONGODB_TEST_URI for transaction tests" };
@@ -49,6 +50,31 @@ const pair = async (db, first, second) => {
   return requestMatch(db, second.id, "online", options);
 };
 
+test("guest hall shares avatars and chat, and a locked table assigns one match to exactly two profiles", mongoTest, async (t) => {
+  const { db, first, second, outsider } = await fixture(t);
+  await savePlayer(db, first.id, "Châu", { gender: "female", birthYear: 2000, address: "Hà Nội" });
+  await savePlayer(db, second.id, "An", { gender: "male" });
+  await readHall(db, first.id, false);
+  await postHallMessage(db, first.id, "Chào cả sảnh!");
+  await assert.rejects(postHallMessage(db, first.id, "Tin lặp"), { status: 429 });
+  await openHallTable(db, first.id, options, "open sesame");
+  const shared = await readHall(db, second.id, false);
+  assert.deepEqual(shared.people.find(({ id }) => id === first.id), { id: first.id, name: "Châu", gender: "female" });
+  assert.equal(shared.messages.at(-1).text, "Chào cả sảnh!");
+  const [table] = shared.tables;
+  assert.equal(table.locked, true);
+  assert.equal(Object.hasOwn(table, "passwordHash"), false);
+  await assert.rejects(joinHallTable(db, second.id, table.id, "wrong"), { status: 403 });
+  const joins = await Promise.allSettled([
+    joinHallTable(db, second.id, table.id, "open sesame"),
+    joinHallTable(db, outsider.id, table.id, "open sesame"),
+  ]);
+  assert.equal(joins.filter(({ status }) => status === "fulfilled").length, 1);
+  const matchId = joins.find(({ status }) => status === "fulfilled").value;
+  assert.equal((await lobby(db, first.id)).match.id, matchId);
+  assert.equal((await readHall(db, first.id, true)).tables[0].playing, true);
+});
+
 test("profiles, cue ownership and coin balances survive reconnecting and concurrent purchases", mongoTest, async (t) => {
   const { db, first, name } = await fixture(t);
   assert.equal(await userBySession(db, first.token), first.id);
@@ -73,7 +99,7 @@ test("profiles, cue ownership and coin balances survive reconnecting and concurr
   assert.equal(await reopened.migrations.countDocuments({ appliedAt: { $exists: true } }), 1);
 });
 
-test("matches simultaneous requests by rule and table, rejects outsiders and ignores expired queues", mongoTest, async (t) => {
+test("matches simultaneous requests by rule, ignores old table preferences, and rejects outsiders and expired queues", mongoTest, async (t) => {
   const { db, first, second, outsider } = await fixture(t);
   assert.equal(await requestMatch(db, second.id, "online", { ...options, rule: "eight" }), undefined);
   await db.queue.updateOne({ _id: second.id }, { $set: { expiresAt: new Date(0) } });
@@ -81,15 +107,23 @@ test("matches simultaneous requests by rule and table, rejects outsiders and ign
   await leaveQueue(db, outsider.id);
   await touchQueue(db, outsider.id);
   assert.equal((await lobby(db, outsider.id)).queued, null);
+  // Older clients left a table preference in the queue.
+  await db.queue.insertOne({
+    _id: first.id, rule: "nine", table: "predator", joinedAt: new Date(), expiresAt: new Date(Date.now() + 35_000),
+  });
   const requests = await Promise.all([
     requestMatch(db, first.id, "online", options),
     requestMatch(db, second.id, "online", options),
   ]);
   assert.equal(requests.filter(Boolean).length, 1);
   const id = requests.find(Boolean);
-  assert.equal((await lobby(db, first.id)).match.id, id);
-  assert.equal((await lobby(db, second.id)).match.opponent, "Châu");
-  assert.equal((await lobby(db, second.id)).queued, null);
+  const firstView = await lobby(db, first.id);
+  const secondView = await lobby(db, second.id);
+  assert.equal(firstView.match.id, id);
+  assert.equal(secondView.match.opponent, "Châu");
+  assert.ok(["mr-sung", "predator"].includes(firstView.match.game.options.tableId));
+  assert.equal(secondView.match.game.options.tableId, firstView.match.game.options.tableId);
+  assert.equal(secondView.queued, null);
   assert.equal(await requestMatch(db, first.id, "ai", options), id);
   await assert.rejects(lobby(db, outsider.id, id), { status: 404 });
 });
@@ -131,7 +165,8 @@ test("the computer takes its own turn and practice creates a result without rank
 test("a legal rack win awards exactly once and releases both players", mongoTest, async (t) => {
   const { db, first, second } = await fixture(t);
   const id = await pair(db, first, second);
-  const game = createGame({ ...DEFAULT_OPTIONS, mode: "nine", tableId: options.table });
+  const { match } = await lobby(db, first.id, id);
+  const game = createGame(match.game.options);
   game.balls = game.balls.filter((ball) => ball.id === 0 || ball.id === 9);
   Object.assign(game.balls[0], { x: 0, z: 0 });
   Object.assign(game.balls[1], { x: 0.4, z: 0 });

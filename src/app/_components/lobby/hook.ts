@@ -1,12 +1,20 @@
 import { useEffect, useEffectEvent, useRef, useState } from "react";
 
 import type { LobbyView, MatchOptions, ShotCommand } from "../../billiard/_components/billiard-game/match-types";
+import type { HallView } from "./hall-types";
 import type { LobbyAction } from "./type";
 
-const readLobby = async (id?: string, action?: LobbyAction, searching = false): Promise<LobbyView> => {
-  const query = id ? `?match=${encodeURIComponent(id)}` : searching ? "?search=1" : "";
+type LobbyResponse = LobbyView & { hall?: HallView };
+
+export const readLobby = async (
+  action?: LobbyAction, { id, hall, searching }: { id?: string; hall?: boolean; searching?: boolean } = {},
+): Promise<LobbyResponse> => {
+  const query = new URLSearchParams();
+  if (id) query.set("match", id);
+  if (hall) query.set("hall", "1");
+  if (searching) query.set("search", "1");
   const signal = AbortSignal.timeout(8000);
-  const response = await fetch(`/api/billiard${query}`, action ? {
+  const response = await fetch(`/api/billiard?${query}`, action ? {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(action),
@@ -17,12 +25,11 @@ const readLobby = async (id?: string, action?: LobbyAction, searching = false): 
   return data;
 };
 
-const messageOf = (error: unknown) => error instanceof Error ? error.message : "Không thể kết nối đến sảnh.";
+export const messageOf = (error: unknown) => error instanceof Error ? error.message : "Không thể kết nối đến sảnh.";
 
 export const useLobby = () => {
-  const [view, setView] = useState<LobbyView>();
-  const [name, setName] = useState("");
-  const [options, setOptions] = useState<MatchOptions>({ rule: "nine", table: "mr-sung" });
+  const [view, setView] = useState<LobbyResponse>();
+  const [options, setOptions] = useState<MatchOptions>({ rule: "nine" });
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [open, setOpen] = useState(false);
@@ -38,9 +45,10 @@ export const useLobby = () => {
     setBusy(true);
     setError("");
     try {
-      const result = await readLobby(undefined, action);
+      const result = await readLobby(action, { hall: !open && !enter });
       setView(result);
-      if (enter && result.match) setOpen(true);
+      if (result.match && (enter || (view && !result.match.result && result.match.id !== view.match?.id))) setOpen(true);
+      return result;
     } catch (caught) {
       setError(messageOf(caught));
     } finally {
@@ -55,10 +63,10 @@ export const useLobby = () => {
     const current = ++revision.current;
     const queue = !open && view?.queued;
     try {
-      const next = await readLobby(open ? view?.match?.id : undefined, undefined, Boolean(queue));
+      const next = await readLobby(undefined, { id: open ? view?.match?.id : undefined, hall: !open, searching: Boolean(queue) });
       if (current !== revision.current) return;
-      if (!view?.player && next.player) setName(next.player.name);
-      if (queue && next.match) setOpen(true);
+      if (view && next.match && !next.match.result && next.match.id !== view.match?.id) setOpen(true);
+      if (!view) setError("");
       setView(next);
     } catch (caught) {
       if (!view && revision.current === current) setError(messageOf(caught));
@@ -89,11 +97,12 @@ export const useLobby = () => {
   }, [deadline]);
 
   const match = view?.match;
-  const manage = (action: "resign" | "timeout" | "pass") => match
-    ? send({ type: "manage", action, id: match.id, version: match.version }) : Promise.resolve();
+  const manage = async (action: "resign" | "timeout" | "pass") => {
+    if (match) await send({ type: "manage", action, id: match.id, version: match.version });
+  };
 
   return {
-    view, name, setName, options, setOptions, busy, error, open, seconds, manage, send,
+    view, options, setOptions, busy, error, open, seconds, manage, send,
     onBack: () => {
       revision.current += 1;
       setOpen(false);
@@ -104,7 +113,9 @@ export const useLobby = () => {
       setError("");
       setOpen(true);
     },
-    play: (shot: ShotCommand) => match ? send({ type: "shot", id: match.id, version: match.version, shot }) : Promise.resolve(),
+    play: async (shot: ShotCommand) => {
+      if (match) await send({ type: "shot", id: match.id, version: match.version, shot });
+    },
     computer: () => {
       if (match) void send({ type: "computer", id: match.id, version: match.version });
     },

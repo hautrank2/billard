@@ -1,12 +1,14 @@
 import { createHash, randomBytes, randomUUID } from "node:crypto";
 import type { ClientSession } from "mongodb";
 
+import type { GuestDetails } from "../../app/_components/lobby/hall-types";
 import { CUE_CATALOG, DEFAULT_LOADOUT } from "../../app/billiard/_components/billiard-game/cues";
 import type { PlayerProfile, ShopCue } from "../../app/billiard/_components/billiard-game/match-types";
 import { GameError, transaction } from "./db";
 import type { GameDatabase, User } from "./models";
 
 const digest = (token: string) => createHash("sha256").update(token).digest("hex");
+export const SESSION = "black_nine_session";
 
 export const userBySession = async (db: GameDatabase, token: string | undefined) => {
   if (!token || !/^[\da-f]{64}$/.test(token)) return null;
@@ -25,19 +27,25 @@ export const updateBalance = async (
   if (updated.matchedCount !== 1) throw new GameError(409, "Bạn không đủ xu.");
 };
 
-export const createPlayer = (db: GameDatabase, name: string) => transaction(db, async (session) => {
+export const createPlayer = (db: GameDatabase, name: string, details?: GuestDetails) => transaction(db, async (session) => {
   const id = randomUUID();
   const token = randomBytes(32).toString("hex");
   await db.users.insertOne({
     _id: id, name, sessionHash: digest(token), coins: 0, points: 0, activeMatch: null,
-    cues: Object.values(DEFAULT_LOADOUT), loadout: { ...DEFAULT_LOADOUT },
+    cues: Object.values(DEFAULT_LOADOUT), loadout: { ...DEFAULT_LOADOUT }, ...details,
   }, { session });
   await updateBalance(db, session, id, "starter", 200);
   return { id, token };
 });
 
-export const renamePlayer = (db: GameDatabase, id: string, name: string) =>
-  db.users.updateOne({ _id: id }, { $set: { name } });
+export const savePlayer = (db: GameDatabase, id: string, name: string, details?: GuestDetails) =>
+  db.users.updateOne({ _id: id }, {
+    $set: { name, ...details },
+    ...(details && { $unset: {
+      ...(details.birthYear === undefined && { birthYear: "" }),
+      ...(details.address === undefined && { address: "" }),
+    } }),
+  });
 
 export const readPlayer = async (db: GameDatabase, id: string, session?: ClientSession) => {
   const user = await db.users.findOne({ _id: id }, { session });
@@ -47,6 +55,7 @@ export const readPlayer = async (db: GameDatabase, id: string, session?: ClientS
 
 export const profile = (user: User): PlayerProfile => ({
   id: user._id, name: user.name, coins: user.coins, points: user.points, loadout: user.loadout,
+  gender: user.gender, birthYear: user.birthYear, address: user.address,
 });
 
 export const shop = async (db: GameDatabase, owned: string[]): Promise<ShopCue[]> => {

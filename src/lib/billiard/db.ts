@@ -2,7 +2,7 @@ import { MongoClient } from "mongodb";
 import type { ClientSession } from "mongodb";
 
 import { initialMigration } from "./migrations/001-initial";
-import type { CoinTransaction, Cue, GameDatabase, Match, QueueEntry, User } from "./models";
+import type { ChatMessage, CoinTransaction, Cue, GameDatabase, Match, Presence, QueueEntry, User, WaitingTable } from "./models";
 
 export class GameError extends Error {
   readonly status: number;
@@ -22,9 +22,20 @@ export const openDatabase = async (client: MongoClient, name: string): Promise<G
     matches: db.collection<Match>("black_nine_matches"),
     queue: db.collection<QueueEntry>("black_nine_matchmaking"),
     transactions: db.collection<CoinTransaction>("black_nine_coin_transactions"),
+    tables: db.collection<WaitingTable>("black_nine_hall_tables"),
+    presence: db.collection<Presence>("black_nine_hall_presence"),
+    chat: db.collection<ChatMessage>("black_nine_hall_chat"),
     migrations: db.collection<{ _id: string; sequence?: number; appliedAt?: Date }>("black_nine_migrations"),
   };
   await initialMigration(game);
+  await Promise.all([
+    game.tables.createIndex({ hostId: 1 }, { unique: true }),
+    game.tables.createIndex({ expiresAt: 1 }, { expireAfterSeconds: 0 }),
+    game.presence.createIndex({ expiresAt: 1 }, { expireAfterSeconds: 0 }),
+    game.chat.createIndex({ expiresAt: 1 }, { expireAfterSeconds: 0 }),
+    game.chat.createIndex({ sentAt: -1 }),
+    game.matches.createIndex({ completedAt: 1, hallSlot: 1 }, { partialFilterExpression: { hallSlot: { $exists: true } } }),
+  ]);
   return game;
 };
 

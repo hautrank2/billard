@@ -72,7 +72,7 @@ const drawNumber = (ctx: CanvasRenderingContext2D, id: number, x: number, preset
 
 // 1–8 are solid; 9–15 are a band of colour between two caps, which are
 // black on the Black set and white on Arcos II.
-const ballTexture = (id: number, preset: TablePreset) => {
+export const ballTexture = (id: number, preset: TablePreset) => {
   const canvas = document.createElement("canvas");
   canvas.width = 512;
   canvas.height = 256;

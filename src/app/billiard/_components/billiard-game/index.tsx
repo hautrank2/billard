@@ -117,7 +117,7 @@ export const BilliardGame = (props: BilliardGameProps) => {
                 onPointerCancel={cancelDrag}
               />
               <div className={`billiard-table-hud pointer-events-none absolute left-3 top-3 z-10 max-w-[calc(100%-1.5rem)] rounded-lg px-2 py-1.5 backdrop-blur-sm ${game.ballInHand ? "bg-background/90" : "bg-background/65"}`}>
-                <p className="text-[9px] tracking-wider text-muted-foreground uppercase">{preset.name} · {preset.id === "predator" ? "Blue / Arcos II" : "Xám / Black"}</p>
+                <p className="text-[9px] tracking-wider text-muted-foreground uppercase">{preset.name}</p>
                 <p className="mt-0.5 text-[11px] font-medium">{game.ballInHand && myTurn ? "Đặt bi cái" : `${view.key} · ${view.name}`}</p>
                 {game.ballInHand && myTurn && (
                   <section className="billiard-placement-controls mt-1.5" aria-label="Đặt bi cái">

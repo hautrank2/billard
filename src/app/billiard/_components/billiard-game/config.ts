@@ -17,7 +17,7 @@ export const DEFAULT_OPTIONS: GameOptions = {
 export const TABLE_PRESETS: Record<TableId, TablePreset> = {
   "mr-sung": {
     id: "mr-sung",
-    name: "Mr Sung",
+    name: "Xám",
     outerWidth: 1.63,
     outerLength: 2.9,
     height: 0.8,
@@ -34,7 +34,7 @@ export const TABLE_PRESETS: Record<TableId, TablePreset> = {
   },
   predator: {
     id: "predator",
-    name: "Predator",
+    name: "Blue",
     outerWidth: 1.65,
     outerLength: 2.9,
     height: 0.8,

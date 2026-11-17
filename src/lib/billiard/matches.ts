@@ -1,7 +1,7 @@
-import { randomUUID } from "node:crypto";
+import { randomInt, randomUUID } from "node:crypto";
 import type { ClientSession } from "mongodb";
 
-import { DEFAULT_OPTIONS } from "../../app/billiard/_components/billiard-game/config";
+import { DEFAULT_OPTIONS, TABLE_PRESETS } from "../../app/billiard/_components/billiard-game/config";
 import { DEFAULT_LOADOUT } from "../../app/billiard/_components/billiard-game/cues";
 import { createGame } from "../../app/billiard/_components/billiard-game/engine";
 import { chooseComputerShot, otherSeat, resolveMatchShot } from "../../app/billiard/_components/billiard-game/match-play";
@@ -14,6 +14,7 @@ import { profile, readPlayer, shop, updateBalance } from "./players";
 
 const QUEUE_LIFETIME = 35_000;
 const TURN_TIME = 180_000;
+const TABLES = Object.values(TABLE_PRESETS);
 
 const readMatch = async (db: GameDatabase, user: string, id: string, session?: ClientSession) => {
   const match = await db.matches.findOne({ _id: id, players: user }, { session });
@@ -47,7 +48,7 @@ export const lobby = async (db: GameDatabase, user: string | null, id?: string):
   };
   return {
     player: profile(player), cues, match: view,
-    queued: queue && { rule: queue.rule, table: queue.table },
+    queued: queue && { rule: queue.rule },
     history: history.flatMap((entry) => {
       const { result } = entry;
       const rule = entry.state.options.mode;
@@ -59,42 +60,51 @@ export const lobby = async (db: GameDatabase, user: string | null, id?: string):
   };
 };
 
-const createMatch = async (
+export const lockMatchmaking = (db: GameDatabase, session: ClientSession) =>
+  db.migrations.updateOne({ _id: "matchmaking" }, { $inc: { sequence: 1 } }, { session });
+
+export const createMatch = async (
   db: GameDatabase, session: ClientSession, kind: MatchKind, options: MatchOptions, first: string, second: string | null,
+  hallSlot?: number,
 ) => {
   const id = randomUUID();
   const now = new Date();
-  const state = createGame({ ...DEFAULT_OPTIONS, mode: options.rule, tableId: options.table });
+  const tableId = TABLES[randomInt(TABLES.length)]!.id;
+  const state = createGame({ ...DEFAULT_OPTIONS, mode: options.rule, tableId });
   state.ballInHand = true;
   await db.matches.insertOne({
     _id: id, kind, players: [first, second], state, version: 0, turn: 0, replay: null, result: null,
     canPass: false, deadline: kind === "online" ? now.getTime() + TURN_TIME : null, createdAt: now, completedAt: null,
+    ...(hallSlot !== undefined && { hallSlot }),
   }, { session });
   const users = second ? [first, second] : [first];
   const reserved = await db.users.updateMany({ _id: { $in: users }, activeMatch: null },
     { $set: { activeMatch: id } }, { session });
   if (reserved.matchedCount !== users.length) throw new GameError(409, "Người chơi đã vào trận.");
   await db.queue.deleteMany({ _id: { $in: users } }, { session });
+  await db.tables.deleteMany({ hostId: { $in: users } }, { session });
+  await db.presence.deleteMany({ _id: { $in: users } }, { session });
   return id;
 };
 
 export const requestMatch = (db: GameDatabase, user: string, kind: MatchKind, options: MatchOptions) =>
   transaction(db, async (session) => {
     // Serialize match formation so two simultaneous joins cannot both miss each other.
-    await db.migrations.updateOne({ _id: "matchmaking" }, { $inc: { sequence: 1 } }, { session });
+    await lockMatchmaking(db, session);
     const player = await readPlayer(db, user, session);
     if (player.activeMatch) return player.activeMatch;
     if (kind === "ai") return createMatch(db, session, kind, options, user, null);
+    await db.tables.deleteOne({ hostId: user }, { session });
 
     const now = new Date();
     const waiting = await db.queue.findOne(
-      { _id: { $ne: user }, rule: options.rule, table: options.table, expiresAt: { $gt: now } },
+      { _id: { $ne: user }, rule: options.rule, expiresAt: { $gt: now } },
       { sort: { joinedAt: 1, _id: 1 }, session },
     );
     if (waiting) return createMatch(db, session, kind, options, waiting._id, user);
-    const prior = await db.queue.findOne({ _id: user, ...options, expiresAt: { $gt: now } }, { session });
+    const prior = await db.queue.findOne({ _id: user, rule: options.rule, expiresAt: { $gt: now } }, { session });
     await db.queue.updateOne({ _id: user }, {
-      $set: { ...options, joinedAt: prior?.joinedAt ?? now, expiresAt: new Date(now.getTime() + QUEUE_LIFETIME) },
+      $set: { rule: options.rule, joinedAt: prior?.joinedAt ?? now, expiresAt: new Date(now.getTime() + QUEUE_LIFETIME) },
     }, { upsert: true, session });
     return undefined;
   });
@@ -123,7 +133,7 @@ const finish = async (
   }
 };
 
-const expireMatch = async (db: GameDatabase, session: ClientSession, match: Match) => {
+export const expireMatch = async (db: GameDatabase, session: ClientSession, match: Match) => {
   if (match.deadline === null || match.deadline > Date.now()) return false;
   await finish(db, session, match, { winner: otherSeat(match.turn), reason: "timeout" });
   return true;
