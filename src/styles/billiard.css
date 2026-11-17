@@ -1,0 +1,38 @@
+.billiard-game {
+  --background: #101519;
+  --foreground: #eeeae0;
+  --card: #171e23;
+  --card-foreground: #eeeae0;
+  --primary: #d5b77a;
+  --primary-foreground: #151a1e;
+  --secondary: #242c31;
+  --secondary-foreground: #eeeae0;
+  --muted: #20282d;
+  --muted-foreground: #94a0a7;
+  --border: #313a40;
+  --input: #39434a;
+  --ring: #d5b77a;
+  --accent: #303a40;
+  --accent-foreground: #eeeae0;
+  --billiard-ivory: #f6f1d8;
+}
+
+.billiard-spin-ball {
+  background: radial-gradient(circle at 35% 28%, #fffef5 0%, var(--billiard-ivory) 48%, #b1b3a5 100%);
+  box-shadow: inset -5px -8px 16px #0003, 0 10px 30px #0003;
+}
+
+.billiard-ball {
+  background: radial-gradient(circle at 30% 20%, #ffffff9c, transparent 50%), var(--ball-color);
+  box-shadow: inset -2px -3px 4px #0005, 0 2px 3px #0004;
+}
+
+.billiard-ball[data-stripe] {
+  background: linear-gradient(0deg, var(--billiard-stripe-cap) 22%, var(--ball-color) 23%, var(--ball-color) 77%, var(--billiard-stripe-cap) 78%);
+}
+
+.billiard-viewport canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}

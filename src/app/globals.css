@@ -1,0 +1,414 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.129 0.042 264.695);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.129 0.042 264.695);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.129 0.042 264.695);
+  --primary: oklch(0.61 0.11 222);
+  --primary-foreground: oklch(0.99 0.005 260);
+  --secondary: oklch(0.968 0.007 247.896);
+  --secondary-foreground: oklch(0.208 0.042 265.755);
+  --muted: oklch(0.968 0.007 247.896);
+  --muted-foreground: oklch(0.554 0.046 257.417);
+  --accent: oklch(0.968 0.007 247.896);
+  --accent-foreground: oklch(0.208 0.042 265.755);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.78 0 0);
+  --input: oklch(0.929 0.013 255.508);
+  --ring: oklch(0.704 0.04 256.788);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.984 0.003 247.858);
+  --sidebar-foreground: oklch(0.129 0.042 264.695);
+  --sidebar-primary: oklch(0.208 0.042 265.755);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.968 0.007 247.896);
+  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
+  --sidebar-border: oklch(0.929 0.013 255.508);
+  --sidebar-ring: oklch(0.704 0.04 256.788);
+}
+
+.dark {
+  --background: oklch(0.129 0.042 264.695);
+  --foreground: oklch(0.984 0.003 247.858);
+  --card: oklch(0.208 0.042 265.755);
+  --card-foreground: oklch(0.984 0.003 247.858);
+  --popover: oklch(0.208 0.042 265.755);
+  --popover-foreground: oklch(0.984 0.003 247.858);
+  --primary: oklch(0.61 0.11 222);
+  --primary-foreground: oklch(0.208 0.042 265.755);
+  --secondary: oklch(0.279 0.041 260.031);
+  --secondary-foreground: oklch(0.984 0.003 247.858);
+  --muted: oklch(0.279 0.041 260.031);
+  --muted-foreground: oklch(0.704 0.04 256.788);
+  --accent: oklch(0.279 0.041 260.031);
+  --accent-foreground: oklch(0.984 0.003 247.858);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.551 0.027 264.364);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.208 0.042 265.755);
+  --sidebar-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.279 0.041 260.031);
+  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.551 0.027 264.364);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* the header is fixed at 4rem — keep anchored sections clear of it */
+    scroll-padding-top: 6rem;
+  }
+
+  ::selection {
+    background-color: color-mix(in oklch, var(--primary) 35%, transparent);
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: color-mix(in oklch, var(--primary) 30%, transparent);
+    border-radius: 999px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: color-mix(in oklch, var(--primary) 55%, transparent);
+    background-clip: content-box;
+  }
+}
+
+@utility text-gradient {
+  background-image: linear-gradient(
+    100deg,
+    var(--foreground) 0%,
+    var(--foreground) 30%,
+    var(--primary) 100%
+  );
+  background-clip: text;
+  color: transparent;
+}
+
+/* Faint blueprint grid, used behind the hero and page headers. */
+@utility bg-grid {
+  background-image: linear-gradient(
+      to right,
+      color-mix(in oklch, var(--foreground) 6%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in oklch, var(--foreground) 6%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 56px 56px;
+}
+
+@utility surface {
+  background-color: color-mix(in oklch, var(--card) 55%, transparent);
+  backdrop-filter: blur(8px);
+}
+
+/*
+ * Scroll reveal: hidden until <Reveal /> marks the element as visible. Driven by
+ * a transition rather than an animation on purpose — when the browser skips the
+ * transition (background tab, reduced motion) the element still lands on its
+ * final state instead of being stuck on the first keyframe.
+ */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+[data-reveal][data-visible="true"] {
+  opacity: 1;
+  transform: none;
+}
+
+/* Never leave content hidden when scripts cannot run. */
+@media (scripting: none) {
+  [data-reveal] {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  [data-reveal],
+  [data-reveal][data-visible="true"] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/*
+ * Typography for rendered markdown notes. Written by hand rather than pulled in
+ * from @tailwindcss/typography so the rhythm and colours stay tied to the theme
+ * tokens above instead of a second, parallel palette.
+ */
+.prose-note {
+  color: color-mix(in oklch, var(--foreground) 88%, transparent);
+  line-height: 1.75;
+}
+
+.prose-note > * + * {
+  margin-top: 1.25em;
+}
+
+.prose-note h2,
+.prose-note h3,
+.prose-note h4 {
+  color: var(--foreground);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  scroll-margin-top: 6rem;
+}
+
+.prose-note h2 {
+  margin-top: 2.5em;
+  font-size: 1.5rem;
+  padding-bottom: 0.4em;
+  border-bottom: 1px solid color-mix(in oklch, var(--border) 60%, transparent);
+}
+
+.prose-note h3 {
+  margin-top: 2em;
+  font-size: 1.2rem;
+}
+
+.prose-note a {
+  color: var(--primary);
+  text-underline-offset: 3px;
+  text-decoration-line: underline;
+  text-decoration-color: color-mix(in oklch, var(--primary) 40%, transparent);
+}
+
+.prose-note a:hover {
+  text-decoration-color: var(--primary);
+}
+
+.prose-note strong {
+  color: var(--foreground);
+  font-weight: 600;
+}
+
+.prose-note ul,
+.prose-note ol {
+  padding-left: 1.4em;
+}
+
+.prose-note ul {
+  list-style: disc;
+}
+
+.prose-note ol {
+  list-style: decimal;
+}
+
+.prose-note li::marker {
+  color: color-mix(in oklch, var(--primary) 70%, transparent);
+}
+
+/* GFM task lists ("- [ ] …"): remark-gfm renders a real checkbox, so the
+   list marker would sit next to it as a second bullet. */
+.prose-note .contains-task-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+/* Deliberately NOT `display: flex`. A flex container turns every child into a
+   flex item and drops the whitespace text nodes between them — so an item like
+   "lỗi là `connection refused` chứ không phải…" loses the spaces either side of
+   the <code> and the chip gets pushed around as an unbreakable box. The
+   checkbox hangs in the gutter instead, leaving the text one normal inline run
+   that wraps like prose. */
+.prose-note .task-list-item {
+  position: relative;
+  padding-left: 1.6em;
+}
+
+.prose-note .task-list-item input[type="checkbox"] {
+  position: absolute;
+  left: 0;
+  top: 0.42em;
+  accent-color: var(--primary);
+  width: 0.95em;
+  height: 0.95em;
+}
+
+.prose-note li + li {
+  margin-top: 0.4em;
+}
+
+.prose-note blockquote {
+  border-left: 3px solid var(--primary);
+  padding: 0.2em 0 0.2em 1.2em;
+  color: color-mix(in oklch, var(--foreground) 70%, transparent);
+  font-style: italic;
+}
+
+/* Inline code only. Scoped by structure rather than undone afterwards: as a
+   bare `.prose-note code` it outranked the utilities on <CodeBlock>'s <code>
+   and quietly replaced their padding. */
+.prose-note :not(pre) > code {
+  background-color: color-mix(in oklch, var(--primary) 14%, transparent);
+  border-radius: var(--radius-sm);
+  padding: 0.15em 0.4em;
+  font-size: 0.875em;
+  /* `overflow-wrap`, not `word-break: break-word`: the latter behaves like
+     `anywhere` and lets a chip split mid-word even when it would have fit. */
+  overflow-wrap: break-word;
+}
+
+/* The <pre> chrome lives in <CodeBlock>; these rules only dress the markup that
+   rehype-pretty-code emits inside it. */
+/* Horizontal padding belongs to the <pre>, not to these: rehype-pretty-code
+   only emits [data-line] for fenced blocks that declare a language, so keying
+   the padding off it left plain output blocks flush against the border. */
+.prose-note pre code [data-line] {
+  min-height: 1lh;
+}
+
+.prose-note [data-rehype-pretty-code-title] {
+  background-color: color-mix(in oklch, var(--card) 85%, transparent);
+  border: 1px solid color-mix(in oklch, var(--border) 70%, transparent);
+  border-bottom: none;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.8rem;
+  color: color-mix(in oklch, var(--foreground) 65%, transparent);
+}
+
+.prose-note [data-rehype-pretty-code-title] + [data-slot="code-block"] pre {
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+}
+
+/* Tables are shadcn's <Table>; target its data-slots so the component itself
+   stays unmodified and reusable outside prose. */
+.prose-note [data-slot="table-container"] {
+  border: 1px solid color-mix(in oklch, var(--border) 70%, transparent);
+  border-radius: var(--radius-lg);
+}
+
+.prose-note [data-slot="table-head"],
+.prose-note [data-slot="table-cell"] {
+  padding: 0.6rem 0.9rem;
+  white-space: normal;
+  vertical-align: top;
+}
+
+.prose-note [data-slot="table-head"] {
+  height: auto;
+  background-color: color-mix(in oklch, var(--primary) 10%, transparent);
+}
+
+.prose-note [data-slot="table-head"]:not(:last-child),
+.prose-note [data-slot="table-cell"]:not(:last-child) {
+  border-right: 1px solid color-mix(in oklch, var(--border) 50%, transparent);
+}
+
+.prose-note hr {
+  border-color: color-mix(in oklch, var(--border) 60%, transparent);
+  margin: 2.5em 0;
+}
+
+.prose-note img {
+  border-radius: var(--radius-lg);
+  border: 1px solid color-mix(in oklch, var(--border) 60%, transparent);
+}
+
+/* Thanh quét chạy ngang đầu editor khi Claude đang review (writing assistant). */
+@keyframes writing-scan {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(300%);
+  }
+}

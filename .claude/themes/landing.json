@@ -1,0 +1,891 @@
+{
+  "defaultTheme": "studio",
+  "company": {
+    "name": "forma",
+    "suffix": "software",
+    "eyebrow": "Your next technology partner",
+    "headline": "Built for today.",
+    "highlight": "Ready for tomorrow.",
+    "description": "We design, engineer, and scale digital products that bring your business forward. One dedicated team, from the first conversation to your next milestone.",
+    "cta": "Start a conversation",
+    "email": "hello@forma.example",
+    "availability": "Vietnam roots. Global perspective.",
+    "contactTitle": "Your ambition. Our next great collaboration.",
+    "contactDescription": "A new product, a complex platform, or a better way of working. Tell us where you want to go. We will help you get there.",
+    "contactNote": "A thoughtful first conversation. No commitment required.",
+    "footerDescription": "An independent technology partner turning complex challenges into clear, useful digital experiences.",
+    "location": "Ho Chi Minh City, Vietnam",
+    "hours": "Monday - Friday / 09:00 - 18:00 ICT",
+    "demoNotice": "Forma is a fictional company. All figures, partner brands, products, and generated imagery are illustrative demo content."
+  },
+  "navigation": [
+    {
+      "label": "Solutions",
+      "href": "#expertise"
+    },
+    {
+      "label": "Products",
+      "href": "#work"
+    },
+    {
+      "label": "Company",
+      "href": "#about"
+    },
+    {
+      "label": "Why Forma",
+      "href": "#why-us"
+    }
+  ],
+  "services": [
+    {
+      "number": "01",
+      "title": "Digital products",
+      "description": "Purposeful websites, mobile applications, and platforms that turn everyday interactions into better experiences.",
+      "tags": [
+        "Web & mobile",
+        "UX / UI design"
+      ],
+      "icon": "layers"
+    },
+    {
+      "number": "02",
+      "title": "Cloud & platforms",
+      "description": "A dependable foundation for your next stage. Modernize systems, connect your data, and scale with confidence.",
+      "tags": [
+        "Cloud architecture",
+        "System integration"
+      ],
+      "icon": "cloud"
+    },
+    {
+      "number": "03",
+      "title": "AI & automation",
+      "description": "Put intelligence to work where it matters. Practical AI tools and workflows that give your people time back.",
+      "tags": [
+        "Applied AI",
+        "Workflow automation"
+      ],
+      "icon": "sparkles"
+    },
+    {
+      "number": "04",
+      "title": "Dedicated teams",
+      "description": "An extension of your team, invested in your goals. The right expertise, shared ownership, and a clear way forward.",
+      "tags": [
+        "Product teams",
+        "Technical consulting"
+      ],
+      "icon": "users"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Orbit",
+      "category": "Business platforms",
+      "categoryId": "platform",
+      "description": "One connected workspace for projects, people, and everything in between.",
+      "visual": "workspace",
+      "label": "Less friction. More forward.",
+      "eyebrow": "WORK, CONNECTED",
+      "detail": "Orbit explores how a growing team can bring planning, delivery, and collaboration into a single calm workspace. Designed around clear priorities and shared visibility.",
+      "deliverables": [
+        "Product discovery & information architecture",
+        "Responsive workspace & design system",
+        "Project planning & team collaboration"
+      ],
+      "tags": [
+        "SaaS platform",
+        "Product design",
+        "Engineering"
+      ]
+    },
+    {
+      "name": "Pulse",
+      "category": "Data & intelligence",
+      "categoryId": "data",
+      "description": "Bring your business into focus with connected data and actionable insights.",
+      "visual": "analytics",
+      "label": "Clarity in every decision.",
+      "eyebrow": "SIGNALS INTO STRATEGY",
+      "detail": "Pulse is a business intelligence concept that transforms fragmented information into an understandable view of performance. A focused dashboard helps teams spot trends and decide what to do next.",
+      "deliverables": [
+        "Analytics experience & data visualization",
+        "Interactive reporting & dashboard design",
+        "Integration architecture concept"
+      ],
+      "tags": [
+        "Analytics",
+        "Data visualization",
+        "Cloud"
+      ]
+    },
+    {
+      "name": "Kinfolk",
+      "category": "Digital commerce",
+      "categoryId": "commerce",
+      "description": "A considered commerce experience that makes discovery feel effortless.",
+      "visual": "commerce",
+      "label": "Thoughtfully made. Easily found.",
+      "eyebrow": "A BETTER EVERYDAY",
+      "detail": "Kinfolk imagines a direct-to-consumer brand with a quieter, more intentional shopping experience. Editorial storytelling and a clear catalog work together from discovery to checkout.",
+      "deliverables": [
+        "Brand experience & storefront design",
+        "Responsive catalog & product discovery",
+        "Commerce architecture concept"
+      ],
+      "tags": [
+        "Commerce",
+        "Brand experience",
+        "Web platform"
+      ]
+    }
+  ],
+  "process": [
+    {
+      "number": "01",
+      "title": "Discover & align",
+      "description": "We get close to your business, ask the right questions, and agree on what success looks like.",
+      "detail": "WORKSHOPS / ROADMAP"
+    },
+    {
+      "number": "02",
+      "title": "Design & validate",
+      "description": "Turn the big picture into something tangible. Prototype, test, and refine before building.",
+      "detail": "EXPERIENCE / PROTOTYPES"
+    },
+    {
+      "number": "03",
+      "title": "Build & deliver",
+      "description": "Work in focused iterations, with regular demos, shared visibility, and quality at every step.",
+      "detail": "ENGINEERING / QUALITY"
+    },
+    {
+      "number": "04",
+      "title": "Launch & evolve",
+      "description": "Release with confidence, learn from real use, and keep making your product better.",
+      "detail": "RELEASE / CONTINUOUS CARE"
+    }
+  ],
+  "themes": [
+    {
+      "id": "studio",
+      "name": "Studio",
+      "description": "Calm clarity, warm character.",
+      "layout": "split",
+      "style": "studio",
+      "font": "var(--font-space-grotesk), sans-serif",
+      "radius": "16px",
+      "kicker": "Technology that moves you forward.",
+      "headline": "Built for today.",
+      "highlight": "Ready for tomorrow.",
+      "edition": "01",
+      "colors": {
+        "background": "#f7f7f2",
+        "surface": "#ffffff",
+        "ink": "#202d30",
+        "muted": "#5c6a6d",
+        "accent": "#c54829",
+        "onAccent": "#ffffff",
+        "line": "#dce1dc",
+        "soft": "#ebeee7",
+        "canvas": "#e8ece3",
+        "canvasInk": "#263a35",
+        "secondary": "#697c63",
+        "tertiary": "#d7e3a5",
+        "onTertiary": "#263a35"
+      },
+      "hero": {
+        "kind": "dashboard",
+        "label": "FROM POSSIBILITY TO PRODUCT",
+        "feature": "Built with intention.",
+        "supporting": "Ready for your next chapter.",
+        "metric": "98%",
+        "metricLabel": "Thoughtful in every detail",
+        "cards": [],
+        "background": {
+          "image": "/showcase/office-building-v3.webp",
+          "alt": "Modern glass office building, photographed by Darien Attridge."
+        },
+        "credit": {
+          "label": "Photo: Darien Attridge / Unsplash",
+          "href": "https://unsplash.com/photos/modern-glass-building-facade-against-a-clear-sky-NwqpGQ-d0N8"
+        }
+      }
+    },
+    {
+      "id": "midnight",
+      "name": "Midnight",
+      "description": "Confident engineering after dark.",
+      "layout": "reverse",
+      "style": "terminal",
+      "font": "var(--font-syne), sans-serif",
+      "radius": "14px",
+      "kicker": "Engineering your next advantage.",
+      "headline": "Ambition, meet",
+      "highlight": "execution.",
+      "edition": "02",
+      "colors": {
+        "background": "#0c121c",
+        "surface": "#141d2a",
+        "ink": "#f0f4f8",
+        "muted": "#a8b6c7",
+        "accent": "#c4e98b",
+        "onAccent": "#18231d",
+        "line": "#29374a",
+        "soft": "#1b2b32",
+        "canvas": "#152b32",
+        "canvasInk": "#e2f0ed",
+        "secondary": "#8aabdc",
+        "tertiary": "#c4e98b",
+        "onTertiary": "#18231d"
+      },
+      "hero": {
+        "kind": "dashboard",
+        "label": "FROM POSSIBILITY TO PRODUCT",
+        "feature": "Built with intention.",
+        "supporting": "Ready for your next chapter.",
+        "metric": "98%",
+        "metricLabel": "Thoughtful in every detail",
+        "cards": [],
+        "background": {
+          "image": "/showcase/nexus.webp",
+          "alt": "Illustrative technology city at blue hour."
+        }
+      }
+    },
+    {
+      "id": "blueprint",
+      "name": "Blueprint",
+      "description": "Clear systems, precise execution.",
+      "layout": "split",
+      "style": "technical",
+      "font": "var(--font-space-mono), monospace",
+      "radius": "4px",
+      "kicker": "Clear thinking. Precise engineering.",
+      "headline": "Complex challenges.",
+      "highlight": "Clear solutions.",
+      "edition": "03",
+      "colors": {
+        "background": "#f3f6fb",
+        "surface": "#ffffff",
+        "ink": "#172b50",
+        "muted": "#566782",
+        "accent": "#2458c5",
+        "onAccent": "#ffffff",
+        "line": "#d3deec",
+        "soft": "#e6edf8",
+        "canvas": "#dfe8f8",
+        "canvasInk": "#183d7b",
+        "secondary": "#6989b4",
+        "tertiary": "#b1d7dd",
+        "onTertiary": "#183d50"
+      },
+      "hero": {
+        "kind": "dashboard",
+        "label": "FROM POSSIBILITY TO PRODUCT",
+        "feature": "Built with intention.",
+        "supporting": "Ready for your next chapter.",
+        "metric": "98%",
+        "metricLabel": "Thoughtful in every detail",
+        "cards": [],
+        "background": {
+          "image": "/showcase/office-building-v3.webp",
+          "alt": "Modern glass office building, photographed by Darien Attridge."
+        },
+        "credit": {
+          "label": "Photo: Darien Attridge / Unsplash",
+          "href": "https://unsplash.com/photos/modern-glass-building-facade-against-a-clear-sky-NwqpGQ-d0N8"
+        }
+      }
+    },
+    {
+      "id": "aurora",
+      "name": "Aurora",
+      "description": "A universe of ideas. A clear path forward.",
+      "layout": "centered",
+      "style": "aurora",
+      "font": "var(--font-outfit), sans-serif",
+      "radius": "20px",
+      "kicker": "AN OPEN UNIVERSE OF POSSIBILITIES.",
+      "headline": "Beyond the ordinary.",
+      "highlight": "Into the possible.",
+      "edition": "04",
+      "colors": {
+        "background": "#0d1020",
+        "surface": "#171c32",
+        "ink": "#f1f0fa",
+        "muted": "#aaaec8",
+        "accent": "#b6a0fa",
+        "onAccent": "#18152c",
+        "line": "#303653",
+        "soft": "#222a44",
+        "canvas": "#232e4f",
+        "canvasInk": "#ede9ff",
+        "secondary": "#87c7d2",
+        "tertiary": "#b6a0fa",
+        "onTertiary": "#18152c"
+      },
+      "hero": {
+        "kind": "dashboard",
+        "label": "AURORA / EXPLORING WHAT COMES NEXT",
+        "feature": "Built with intention.",
+        "supporting": "Ready for your next chapter.",
+        "metric": "98%",
+        "metricLabel": "Thoughtful in every detail",
+        "cards": [],
+        "background": {
+          "image": "/showcase/cosmos-v4.webp",
+          "alt": "The Cosmic Cliffs in the Carina Nebula, photographed by the James Webb Space Telescope."
+        },
+        "credit": {
+          "label": "Image: NASA, ESA, CSA, STScI",
+          "href": "https://science.nasa.gov/asset/webb/cosmic-cliffs-in-the-carina-nebula-nircam-image/"
+        },
+        "description": "Big ideas need space to grow. We connect strategy, design, and engineering to take your business into its next universe of possibilities."
+      }
+    },
+    {
+      "id": "liquid",
+      "name": "Liquid",
+      "description": "Fluid thinking. A different dimension.",
+      "layout": "centered",
+      "style": "liquid",
+      "font": "var(--font-outfit), sans-serif",
+      "radius": "24px",
+      "kicker": "IDEAS WITHOUT LIMITS",
+      "headline": "Beyond the",
+      "highlight": "expected.",
+      "edition": "05",
+      "colors": {
+        "background": "#101114",
+        "surface": "#191b20",
+        "ink": "#faf9f6",
+        "muted": "#b7b8bf",
+        "accent": "#f6f5ef",
+        "onAccent": "#151619",
+        "line": "#373940",
+        "soft": "#252730",
+        "canvas": "#111315",
+        "canvasInk": "#f6f5ef",
+        "secondary": "#667feb",
+        "tertiary": "#d9ac59",
+        "onTertiary": "#171714"
+      },
+      "hero": {
+        "kind": "liquid",
+        "label": "SOFTWARE. IN A NEW DIMENSION.",
+        "description": "Extraordinary digital experiences start where ordinary thinking ends. Strategy, design, and engineering. Beautifully connected.",
+        "feature": "A fluid approach.",
+        "supporting": "Built around your ambition.",
+        "metric": "01 → ∞",
+        "metricLabel": "From one bold idea to endless possibility",
+        "cards": [],
+        "background": {
+          "image": "/showcase/nexus.webp",
+          "alt": "Illustrative technology city at blue hour."
+        }
+      }
+    },
+    {
+      "id": "atelier",
+      "name": "Atelier",
+      "description": "Digital architecture. Human at heart.",
+      "layout": "split",
+      "style": "atelier",
+      "font": "var(--font-dm-sans), sans-serif",
+      "radius": "30px",
+      "kicker": "THE ARCHITECTURE OF POSSIBILITY",
+      "headline": "The perfect",
+      "highlight": "foundation.",
+      "edition": "06",
+      "colors": {
+        "background": "#f0ede7",
+        "surface": "#fffef9",
+        "ink": "#352c25",
+        "muted": "#71665c",
+        "accent": "#493b30",
+        "onAccent": "#fffaf0",
+        "line": "#d6d0c5",
+        "soft": "#e5dfd5",
+        "canvas": "#d6c3b2",
+        "canvasInk": "#352c25",
+        "secondary": "#ab8b73",
+        "tertiary": "#ddc49c",
+        "onTertiary": "#352c25"
+      },
+      "hero": {
+        "kind": "architecture",
+        "image": "/showcase/office-building-v3.webp",
+        "imageAlt": "A real contemporary office building with a curved glass facade, photographed by Darien Attridge.",
+        "label": "CONSIDERED SYSTEMS. LASTING VALUE.",
+        "description": "We craft digital foundations that connect the way your business works with the way you want it to grow.",
+        "feature": "Designed around you.",
+        "supporting": "From first blueprint to lasting impact.",
+        "metric": "10+",
+        "metricLabel": "Years of experience · illustrative",
+        "cards": [
+          {
+            "title": "Experience",
+            "description": "Intuitive by design.",
+            "icon": "design"
+          },
+          {
+            "title": "Architecture",
+            "description": "A foundation for growth.",
+            "icon": "cloud"
+          },
+          {
+            "title": "Engineering",
+            "description": "Precision in every detail.",
+            "icon": "code"
+          }
+        ],
+        "credit": {
+          "label": "Photo: Darien Attridge / Unsplash",
+          "href": "https://unsplash.com/photos/modern-glass-building-facade-against-a-clear-sky-NwqpGQ-d0N8"
+        }
+      }
+    },
+    {
+      "id": "momentum",
+      "name": "Momentum",
+      "description": "Human stories. Digital momentum.",
+      "layout": "split",
+      "style": "momentum",
+      "font": "var(--font-dm-sans), sans-serif",
+      "radius": "28px",
+      "kicker": "GOOD PEOPLE. GREAT POSSIBILITIES.",
+      "headline": "Make your",
+      "highlight": "next move.",
+      "edition": "07",
+      "colors": {
+        "background": "#f9f9f7",
+        "surface": "#ffffff",
+        "ink": "#18191b",
+        "muted": "#626569",
+        "accent": "#1d1d1c",
+        "onAccent": "#ffffff",
+        "line": "#dadbd6",
+        "soft": "#eaeae6",
+        "canvas": "#dfdfd9",
+        "canvasInk": "#18191b",
+        "secondary": "#ef703a",
+        "tertiary": "#b6cee2",
+        "onTertiary": "#18191b"
+      },
+      "hero": {
+        "kind": "portrait",
+        "image": "/showcase/momentum-robot-v3.webp",
+        "imageAlt": "Illustrative white ceramic humanoid robot with blue illuminated eyes against an orange studio background.",
+        "label": "HUMAN AMBITION. INTELLIGENT TECHNOLOGY.",
+        "description": "Ambitious products need a team that sees the bigger picture. We bring the people, perspective, and craft to move you forward.",
+        "feature": "Your next intelligent advantage.",
+        "supporting": "Different minds. Shared ambition.",
+        "metric": "48",
+        "metricLabel": "Makers, thinkers & problem solvers · demo",
+        "cards": [
+          {
+            "title": "Strategy aligned.",
+            "description": "The right problem, clearly defined.",
+            "icon": "target"
+          },
+          {
+            "title": "Design approved.",
+            "description": "Made for the people using it.",
+            "icon": "design"
+          },
+          {
+            "title": "Ready to build.",
+            "description": "From possibility to progress.",
+            "icon": "code"
+          }
+        ],
+        "background": {
+          "image": "/showcase/office-building-v3.webp",
+          "alt": "Modern glass office building, photographed by Darien Attridge."
+        },
+        "credit": {
+          "label": "Photo: Darien Attridge / Unsplash",
+          "href": "https://unsplash.com/photos/modern-glass-building-facade-against-a-clear-sky-NwqpGQ-d0N8"
+        }
+      }
+    },
+    {
+      "id": "nexus",
+      "name": "Nexus",
+      "description": "Connected intelligence. A bigger perspective.",
+      "layout": "split",
+      "style": "nexus",
+      "font": "var(--font-outfit), sans-serif",
+      "radius": "20px",
+      "kicker": "INTELLIGENCE, ALL AROUND YOU.",
+      "headline": "A connected world.",
+      "highlight": "A smarter future.",
+      "edition": "08",
+      "colors": {
+        "background": "#08192b",
+        "surface": "#10283e",
+        "ink": "#edf6ff",
+        "muted": "#aac1d6",
+        "accent": "#72e2ed",
+        "onAccent": "#0b2335",
+        "line": "#29495f",
+        "soft": "#14364a",
+        "canvas": "#071b30",
+        "canvasInk": "#edf6ff",
+        "secondary": "#38a9dc",
+        "tertiary": "#b0b8ff",
+        "onTertiary": "#10243e"
+      },
+      "hero": {
+        "kind": "city",
+        "image": "/showcase/nexus.webp",
+        "imageAlt": "Illustrative smart city at blue hour, with glass skyscrapers and a terraced green technology campus.",
+        "label": "NEXUS / INTERACTIVE INFRASTRUCTURE CONCEPT",
+        "description": "From connected platforms to intelligent infrastructure. Bring your people, systems, and possibilities together in one shared digital future.",
+        "feature": "Everything, connected.",
+        "supporting": "One shared view. Infinite possibilities.",
+        "metric": "360°",
+        "metricLabel": "A complete view of what comes next",
+        "cards": [
+          {
+            "title": "Connected platforms",
+            "description": "Connect the systems and information your people rely on, with one clear view of the whole picture.",
+            "icon": "target"
+          },
+          {
+            "title": "Cloud infrastructure",
+            "description": "A reliable foundation, engineered for your next stage. Scalable systems with clarity at every layer.",
+            "icon": "cloud"
+          },
+          {
+            "title": "Applied intelligence",
+            "description": "Turn complex signals into useful insights. Put practical intelligence at the center of your operations.",
+            "icon": "sparkles"
+          }
+        ]
+      },
+      "dashboard": {
+        "title": "Network overview",
+        "status": "ALL SYSTEMS OPERATIONAL",
+        "note": "ILLUSTRATIVE DATA / NEXUS CONCEPT",
+        "metrics": [
+          {
+            "id": "platforms",
+            "label": "Connected platforms",
+            "value": "128",
+            "change": "+18.5%",
+            "icon": "layers"
+          },
+          {
+            "id": "events",
+            "label": "Events processed",
+            "value": "2.4M",
+            "change": "+24.8%",
+            "icon": "activity"
+          },
+          {
+            "id": "uptime",
+            "label": "Platform uptime",
+            "value": "99.98%",
+            "change": "+0.02%",
+            "icon": "shield"
+          }
+        ],
+        "chart": {
+          "title": "Network activity",
+          "period": "LAST 8 MONTHS",
+          "unit": "k events",
+          "maximum": 100,
+          "columns": [
+            {
+              "id": "jan",
+              "label": "Jan",
+              "value": 32
+            },
+            {
+              "id": "feb",
+              "label": "Feb",
+              "value": 46
+            },
+            {
+              "id": "mar",
+              "label": "Mar",
+              "value": 39
+            },
+            {
+              "id": "apr",
+              "label": "Apr",
+              "value": 62
+            },
+            {
+              "id": "may",
+              "label": "May",
+              "value": 54
+            },
+            {
+              "id": "jun",
+              "label": "Jun",
+              "value": 76
+            },
+            {
+              "id": "jul",
+              "label": "Jul",
+              "value": 68
+            },
+            {
+              "id": "aug",
+              "label": "Aug",
+              "value": 92
+            }
+          ]
+        },
+        "controls": {
+          "hint": "DRAG TO ROTATE · 360°",
+          "keyboardHint": "Use arrow keys to rotate. Press Home to reset the view.",
+          "reset": "Reset 3D view"
+        }
+      }
+    }
+  ],
+  "marquee": [
+    "Strategy with perspective",
+    "Design with purpose",
+    "Engineering with care",
+    "Progress, together"
+  ],
+  "categories": [
+    {
+      "id": "all",
+      "label": "All products"
+    },
+    {
+      "id": "platform",
+      "label": "Business platforms"
+    },
+    {
+      "id": "data",
+      "label": "Data & intelligence"
+    },
+    {
+      "id": "commerce",
+      "label": "Digital commerce"
+    }
+  ],
+  "overview": {
+    "label": "02 / THE COMPANY",
+    "title": "Small enough to care.\nExperienced enough to deliver.",
+    "description": "Great technology starts with people who understand your business. We bring product thinkers, designers, and engineers together to solve the right problems, with you.",
+    "note": "Illustrative company profile / demo figures",
+    "link": "Meet your next technology partner",
+    "stats": [
+      {
+        "value": 120,
+        "suffix": "+",
+        "label": "Client collaborations"
+      },
+      {
+        "value": 48,
+        "suffix": "",
+        "label": "Team members"
+      },
+      {
+        "value": 10,
+        "suffix": "+",
+        "label": "Years of experience"
+      },
+      {
+        "value": 18,
+        "suffix": "",
+        "label": "Ecosystem partners"
+      },
+      {
+        "value": 32,
+        "suffix": "%",
+        "label": "Annual growth"
+      },
+      {
+        "value": 15,
+        "suffix": "+",
+        "label": "Markets explored"
+      }
+    ]
+  },
+  "reasons": [
+    {
+      "number": "01",
+      "title": "Business first. Always.",
+      "description": "We start with the outcome you need, then choose the technology that gets you there.",
+      "icon": "target"
+    },
+    {
+      "number": "02",
+      "title": "One team, shared ownership.",
+      "description": "Direct access to the people doing the work. Honest conversations, visible progress, and no handoff gaps.",
+      "icon": "users"
+    },
+    {
+      "number": "03",
+      "title": "Quality beneath the surface.",
+      "description": "Accessible experiences, considered architecture, and maintainable code. Built to work as well as it looks.",
+      "icon": "shield"
+    },
+    {
+      "number": "04",
+      "title": "Built for your next chapter.",
+      "description": "We plan beyond the first release, with flexible systems and a team that evolves alongside your business.",
+      "icon": "growth"
+    }
+  ],
+  "partners": [
+    {
+      "name": "Layers",
+      "mark": "layers",
+      "descriptor": "Product ecosystem"
+    },
+    {
+      "name": "Quotient",
+      "mark": "diamond",
+      "descriptor": "Data ecosystem"
+    },
+    {
+      "name": "Circooles",
+      "mark": "circles",
+      "descriptor": "Design ecosystem"
+    },
+    {
+      "name": "Sisyphus",
+      "mark": "triangle",
+      "descriptor": "Cloud ecosystem"
+    },
+    {
+      "name": "Catalog",
+      "mark": "grid",
+      "descriptor": "Commerce ecosystem"
+    },
+    {
+      "name": "Nietzsche",
+      "mark": "asterisk",
+      "descriptor": "Innovation ecosystem"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "What kind of companies do you work with?",
+      "answer": "This demo presents Forma as a partner for ambitious startups and established businesses, from a first product launch to modernizing a mature platform. The engagement starts with understanding the business, its users, and the outcome that matters."
+    },
+    {
+      "question": "Can you work with our existing team?",
+      "answer": "Yes. The example engagement model supports a complete product team or focused expertise alongside your designers and engineers. Shared tools, clear responsibilities, and regular reviews keep everyone aligned."
+    },
+    {
+      "question": "How does a project usually begin?",
+      "answer": "A discovery conversation clarifies the challenge, constraints, and desired outcome. From there, the team proposes an initial scope, roadmap, and collaboration model before development begins."
+    },
+    {
+      "question": "What happens after launch?",
+      "answer": "Launch is followed by a planned handover, documentation, and a support approach agreed during scoping. Ongoing collaboration can cover product improvements, maintenance, and new capabilities."
+    }
+  ],
+  "sections": {
+    "solutions": {
+      "label": "01 / WHAT WE DO",
+      "title": "The right expertise.\nAll working together.",
+      "description": "From an ambitious idea to the systems behind it. End-to-end capabilities, connected by a single purpose: moving your business forward."
+    },
+    "products": {
+      "label": "03 / SELECTED PRODUCTS",
+      "title": "Ideas made tangible.",
+      "description": "A closer look at what we can build together. Three concept products, crafted to demonstrate our approach.",
+      "note": "CONCEPT PRODUCTS / INTERACTIVE PREVIEWS"
+    },
+    "why": {
+      "label": "04 / WHY FORMA",
+      "title": "A better way to\nbuild what is next.",
+      "description": "Technology is the easy part to talk about. The difference is how we work, what we care about, and the details we never overlook.",
+      "promise": "Your goals become our shared measure of progress.",
+      "tags": [
+        "Clarity at every step",
+        "Craft in every detail",
+        "Partnership for the long run"
+      ]
+    },
+    "partners": {
+      "label": "CONNECTED BY POSSIBILITY",
+      "title": "Better, together.",
+      "description": "A connected ecosystem of capabilities, ideas, and expertise.",
+      "note": "Illustrative ecosystem / fictional partner brands"
+    },
+    "process": {
+      "label": "05 / OUR APPROACH",
+      "title": "A clear path from\npossibility to progress.",
+      "description": "No mystery. No black boxes. A collaborative process that keeps you involved and your product moving."
+    },
+    "faq": {
+      "label": "06 / GOOD TO KNOW",
+      "title": "A few things you\nmight be wondering.",
+      "description": "Have something else in mind?",
+      "link": "Let’s talk it through"
+    },
+    "footer": {
+      "navigation": "Explore",
+      "capabilities": "Capabilities",
+      "contact": "Get in touch",
+      "copyright": "© 2026 Forma Software. Crafted for what comes next.",
+      "back": "Back to top"
+    },
+    "ui": {
+      "projectCta": "Explore concept",
+      "projectNote": "Illustrative product concept. Features shown are design demonstrations.",
+      "projectScope": "Inside this concept",
+      "discuss": "Discuss a similar project",
+      "themeTitle": "Eight perspectives. Endless possibilities.",
+      "themeDescription": "Explore eight complete design directions. From grounded corporate architecture to intelligent robotics and a universe of ideas.",
+      "themeLabel": "Design directions",
+      "copy": "Copy link",
+      "copied": "Link copied!",
+      "copyError": "Copy the URL from your address bar",
+      "motionOn": "Pause motion",
+      "motionOff": "Enable motion",
+      "home": "Back to util4us",
+      "menuOpen": "Open navigation",
+      "menuClose": "Close navigation",
+      "headerCta": "Let’s talk",
+      "heroSecondary": "Explore our products",
+      "heroProof": "Strategy. Design. Engineering. One partner.",
+      "productCount": "concepts",
+      "allThemes": "All themes",
+      "previousTheme": "Previous theme",
+      "nextTheme": "Next theme",
+      "close": "Close"
+    }
+  },
+  "experience": {
+    "tourLabel": "Explore our approach",
+    "tourTitle": "A closer look at the craft.",
+    "tourDescription": "Explore how strategy, design, and engineering come together. An interactive introduction to the Forma approach.",
+    "hint": "MOVE TO EXPLORE",
+    "scroll": "SCROLL TO DISCOVER",
+    "collection": "THE FORMA COLLECTION",
+    "chapters": [
+      {
+        "id": "strategy",
+        "title": "Strategy",
+        "description": "Start with the right problem. Align the team, explore possibilities, and turn ambition into a clear product roadmap.",
+        "tag": "DISCOVER / ALIGN / DEFINE"
+      },
+      {
+        "id": "design",
+        "title": "Design",
+        "description": "Make it tangible. Shape useful, intuitive experiences, prototype the details, and validate the decisions that matter.",
+        "tag": "EXPLORE / PROTOTYPE / REFINE"
+      },
+      {
+        "id": "engineering",
+        "title": "Engineering",
+        "description": "Build with intention. Connect considered architecture, reliable code, and continuous delivery to create lasting value.",
+        "tag": "BUILD / TEST / EVOLVE"
+      }
+    ]
+  }
+}
