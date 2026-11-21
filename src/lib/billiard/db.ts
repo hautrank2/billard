@@ -29,6 +29,7 @@ export const openDatabase = async (client: MongoClient, name: string): Promise<G
   };
   await initialMigration(game);
   await Promise.all([
+    game.users.createIndex({ googleId: 1 }, { unique: true, partialFilterExpression: { googleId: { $type: "string" } } }),
     game.tables.createIndex({ hostId: 1 }, { unique: true }),
     game.tables.createIndex({ expiresAt: 1 }, { expireAfterSeconds: 0 }),
     game.presence.createIndex({ expiresAt: 1 }, { expireAfterSeconds: 0 }),

@@ -21,12 +21,16 @@ export default function LoginPage() {
   const [ready, setReady] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
+  const [registered, setRegistered] = useState(false);
 
   useEffect(() => {
     let current = true;
+    const authError = new URLSearchParams(window.location.search).get("error");
     void readLobby().then(({ player }) => {
+      if (current && authError) setError(authError);
       if (!current || !player) return;
       setName(player.name);
+      setRegistered(player.registered);
       setGender(player.gender ?? "male");
       setBirthYear(player.birthYear?.toString() ?? "");
       setAddress(player.address ?? "");
@@ -51,7 +55,9 @@ export default function LoginPage() {
         </div>
         <section className="login-card" aria-labelledby="login-title">
           <h1 id="login-title">Vào quán bida</h1>
-          <p>Điền hồ sơ khách để vào sảnh chờ.</p>
+          <p>{registered ? "Tài khoản Gmail đã liên kết. Cập nhật hồ sơ của bạn." : "Chơi ngay với tư cách khách, hoặc đăng ký bằng Gmail để nhận xu và mua gậy."}</p>
+          {!registered && <a className="lobby-primary login-google" href="/api/auth/google">Đăng ký / Đăng nhập bằng Gmail</a>}
+          {!registered && <p className="login-account-note">Tặng 200 xu khi đăng ký Gmail lần đầu. Khách vẫn có thể đấu 1v1, dùng gậy tiêu chuẩn.</p>}
           <form onSubmit={async (event) => {
             event.preventDefault();
             if (!ready || busy || name.trim().length < 2) return;
@@ -87,7 +93,7 @@ export default function LoginPage() {
               placeholder="Tỉnh hoặc thành phố" maxLength={100} disabled={!ready || busy} />
             {error && <p className="lobby-error" role="alert">{error}</p>}
             <Button className="lobby-primary login-submit" size="lg" type="submit" disabled={!ready || busy || name.trim().length < 2}>
-              {busy ? "Đang vào sảnh…" : "Vào game"} <ArrowRight aria-hidden="true" />
+              {busy ? "Đang vào sảnh…" : registered ? "Lưu và vào sảnh" : "Chơi với tư cách khách"} <ArrowRight aria-hidden="true" />
             </Button>
           </form>
         </section>

@@ -190,3 +190,77 @@
   .hall-dock:has(.hall-popup) .hall-chat { display: none; }
   .hall-dock:has(.hall-popup) .hall-side { grid-column: -2 / -1; }
 }
+
+
+/* The canvas stays behind the HUD while receiving mouse and touch look gestures. */
+.hall-scene { pointer-events: auto; }
+.hall-scene canvas { touch-action: none; }
+.hall-walk-hud { position: absolute; inset: 0; pointer-events: none; }
+.hall-crosshair { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: var(--text); font-size: 1.4rem; opacity: .7; text-shadow: 0 1px 4px var(--ink); }
+.hall-walk-help { position: absolute; top: 9rem; left: clamp(.85rem, 2.6vw, 2.7rem); max-width: 24rem; padding: .55rem .75rem; font-size: .73rem; }
+.hall-walk-help button { color: var(--gold); font-weight: 700; pointer-events: auto; cursor: pointer; }
+.hall-walk-help p { color: var(--muted); margin-top: .25rem; line-height: 1.55; }
+.hall-walk-help .hall-touch-help { display: none; }
+.hall-walk-actions { position: absolute; bottom: 1.2rem; left: 50%; transform: translateX(-50%); display: flex; gap: .15rem; padding: .25rem; pointer-events: auto; }
+.hall-walk-actions button, .hall-walk-pad button { min-height: 2.4rem; padding-inline: .65rem; border-radius: .5rem; color: var(--text); font-size: .75rem; cursor: pointer; touch-action: none; user-select: none; }
+.hall-walk-actions button:hover, .hall-walk-pad button:active { color: var(--gold); background: var(--line); }
+.hall-walk-pad { display: none; }
+.hall-webgl-error { position: absolute; top: 12rem; left: 50%; transform: translateX(-50%); width: min(90%, 28rem); padding: 1rem; font-size: .85rem; }
+.black-nine.hall-catalog-dialog { display: flex; flex-direction: column; gap: 1rem; width: min(62rem, calc(100vw - 2rem)); max-width: 62rem; max-height: 88svh; padding: clamp(1rem, 3vw, 1.6rem); border-color: var(--line); background: var(--ink); color: var(--text); }
+.hall-catalog-dialog [data-slot="dialog-description"] { color: var(--muted); }
+.hall-catalog-dialog > button { color: var(--text); }
+.hall-catalog-scroll { overflow-y: auto; overscroll-behavior: contain; min-height: 0; padding: .1rem .2rem .4rem; scrollbar-width: thin; }
+.hall-catalog-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .9rem; }
+.hall-tables-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.hall-cue-card, .hall-table-card { overflow: hidden; border: 1px solid var(--line); border-radius: .8rem; background: var(--glass); }
+.hall-cue-art { position: relative; padding: .7rem .5rem 0; background: radial-gradient(ellipse at center, #394a46, #13242a); }
+.hall-cue-art > span { position: absolute; top: .55rem; left: .7rem; color: var(--gold); font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; }
+.hall-cue-art svg { width: 100%; min-height: 6.5rem; }
+.hall-card-body { display: grid; gap: .7rem; padding: .9rem; }
+.hall-card-body h3 { font-size: .96rem; font-weight: 750; }
+.hall-cue-specs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .65rem; }
+.hall-cue-specs dt { font-size: .68rem; color: var(--muted); }
+.hall-cue-specs dd { margin-top: .15rem; font-size: .81rem; font-variant-numeric: tabular-nums; }
+.hall-card-footer { display: flex; align-items: center; justify-content: space-between; gap: .5rem; padding-top: .7rem; border-top: 1px solid var(--line); font-size: .8rem; }
+.hall-shop-account { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; justify-content: space-between; margin-bottom: 1rem; padding: .8rem; border: 1px solid var(--line); border-radius: .6rem; font-size: .82rem; }
+.hall-shop-account > span { display: flex; align-items: center; gap: .4rem; color: var(--gold); }
+.hall-table-art { position: relative; padding: 1.5rem 1rem .25rem; color: #3c6264; background: #102027; }
+.hall-table-art.is-waiting { color: #478a7e; }
+.hall-table-art.is-playing { color: #b28d50; }
+.hall-table-art > span { position: absolute; top: .6rem; left: .8rem; font-size: .65rem; color: var(--gold); letter-spacing: .13em; }
+.hall-table-art svg { width: 100%; height: 6rem; }
+.hall-table-heading { display: flex; align-items: center; justify-content: space-between; gap: .4rem; }
+.hall-table-heading h3 { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.hall-table-heading svg { color: var(--gold); flex: none; }
+.hall-table-card .hall-card-body { gap: .55rem; }
+.hall-table-card .hall-card-body p, .hall-table-card .hall-card-body > span { color: var(--muted); font-size: .73rem; min-height: 2rem; }
+.login-google { display: flex; justify-content: center; align-items: center; text-align: center; min-height: 2.7rem; padding: .6rem; border-radius: .6rem; font-size: .84rem; }
+.login-card .login-account-note { margin: .5rem 0 1rem; font-size: .74rem; line-height: 1.6; }
+@media (max-width: 1100px) {
+  .hall-walk-actions { bottom: 20rem; left: auto; right: 1rem; transform: none; }
+}
+@media (max-width: 760px) {
+  .hall-walk-help { top: 9rem; max-width: 17rem; }
+  .hall-walk-help > p:not(.hall-touch-help) { display: none; }
+  .hall-walk-help .hall-touch-help { display: block; }
+  .hall-walk-actions { bottom: 5.5rem; right: .8rem; }
+  .hall-walk-actions button { padding-inline: .45rem; font-size: .7rem; }
+  .hall-walk-pad { display: grid; position: absolute; bottom: 5.5rem; left: .8rem; grid-template-columns: repeat(3, 2.25rem); grid-template-rows: repeat(2, 2.25rem); pointer-events: auto; padding: .2rem; gap: .1rem; }
+  .hall-walk-pad button { padding: 0; min-height: 2.25rem; font-size: 1.2rem; }
+  .hall-walk-pad button:first-child { grid-column: 2; }
+  .hall-walk-pad button:nth-child(2) { grid-column: 1; grid-row: 2; }
+  .hall-walk-pad button:nth-child(3) { grid-column: 2; grid-row: 2; }
+  .hall-walk-pad button:nth-child(4) { grid-column: 3; grid-row: 2; }
+  .hall-tables-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 480px) {
+  .hall-catalog-grid { grid-template-columns: minmax(0, 1fr); }
+  .hall-walk-actions { flex-wrap: wrap; width: 9rem; justify-content: center; }
+  .hall-walk-actions button { flex: 1 0 40%; }
+  .hall-wallet a { max-width: 7rem; }
+}
+@media (max-height: 500px) {
+  .hall-walk-help { top: 6rem; max-width: 17rem; }
+  .hall-walk-actions { bottom: 5rem; }
+  .hall-walk-pad { bottom: 5rem; }
+}

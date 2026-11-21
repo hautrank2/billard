@@ -2,7 +2,8 @@ import { randomBytes, randomUUID, scrypt, timingSafeEqual } from "node:crypto";
 import { promisify } from "node:util";
 
 import { HALL_CAPACITY } from "../../app/_components/lobby/hall-types";
-import type { HallTable, HallView } from "../../app/_components/lobby/hall-types";
+import { isHallWalkable } from "../../app/_components/lobby/hall-layout";
+import type { HallMotion, HallTable, HallView } from "../../app/_components/lobby/hall-types";
 import type { MatchOptions } from "../../app/billiard/_components/billiard-game/match-types";
 import { GameError, transaction } from "./db";
 import { createMatch, expireMatch, lockMatchmaking } from "./matches";
@@ -65,12 +66,22 @@ export const readHall = async (db: GameDatabase, user: string, inMatch: boolean)
     tables.push({ id: match._id, hostId, host: names.get(hostId) ?? "Người chơi", slot: match.hallSlot, rule: mode, locked: false, playing: true });
   }
   return {
-    people: people.map(({ _id, name, gender }) => ({ id: _id, name, gender })),
+    people: people.map(({ _id, name, gender, motion }) => ({ id: _id, name, gender, ...(motion && { motion }) })),
     tables: tables.sort((first, second) => first.slot - second.slot),
     messages: chat.reverse().map(({ _id, playerId, name, text, sentAt }) => ({
       id: _id, playerId, name, text, sentAt: sentAt.getTime(),
     })),
   };
+};
+
+export const moveInHall = async (db: GameDatabase, user: string, motion: HallMotion) => {
+  if (!isHallWalkable(motion.x, motion.z)) throw new GameError(400, "Vị trí trong sảnh không hợp lệ.");
+  const player = await readPlayer(db, user);
+  if (player.activeMatch) throw new GameError(409, "Bạn đang trong trận đấu.");
+  await db.presence.updateOne({ _id: user }, { $set: {
+    name: player.name, gender: player.gender ?? "male", motion,
+    expiresAt: new Date(Date.now() + PRESENCE_MS),
+  } }, { upsert: true });
 };
 
 export const openHallTable = async (db: GameDatabase, hostId: string, options: MatchOptions, password?: string) => {

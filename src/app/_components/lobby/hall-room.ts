@@ -1,16 +1,14 @@
 import * as THREE from "three";
 
+import { tablePositions } from "./hall-layout";
+export { tablePositions } from "./hall-layout";
+
 const WIDTH = 25;
 const DEPTH = 9.5;
 const floorY = -0.18;
 const cube = new THREE.BoxGeometry();
 const tube = new THREE.CylinderGeometry(1, 1, 1, 14);
 const ball = new THREE.SphereGeometry(1, 12, 8);
-
-export const tablePositions = [
-  ...[-8.25, -3.65, 0.95, 5.55].map((x) => ({ x, z: -2.35, rotated: true })),
-  ...[-8.95, -5.75, -2.55, 0.65, 3.85, 7.05].map((x) => ({ x, z: 2.02, rotated: false })),
-];
 
 export function hallLabel(text: string, color = "#fff0ce", background = "#0c151cea") {
   const canvas = document.createElement("canvas");

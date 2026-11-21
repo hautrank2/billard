@@ -18,17 +18,34 @@
 }
 
 .billiard-spin-ball {
-  background: radial-gradient(circle at 35% 28%, #fffef5 0%, var(--billiard-ivory) 48%, #b1b3a5 100%);
-  box-shadow: inset -5px -8px 16px #0003, 0 10px 30px #0003;
+  background: radial-gradient(
+    circle at 35% 28%,
+    #fffef5 0%,
+    var(--billiard-ivory) 48%,
+    #b1b3a5 100%
+  );
+  box-shadow:
+    inset -5px -8px 16px #0003,
+    0 10px 30px #0003;
 }
 
 .billiard-ball {
-  background: radial-gradient(circle at 30% 20%, #ffffff9c, transparent 50%), var(--ball-color);
-  box-shadow: inset -2px -3px 4px #0005, 0 2px 3px #0004;
+  background:
+    radial-gradient(circle at 30% 20%, #ffffff9c, transparent 50%),
+    var(--ball-color);
+  box-shadow:
+    inset -2px -3px 4px #0005,
+    0 2px 3px #0004;
 }
 
 .billiard-ball[data-stripe] {
-  background: linear-gradient(0deg, var(--billiard-stripe-cap) 22%, var(--ball-color) 23%, var(--ball-color) 77%, var(--billiard-stripe-cap) 78%);
+  background: linear-gradient(
+    0deg,
+    var(--billiard-stripe-cap) 22%,
+    var(--ball-color) 23%,
+    var(--ball-color) 77%,
+    var(--billiard-stripe-cap) 78%
+  );
 }
 
 .billiard-viewport canvas {

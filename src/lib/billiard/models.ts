@@ -13,6 +13,9 @@ export type User = {
   cues: string[];
   loadout: CueLoadout;
   activeMatch: string | null;
+  googleId?: string;
+  email?: string;
+  registeredAt?: Date;
 } & Partial<GuestDetails>;
 
 export type Cue = { _id: string; price: number };

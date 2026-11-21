@@ -1,17 +1,19 @@
 "use client";
 
-import { ArrowUpRight, ChevronLeft, ChevronRight, Coins, Crosshair, Layers, LockKeyhole, MessageCircle, Plus, Send, Target, Trophy, Users, X } from "lucide-react";
+import { ArrowUpRight, ChevronLeft, ChevronRight, Coins, Crosshair, Layers, MessageCircle, Plus, Send, Target, Trophy, Users, X } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
 import { Button } from "~/components/ui/button";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "~/components/ui/dialog";
 import { Input } from "~/components/ui/input";
 
 import { BilliardGame } from "../../billiard/_components/billiard-game";
 import { RULES } from "../../billiard/_components/billiard-game/rules";
 import type { GameRule } from "../../billiard/_components/billiard-game/type";
 import type { HallMessage, HallTable } from "./hall-types";
+import { CueCards, TableCards } from "./catalog-cards";
 import { useLobby } from "./hook";
 import { LobbyScene } from "./lobby-scene";
 import "./lobby.css";
@@ -80,7 +82,7 @@ const panelTitle = {
 
 export const Lobby = () => {
   const router = useRouter();
-  const { view, options, setOptions, busy, error, open, seconds, onBack, manage, send, play, computer, resume } = useLobby();
+  const { view, options, setOptions, busy, error, motionError, publishMotion, open, seconds, onBack, manage, send, play, computer, resume } = useLobby();
   const [panel, setPanel] = useState<Panel | null>(null);
   const [overhead, setOverhead] = useState(false);
   const [password, setPassword] = useState("");
@@ -94,7 +96,7 @@ export const Lobby = () => {
   const ownTable = tables.find(({ hostId, playing }) => !playing && hostId === player?.id);
   const resumable = match && !match.result;
   const selected = tables.find((table) => table.id === selectedTable && !table.playing);
-  const rows = panel === "tables" ? tables.length : panel === "cues" ? view?.cues.length ?? 0 : view?.history.length ?? 0;
+  const rows = view?.history.length ?? 0;
   const maxPage = Math.max(0, Math.ceil(rows / 3) - 1);
   const currentPage = Math.min(listPage, maxPage);
   const first = currentPage * 3;
@@ -123,7 +125,7 @@ export const Lobby = () => {
     <main className="black-nine billiard-lobby" onKeyDown={(event) => {
       if (event.key === "Escape" && panel) showPanel(null);
     }}>
-      <LobbyScene people={people} tables={tables} selfId={player?.id} overhead={overhead} />
+      <LobbyScene people={people} tables={tables} selfId={player?.id} overhead={overhead} paused={Boolean(panel || resumable) || !player} onMotion={publishMotion} />
       <header className="hall-header">
         <div className="lobby-wordmark"><span className="lobby-mark" aria-hidden="true">9</span> BLACK<span className="lobby-gold"> / </span>NINE</div>
         <nav className="hall-glass hall-nav" aria-label="Điều hướng">
@@ -133,8 +135,8 @@ export const Lobby = () => {
         </nav>
         {player && <div className="hall-glass hall-wallet">
           <Link href="/login" title="Cập nhật hồ sơ">{player.name}</Link>
-          <span><Coins size={15} aria-hidden="true" />{player.coins} xu</span>
-          <span><Trophy size={15} aria-hidden="true" />{player.points} điểm</span>
+          {player.registered ? <span><Coins size={15} aria-hidden="true" />{player.coins} xu</span> : <a href="/api/auth/google" className="lobby-gold" title="Đăng ký Gmail để nhận xu">Đăng ký Gmail</a>}
+          {player.registered && <span><Trophy size={15} aria-hidden="true" />{player.points} điểm</span>}
         </div>}
       </header>
 
@@ -143,17 +145,46 @@ export const Lobby = () => {
         <p aria-label={`${people.length} người trong sảnh`}><Users size={15} aria-hidden="true" /> {people.length} trong sảnh</p>
       </div>
       <button className="hall-glass hall-camera" type="button" aria-pressed={overhead} onClick={() => setOverhead(!overhead)}>
-        <Layers size={16} aria-hidden="true" /> {overhead ? "Góc 3D" : "Nhìn từ trên"}
+        <Layers size={16} aria-hidden="true" /> {overhead ? "Góc nhìn thứ nhất" : "Toàn cảnh"}
       </button>
+
+      <Dialog open={panel === "tables" || panel === "cues"} onOpenChange={(visible) => { if (!visible) showPanel(null); }}>
+        <DialogContent className="black-nine hall-catalog-dialog">
+          <DialogHeader>
+            <DialogTitle>{panel === "cues" ? "Bộ sưu tập gậy" : "Bàn trong sảnh"}</DialogTitle>
+            <DialogDescription>{panel === "cues" ? "Hình minh họa và thông số gậy được dùng trong trò chơi." : "10 bàn thi đấu · Chọn bàn đang chờ để gặp đối thủ."}</DialogDescription>
+          </DialogHeader>
+          {error && <p className="lobby-error" role="alert">{error}</p>}
+          <div className="hall-catalog-scroll">
+            {panel === "cues" && player && <>
+              <div className="hall-shop-account">{player.registered ? <span><Coins size={16}/> {player.coins.toLocaleString("vi-VN")} xu</span> : <><p>Khách dùng gậy tiêu chuẩn. Đăng ký Gmail để nhận xu và mua gậy.</p><a href="/api/auth/google" className="lobby-gold">Đăng ký bằng Gmail →</a></>}</div>
+              <CueCards cues={view?.cues ?? []} player={player} busy={busy} onCue={(id, action) => { void send({ type: "cue", id, action }); }}/>
+            </>}
+            {panel === "tables" && <TableCards tables={tables} ownId={player?.id} busy={busy} resumable={Boolean(resumable)} onJoin={(table) => {
+              if (!table.locked) void join(table);
+              else { setSelectedTable(table.id); setPassword(""); }
+            }}/>}
+          </div>
+              {selectedTable && (selected ? <form className="hall-inline-form hall-table-key" onSubmit={(event) => {
+                event.preventDefault();
+                if (password) void join(selected, password);
+              }}>
+                <Input autoFocus aria-label={`Mật khẩu bàn ${tableNumber(selected.slot)}`} type="password" value={password} maxLength={64}
+                  autoComplete="off" placeholder={`Mật khẩu bàn ${tableNumber(selected.slot)}`}
+                  onChange={(event) => setPassword(event.currentTarget.value)} required />
+                <Button className="lobby-primary" disabled={busy || !password} type="submit">Vào</Button>
+              </form> : <p className="hall-empty">Bàn đã đóng hoặc đã đủ người.</p>)}
+        </DialogContent>
+      </Dialog>
 
       <div className="hall-dock">
         <RoomChat messages={hall?.messages ?? []} ownId={player?.id} busy={busy || !player} visible={panel === "chat"}
           onClose={() => showPanel(null)} onSend={async (text) => Boolean(await send({ type: "chat", text }))} />
         <div className={`hall-side${panel === "chat" ? " chat-selected" : ""}`}>
           {!view && !error && <p className="hall-glass hall-feedback" role="status">Đang kết nối sảnh…</p>}
-          {error && <p className="hall-glass hall-feedback lobby-error" role="alert">{error}</p>}
+          {(error || motionError) && <p className="hall-glass hall-feedback lobby-error" role="alert">{error || motionError}</p>}
 
-          {panel && panel !== "chat" && <section className="hall-glass hall-popup" aria-labelledby="hall-popup-title">
+          {panel && panel !== "chat" && panel !== "tables" && panel !== "cues" && <section className="hall-glass hall-popup" aria-labelledby="hall-popup-title">
             <div className="hall-panel-heading">
               <Target size={18} aria-hidden="true" />
               <h2 id="hall-popup-title">{panelTitle[panel]}</h2>
@@ -178,52 +209,6 @@ export const Lobby = () => {
               <Button className="lobby-primary w-full" disabled={busy || !player} type="submit"><Plus /> Tạo bàn</Button>
             </form>}
 
-            {panel === "tables" && <>
-              {tables.length === 0 && <p className="hall-empty">Chưa có bàn. Tạo bàn để mời đối thủ.</p>}
-              <ul className="hall-list">
-                {tables.slice(first, first + 3).map((table) => (
-                  <li key={table.id}>
-                    <span className="hall-table-number">{tableNumber(table.slot)}</span>
-                    <div className="hall-row-copy">
-                      <strong>{table.host}</strong>
-                      <span>{RULES[table.rule].label} · {table.playing ? "Đang đấu" : "1/2 người"}</span>
-                    </div>
-                    {table.locked && <LockKeyhole size={15} aria-label="Có mật khẩu" />}
-                    {table.id === ownTable?.id ? <span className="lobby-gold">Bàn của bạn</span> :
-                      <Button className="lobby-secondary" variant="outline" size="sm" disabled={busy || Boolean(resumable) || table.playing}
-                        onClick={() => {
-                          if (!table.locked) void join(table);
-                          else {
-                            setSelectedTable(table.id);
-                            setPassword("");
-                          }
-                        }}>Vào bàn</Button>}
-                  </li>
-                ))}
-              </ul>
-              {selectedTable && (selected ? <form className="hall-inline-form hall-table-key" onSubmit={(event) => {
-                event.preventDefault();
-                if (password) void join(selected, password);
-              }}>
-                <Input autoFocus aria-label={`Mật khẩu bàn ${tableNumber(selected.slot)}`} type="password" value={password} maxLength={64}
-                  autoComplete="off" placeholder={`Mật khẩu bàn ${tableNumber(selected.slot)}`}
-                  onChange={(event) => setPassword(event.currentTarget.value)} required />
-                <Button className="lobby-primary" disabled={busy || !password} type="submit">Vào</Button>
-              </form> : <p className="hall-empty">Bàn đã đóng hoặc đã đủ người.</p>)}
-            </>}
-
-            {player && panel === "cues" && <ul className="hall-list">
-              {view.cues.slice(first, first + 3).map((cue) => (
-                <li key={cue.id}>
-                  <span className="hall-row-copy">{cue.name}</span>
-                  {player.loadout[cue.type] === cue.id ? <span className="lobby-gold">Đang dùng</span> :
-                    <Button className="lobby-secondary" size="sm" variant="outline" disabled={busy || (!cue.owned && player.coins < cue.price)}
-                      onClick={() => send({ type: "cue", id: cue.id, action: cue.owned ? "equip" : "buy" })}>
-                      {cue.owned ? "Trang bị" : `${cue.price} xu`}
-                    </Button>}
-                </li>
-              ))}
-            </ul>}
             {panel === "history" && <>
               {!rows && <p className="hall-empty">Chưa có trận hoàn tất.</p>}
               <ul className="hall-list">
@@ -235,7 +220,7 @@ export const Lobby = () => {
               </ul>
             </>}
 
-            {maxPage > 0 && <div className="hall-pages">
+            {panel === "history" && maxPage > 0 && <div className="hall-pages">
               <button type="button" disabled={!currentPage} onClick={() => setListPage(currentPage - 1)} aria-label="Trang trước"><ChevronLeft size={17} /></button>
               <span>{currentPage + 1} / {maxPage + 1}</span>
               <button type="button" disabled={currentPage === maxPage} onClick={() => setListPage(currentPage + 1)} aria-label="Trang sau"><ChevronRight size={17} /></button>

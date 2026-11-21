@@ -1,7 +1,7 @@
 import { useEffect, useEffectEvent, useRef, useState } from "react";
 
 import type { LobbyView, MatchOptions, ShotCommand } from "../../billiard/_components/billiard-game/match-types";
-import type { HallView } from "./hall-types";
+import type { HallMotion, HallView } from "./hall-types";
 import type { LobbyAction } from "./type";
 
 type LobbyResponse = LobbyView & { hall?: HallView };
@@ -37,6 +37,23 @@ export const useLobby = () => {
   const running = useRef(false);
   const polling = useRef(false);
   const revision = useRef(0);
+  const moving = useRef(false);
+  const [motionError, setMotionError] = useState("");
+
+  const publishMotion = async (motion: HallMotion) => {
+    if (moving.current || !view?.player || open || (view.match && !view.match.result)) return;
+    moving.current = true;
+    try {
+      const response = await fetch("/api/billiard", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ type: "motion", motion }), signal: AbortSignal.timeout(5000),
+      });
+      if (!response.ok) throw new Error("Không thể đồng bộ vị trí. Đang thử kết nối lại…");
+      setMotionError("");
+    } catch {
+      setMotionError("Không thể đồng bộ vị trí. Hãy kiểm tra kết nối mạng.");
+    } finally { moving.current = false; }
+  };
 
   const send = async (action: LobbyAction, enter = false) => {
     if (running.current) return;
@@ -77,7 +94,7 @@ export const useLobby = () => {
 
   useEffect(() => {
     const initial = window.setTimeout(() => void refresh(), 0);
-    const timer = window.setInterval(() => void refresh(), 1450);
+    const timer = window.setInterval(() => void refresh(), 750);
     return () => {
       revision.current += 1;
       window.clearTimeout(initial);
@@ -102,7 +119,7 @@ export const useLobby = () => {
   };
 
   return {
-    view, options, setOptions, busy, error, open, seconds, manage, send,
+    view, options, setOptions, busy, error, motionError, publishMotion, open, seconds, manage, send,
     onBack: () => {
       revision.current += 1;
       setOpen(false);

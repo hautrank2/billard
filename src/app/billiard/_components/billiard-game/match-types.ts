@@ -35,7 +35,7 @@ export type MatchHistory = MatchResult & {
   kind: MatchKind;
   rule: GameRule;
 };
-export type PlayerProfile = { id: string; name: string; coins: number; points: number; loadout: CueLoadout } & Partial<GuestDetails>;
+export type PlayerProfile = { id: string; name: string; coins: number; points: number; loadout: CueLoadout; registered: boolean; email?: string } & Partial<GuestDetails>;
 export type ShopCue = { id: string; name: string; type: CueType; price: number; owned: boolean };
 export type LobbyView = {
   player: PlayerProfile | null;

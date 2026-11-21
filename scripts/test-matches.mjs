@@ -14,8 +14,10 @@ registerHooks({
 });
 
 const { openDatabase } = await import("../src/lib/billiard/db.ts");
-const { createPlayer, readPlayer, savePlayer, updateCueInventory, userBySession } = await import("../src/lib/billiard/players.ts");
-const { readHall, openHallTable, joinHallTable, postHallMessage } = await import("../src/lib/billiard/hall.ts");
+const { createPlayer, readPlayer, savePlayer, signInGoogle, updateBalance, updateCueInventory, userBySession } = await import("../src/lib/billiard/players.ts");
+const { transaction } = await import("../src/lib/billiard/db.ts");
+const { readHall, openHallTable, joinHallTable, moveInHall, postHallMessage } = await import("../src/lib/billiard/hall.ts");
+const { isHallWalkable, moveHallPosition, tablePositions } = await import("../src/app/_components/lobby/hall-layout.ts");
 const { requestMatch, lobby, playMatch, manageMatch, touchQueue, leaveQueue } = await import("../src/lib/billiard/matches.ts");
 const { chooseComputerShot, replayShot, resolveMatchShot } = await import("../src/app/billiard/_components/billiard-game/match-play.ts");
 const { createGame, stepPhysics } = await import("../src/app/billiard/_components/billiard-game/engine.ts");
@@ -28,8 +30,8 @@ const command = { angle: Math.PI, power: 30, spin: { x: 0, y: 0 }, elevation: 0,
 const testUri = process.env.MONGODB_TEST_URI;
 const mongoTest = { skip: testUri ? false : "Set MONGODB_TEST_URI for transaction tests" };
 
-const fixture = async (context) => {
-  const name = `Billard_test_${randomUUID().replaceAll("-", "")}`;
+const fixture = async (context, registered = true) => {
+  const name = `Billard_test_${randomUUID().replaceAll("-", "").slice(0, 24)}`;
   const client = new MongoClient(testUri, { serverSelectionTimeoutMS: 4000, ignoreUndefined: true });
   context.after(async () => {
     try {
@@ -42,8 +44,57 @@ const fixture = async (context) => {
   const first = await createPlayer(db, "Châu");
   const second = await createPlayer(db, "An");
   const outsider = await createPlayer(db, "Vi");
+  if (registered) {
+    for (const player of [first, second, outsider]) {
+      const signed = await signInGoogle(db, { sub: player.id, email: `${player.id}@gmail.com`, name: "Người chơi" }, player.id);
+      player.token = signed.token;
+    }
+  }
   return { db, first, second, outsider, name };
 };
+
+test("hall movement blocks walls, tables and counter while sliding along obstacles", () => {
+  assert.equal(isHallWalkable(-11, 0), true);
+  assert.equal(isHallWalkable(0, 0), true);
+  for (const table of tablePositions) assert.equal(isHallWalkable(table.x, table.z), false);
+  assert.equal(isHallWalkable(12.1, 0), false);
+  assert.equal(isHallWalkable(11, -2), false);
+  assert.equal(isHallWalkable(NaN, 0), false);
+  assert.deepEqual(moveHallPosition(-11.9, 0, -.3, .2), { x: -11.9, z: .2 });
+  assert.deepEqual(moveHallPosition(-8.25, -.9, .1, -.6), { x: -8.15, z: -.9 });
+});
+
+test("guests can play but cannot earn or spend coins; Gmail upgrade is persistent and granted once", mongoTest, async (t) => {
+  const { db, first, second } = await fixture(t, false);
+  assert.equal((await readPlayer(db, first.id)).coins, 0);
+  await assert.rejects(updateCueInventory(db, first.id, "glide-walnut", "buy"), { status: 403 });
+  await transaction(db, (session) => updateBalance(db, session, first.id, "guest-win", 30, 10));
+  assert.equal((await readPlayer(db, first.id)).coins, 0);
+  assert.equal(await db.transactions.countDocuments({ userId: first.id }), 0);
+  const id = await pair(db, first, second);
+  assert.equal((await lobby(db, second.id)).match.id, id);
+  await manageMatch(db, first.id, id, 0, "resign");
+  const identity = { sub: "verified-google-id", email: "billiard.test@gmail.com", name: "Người chơi" };
+  const signed = await signInGoogle(db, identity, first.id);
+  assert.equal(signed.id, first.id);
+  assert.equal(await userBySession(db, signed.token), first.id);
+  assert.equal(await userBySession(db, first.token), null);
+  const again = await signInGoogle(db, identity, null);
+  assert.equal(again.id, first.id);
+  assert.equal((await lobby(db, first.id)).player.registered, true);
+  assert.equal((await readPlayer(db, first.id)).coins, 200);
+  assert.equal(await db.transactions.countDocuments({ userId: first.id, reference: "gmail-starter" }), 1);
+});
+
+test("hall shares movement and poses and expires disconnected avatars", mongoTest, async (t) => {
+  const { db, first, second } = await fixture(t, false);
+  const motion = { x: -10, z: 0, y: .5, yaw: 1, pitch: -.4, sitting: false, action: "hit" };
+  await moveInHall(db, first.id, motion);
+  assert.deepEqual((await readHall(db, second.id, false)).people.find(({ id }) => id === first.id).motion, motion);
+  await assert.rejects(moveInHall(db, first.id, { ...motion, x: -8.25, z: -2.35 }), { status: 400 });
+  await db.presence.updateOne({ _id: first.id }, { $set: { expiresAt: new Date(0) } });
+  assert.equal((await readHall(db, second.id, false)).people.some(({ id }) => id === first.id), false);
+});
 
 const pair = async (db, first, second) => {
   await requestMatch(db, first.id, "online", options);
@@ -115,7 +166,9 @@ test("matches simultaneous requests by rule, ignores old table preferences, and 
     requestMatch(db, first.id, "online", options),
     requestMatch(db, second.id, "online", options),
   ]);
-  assert.equal(requests.filter(Boolean).length, 1);
+  // A retried request can return the match already assigned by the other request.
+  assert.equal(new Set(requests.filter(Boolean)).size, 1);
+  assert.equal(await db.matches.countDocuments({ completedAt: null }), 1);
   const id = requests.find(Boolean);
   const firstView = await lobby(db, first.id);
   const secondView = await lobby(db, second.id);

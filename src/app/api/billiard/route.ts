@@ -3,7 +3,7 @@ import { z } from "zod";
 
 import { SPIN_MAX_OFFSET } from "~/app/billiard/_components/billiard-game/constants";
 import { database, GameError } from "~/lib/billiard/db";
-import { closeHallTable, joinHallTable, openHallTable, postHallMessage, readHall } from "~/lib/billiard/hall";
+import { closeHallTable, joinHallTable, moveInHall, openHallTable, postHallMessage, readHall } from "~/lib/billiard/hall";
 import { leaveQueue, lobby, manageMatch, playMatch, requestMatch, touchQueue } from "~/lib/billiard/matches";
 import { createPlayer, savePlayer, SESSION, updateCueInventory, userBySession } from "~/lib/billiard/players";
 import type { GameDatabase } from "~/lib/billiard/models";
@@ -37,6 +37,11 @@ const shot = z.strictObject({
 });
 
 const actionSchema = z.discriminatedUnion("type", [
+  z.strictObject({ type: z.literal("motion"), motion: z.strictObject({
+    x: z.number().min(-12).max(12), z: z.number().min(-4.3).max(4.3), y: z.number().min(0).max(1.5),
+    yaw: z.number().min(-Math.PI).max(Math.PI), pitch: z.number().min(-1.35).max(1.35),
+    sitting: z.boolean(), action: z.enum(["idle", "hit", "wave"]),
+  }) }),
   z.strictObject({ type: z.literal("profile"), name, details: details.optional() }),
   z.strictObject({ type: z.literal("table-open"), rule: rules.rule, password }),
   z.strictObject({ type: z.literal("table-join"), id: matchId, password }),
@@ -116,7 +121,7 @@ export const POST = (request: Request) => respond(async () => {
       user = created.id;
       const url = new URL(request.url);
       const secure = url.protocol === "https:" || request.headers.get("x-forwarded-proto") === "https";
-      jar.set(SESSION, created.token, { httpOnly: true, sameSite: "strict", secure, path: "/", maxAge: 31_536_000 });
+      jar.set(SESSION, created.token, { httpOnly: true, sameSite: "lax", secure, path: "/", maxAge: 31_536_000 });
     }
     return reply(await lobby(db, user));
   }
@@ -124,6 +129,9 @@ export const POST = (request: Request) => respond(async () => {
 
   let id: string | undefined;
   switch (action.type) {
+    case "motion":
+      await moveInHall(db, user, action.motion);
+      return new Response(null, { status: 204, headers: { "Cache-Control": "no-store" } });
     case "table-open":
       await openHallTable(db, user, { rule: action.rule }, action.password);
       break;
