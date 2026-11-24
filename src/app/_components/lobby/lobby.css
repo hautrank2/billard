@@ -1,4 +1,4 @@
-.black-nine {
+.rollnine {
   --ink: #080d11;
   --text: #f5ecdb;
   --muted: #b4c2c2;
@@ -10,18 +10,15 @@
   font-family: Geist, system-ui, sans-serif;
 }
 
-.black-nine :is(a, button, input):focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
-.black-nine .lobby-primary { color: #221a0d; background: var(--gold); font-weight: 750; }
-.black-nine .lobby-primary:hover { background: #ffdc94; }
-.black-nine .lobby-secondary { color: var(--text); background: #17292eb8; border-color: var(--line); font-weight: 650; }
-.black-nine .lobby-secondary:hover, .black-nine button[aria-pressed="true"].lobby-secondary { background: #30464b; }
-.black-nine input:not([type="radio"]) { min-width: 0; background: #07141991; border-color: var(--line); color: var(--text); }
-.black-nine input::placeholder { color: #a3b3b6; }
+.rollnine :is(a, button, input):focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.rollnine .lobby-primary { color: #221a0d; background: var(--gold); font-weight: 750; }
+.rollnine .lobby-primary:hover { background: #ffdc94; }
+.rollnine .lobby-secondary { color: var(--text); background: #17292eb8; border-color: var(--line); font-weight: 650; }
+.rollnine .lobby-secondary:hover, .rollnine button[aria-pressed="true"].lobby-secondary { background: #30464b; }
+.rollnine input:not([type="radio"]) { min-width: 0; background: #07141991; border-color: var(--line); color: var(--text); }
+.rollnine input::placeholder { color: #a3b3b6; }
 .lobby-gold { color: var(--gold); }
 .lobby-error { padding: .55rem .7rem; border: 1px solid #b26b60; border-radius: .45rem; color: #ffcdc3; background: #3a2021e8; font-size: .8rem; }
-.lobby-wordmark { display: flex; flex: none; align-items: center; font-size: .9rem; font-weight: 900; letter-spacing: .125em; white-space: nowrap; }
-.lobby-wordmark .lobby-gold { margin-inline: .3rem; }
-.lobby-mark { display: grid; place-items: center; margin-right: .65rem; width: 2rem; height: 2rem; border: 1px solid #ffdf9b; border-radius: 50%; background: var(--gold); color: #11171a; font-size: 1.1rem; letter-spacing: 0; box-shadow: 0 .2rem 1rem #05090ba6; }
 
 .billiard-lobby {
   position: fixed;
@@ -148,8 +145,8 @@
   .hall-nav { grid-column: 1 / -1; grid-row: 2; justify-self: start; }
   .hall-wallet { grid-column: 2; grid-row: 1; max-width: 100%; gap: .4rem; padding-inline: .45rem; background: #102026a8; box-shadow: none; }
   .hall-wallet svg { width: .82rem; }
-  .hall-title { top: 6.25rem; }
-  .hall-camera { top: 6.3rem; }
+  .hall-title { top: 7rem; }
+  .hall-camera { top: 7rem; }
   .hall-dock { grid-template-columns: minmax(0, 29rem); justify-content: center; }
   .hall-chat { display: none; }
   .hall-chat.chat-open { display: block; }
@@ -172,8 +169,6 @@
 }
 
 @media (max-width: 380px) {
-  .hall-header .lobby-wordmark { font-size: .73rem; }
-  .hall-header .lobby-mark { width: 1.6rem; height: 1.6rem; margin-right: .35rem; font-size: .9rem; }
   .hall-nav { font-size: .73rem; }
   .hall-nav :is(button, a) { padding-inline: .3rem; }
   .hall-controls > button { font-size: .76rem; gap: .28rem; }
@@ -197,7 +192,7 @@
 .hall-scene canvas { touch-action: none; }
 .hall-walk-hud { position: absolute; inset: 0; pointer-events: none; }
 .hall-crosshair { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: var(--text); font-size: 1.4rem; opacity: .7; text-shadow: 0 1px 4px var(--ink); }
-.hall-walk-help { position: absolute; top: 9rem; left: clamp(.85rem, 2.6vw, 2.7rem); max-width: 24rem; padding: .55rem .75rem; font-size: .73rem; }
+.hall-walk-help { position: absolute; top: 10rem; left: clamp(.85rem, 2.6vw, 2.7rem); max-width: 24rem; padding: .55rem .75rem; font-size: .73rem; }
 .hall-walk-help button { color: var(--gold); font-weight: 700; pointer-events: auto; cursor: pointer; }
 .hall-walk-help p { color: var(--muted); margin-top: .25rem; line-height: 1.55; }
 .hall-walk-help .hall-touch-help { display: none; }
@@ -206,7 +201,7 @@
 .hall-walk-actions button:hover, .hall-walk-pad button:active { color: var(--gold); background: var(--line); }
 .hall-walk-pad { display: none; }
 .hall-webgl-error { position: absolute; top: 12rem; left: 50%; transform: translateX(-50%); width: min(90%, 28rem); padding: 1rem; font-size: .85rem; }
-.black-nine.hall-catalog-dialog { display: flex; flex-direction: column; gap: 1rem; width: min(62rem, calc(100vw - 2rem)); max-width: 62rem; max-height: 88svh; padding: clamp(1rem, 3vw, 1.6rem); border-color: var(--line); background: var(--ink); color: var(--text); }
+.rollnine.hall-catalog-dialog { display: flex; flex-direction: column; gap: 1rem; width: min(62rem, calc(100vw - 2rem)); max-width: 62rem; max-height: 88svh; padding: clamp(1rem, 3vw, 1.6rem); border-color: var(--line); background: var(--ink); color: var(--text); }
 .hall-catalog-dialog [data-slot="dialog-description"] { color: var(--muted); }
 .hall-catalog-dialog > button { color: var(--text); }
 .hall-catalog-scroll { overflow-y: auto; overscroll-behavior: contain; min-height: 0; padding: .1rem .2rem .4rem; scrollbar-width: thin; }
@@ -240,7 +235,7 @@
   .hall-walk-actions { bottom: 20rem; left: auto; right: 1rem; transform: none; }
 }
 @media (max-width: 760px) {
-  .hall-walk-help { top: 9rem; max-width: 17rem; }
+  .hall-walk-help { top: 10.5rem; max-width: 17rem; }
   .hall-walk-help > p:not(.hall-touch-help) { display: none; }
   .hall-walk-help .hall-touch-help { display: block; }
   .hall-walk-actions { bottom: 5.5rem; right: .8rem; }
@@ -264,3 +259,38 @@
   .hall-walk-actions { bottom: 5rem; }
   .hall-walk-pad { bottom: 5rem; }
 }
+
+/* New players can start playing directly from the bottom-right corner. */
+.hall-practice { display: flex; align-items: center; gap: .8rem; padding: .95rem 1rem; border: 1px solid #ffe9ae; border-radius: .9rem; color: #261b08; background: linear-gradient(115deg, #ffe7a7, #efbc53 65%, #f7d687); box-shadow: 0 7px 30px #0008, 0 0 24px #eabf5733, inset 0 1px #fff8; text-decoration: none; transition: transform .2s, box-shadow .2s; }
+.hall-practice:hover { transform: translateY(-3px); box-shadow: 0 10px 35px #0009, 0 0 30px #edc46a55; }
+.hall-practice-icon { display: grid; place-items: center; width: 2.8rem; height: 2.8rem; flex: none; border-radius: .8rem; border: 1px solid #6b4c322f; background: #fff5; }
+.hall-practice > span:nth-child(2) { display: grid; gap: .15rem; }
+.hall-practice small { font-size: .58rem; letter-spacing: .16em; font-weight: 800; }
+.hall-practice strong { font-size: 1.13rem; font-weight: 850; }
+.hall-practice > span > span { font-size: .67rem; color: #624b22; }
+.hall-practice > svg { margin-left: auto; flex: none; }
+.hall-created-heading { display: flex; align-items: center; justify-content: space-between; gap: .7rem; padding-block: 1rem .75rem; }
+.hall-created-heading h3 { font-size: .9rem; font-weight: 750; }
+.hall-created-heading h3 span { color: var(--muted); font-weight: 400; }
+.hall-create { padding: 1rem; border: 1px solid var(--line); border-radius: .75rem; background: var(--glass); }
+.hall-tables-empty { display: grid; justify-items: center; gap: .6rem; padding: 2.5rem 1rem; border: 1px dashed var(--line); border-radius: .8rem; text-align: center; }
+.hall-tables-empty > svg { color: var(--gold); opacity: .7; }
+.hall-tables-empty h3 { font-weight: 750; font-size: 1rem; }
+.hall-tables-empty p { max-width: 25rem; color: var(--muted); font-size: .82rem; line-height: 1.6; }
+@media (max-width: 760px) {
+  .hall-dock { grid-template-columns: minmax(0, 23rem); justify-content: end; }
+  .hall-practice { padding: .65rem .8rem; gap: .6rem; }
+  .hall-practice-icon { width: 2.35rem; height: 2.35rem; }
+  .hall-practice strong { font-size: 1rem; }
+  .hall-walk-pad, .hall-walk-actions { bottom: 11rem; }
+}
+@media (max-width: 380px) {
+  .hall-practice > span > span { font-size: .61rem; }
+}
+@media (max-height: 500px) {
+  .hall-practice { padding: .5rem .7rem; }
+  .hall-practice small, .hall-practice > span > span { display: none; }
+  .hall-practice-icon { width: 2rem; height: 2rem; }
+  .hall-walk-actions, .hall-walk-pad { bottom: 9rem; }
+}
+@media (prefers-reduced-motion: reduce) { .hall-practice { transition: none; } .hall-practice:hover { transform: none; } }

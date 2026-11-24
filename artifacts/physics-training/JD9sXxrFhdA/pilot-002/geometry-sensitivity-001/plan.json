@@ -1,0 +1,15 @@
+{
+  "purpose": "Diagnose sensitivity of the frozen geometry-001 hypothesis; no game coefficient fitting or model promotion.",
+  "decision_policy": "Preserve fit/check split, 0.03 m gate and 600..6000 px focal grid. Never select corner changes or jitter scenarios using held-out outcomes.",
+  "random_seed": 20261124,
+  "trials_per_scenario": 128,
+  "noise_model": "Independent zero-mean Gaussian x/y pixel perturbations per corner and labeled center in each view. Assumed diagnostic scales, not an empirical error model.",
+  "scenarios": [
+    {"name": "boundary_sigma_1px", "corner_sigma_px": 1.0, "center_sigma_px": 0.0},
+    {"name": "boundary_sigma_2px", "corner_sigma_px": 2.0, "center_sigma_px": 0.0},
+    {"name": "boundary_sigma_4px", "corner_sigma_px": 4.0, "center_sigma_px": 0.0},
+    {"name": "centers_sigma_2_5px", "corner_sigma_px": 0.0, "center_sigma_px": 2.5},
+    {"name": "combined_boundary_2px_centers_2_5px", "corner_sigma_px": 2.0, "center_sigma_px": 2.5}
+  ],
+  "pre_result_commitment": "Run all 640 trials and retain failed pose searches. Report conditional residual ranges, not a favorable perturbed model. No passing trial changes the failed baseline acceptance decision."
+}

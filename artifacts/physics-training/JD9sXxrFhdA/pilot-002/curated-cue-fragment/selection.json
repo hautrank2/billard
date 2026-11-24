@@ -1,0 +1,22 @@
+{
+  "status": "selected_fragment_pending_manual_review",
+  "track_id": 60,
+  "input_sha256": "90cb0c00f87f446cfa0a7ddb84daf48d699d96e94918adee334244696d7f1696",
+  "analysis": "artifacts\\physics-training\\JD9sXxrFhdA\\pilot-002\\analysis-v1",
+  "observations": 95,
+  "start_frame": 123,
+  "end_frame": 217,
+  "duration_s": 1.5666670000000003,
+  "source_start_estimate_s": 1368.05,
+  "source_end_estimate_s": 1369.616667,
+  "review_sample_frames": [
+    123,
+    146,
+    170,
+    193,
+    217
+  ],
+  "coordinate_system": "image pixels, 1280x720; origin top-left; y increases downward",
+  "metric_calibration": false,
+  "warning": "A selected fragment is not an independently labelled accuracy benchmark or a whole-shot reconstruction."
+}

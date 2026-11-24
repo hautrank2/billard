@@ -1,0 +1,17 @@
+{
+  "purpose": "Test suspected recurring shot content in the two cached end-view blocks, without inferring playback speed.",
+  "input_sha256": "90cb0c00f87f446cfa0a7ddb84daf48d699d96e94918adee334244696d7f1696",
+  "analysis_size": [1280, 720],
+  "region_xyxy_analysis_px": [500, 330, 901, 411],
+  "descriptor_size": [160, 32],
+  "reference_frames_inclusive": [60, 217],
+  "repeat_search_frames_inclusive": [974, 1199],
+  "offset_search_inclusive": [914, 982],
+  "random_seed": 20261124,
+  "shuffle_controls": 64,
+  "minimum_check_correlation": 0.9,
+  "minimum_control_margin": 0.2,
+  "visual_reference_frames": [129, 169, 209],
+  "same_shot_group_id": "JD9sXxrFhdA-shot-source-estimate-1368",
+  "selection_policy": "Select a constant frame offset on even-indexed frames; evaluate odd-indexed frames against reversed order and 64 shuffled orders. Fixed thresholds support conservative same-shot grouping only, never physics or timing approval."
+}

@@ -75,7 +75,7 @@ export const readHall = async (db: GameDatabase, user: string, inMatch: boolean)
 };
 
 export const moveInHall = async (db: GameDatabase, user: string, motion: HallMotion) => {
-  if (!isHallWalkable(motion.x, motion.z)) throw new GameError(400, "Vị trí trong sảnh không hợp lệ.");
+  if (!isHallWalkable(motion.x, motion.z, motion.y)) throw new GameError(400, "Vị trí trong sảnh không hợp lệ.");
   const player = await readPlayer(db, user);
   if (player.activeMatch) throw new GameError(409, "Bạn đang trong trận đấu.");
   await db.presence.updateOne({ _id: user }, { $set: {

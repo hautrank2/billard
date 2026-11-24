@@ -1,0 +1,159 @@
+{
+  "status": "conditional_camera_hypothesis_evaluated_not_approved",
+  "script_sha256": "822703af3dbc2c406d0eff7e70f253dc181b1676b7ffac60d0e44419d0bdfca6",
+  "input_sha256": "90cb0c00f87f446cfa0a7ddb84daf48d699d96e94918adee334244696d7f1696",
+  "hypothesis": {
+    "image_width": 1280,
+    "image_height": 720,
+    "reference_frame": 180,
+    "boundary_corners_px": [
+      [
+        459,
+        267
+      ],
+      [
+        868,
+        267
+      ],
+      [
+        957,
+        550
+      ],
+      [
+        383,
+        550
+      ]
+    ],
+    "corner_order": [
+      "far_left",
+      "far_right",
+      "near_right",
+      "near_left"
+    ],
+    "boundary_annotation": "Approximate visible cloth boundary from camera-reference-grid.jpg; not surveyed cushion-nose geometry.",
+    "held_out_landmarks": [
+      {
+        "name": "left_side_pocket_gap",
+        "image_px": [
+          424,
+          377
+        ],
+        "hypothesized_world_m": [
+          0,
+          1.27
+        ]
+      },
+      {
+        "name": "right_side_pocket_gap",
+        "image_px": [
+          912,
+          377
+        ],
+        "hypothesized_world_m": [
+          1.27,
+          1.27
+        ]
+      }
+    ],
+    "hypothesized_dimensions_m": {
+      "width": 1.27,
+      "length": 2.54
+    },
+    "dimension_status": "Standard 9ft assumption supported by manufacturer documentation; exact equipment of this video not independently confirmed.",
+    "dimension_source": "https://int.predatorcues.com/pages/predator-apex-9ft-professional-table",
+    "coordinate_convention": "x from left rail, z from far rail; approximate horizontal plane",
+    "corner_jitter_sigma_px": 3,
+    "proposed_landmark_gate_m": 0.03,
+    "gate_status": "Pilot engineering target, not a certified measurement tolerance.",
+    "limitations": [
+      "Boundary plane and ball-center plane differ",
+      "Lens distortion uncalibrated",
+      "Corners are approximate visual annotations",
+      "Pocket landmark correspondence is approximate",
+      "No independent survey measurements"
+    ]
+  },
+  "homography_image_to_conditional_m": [
+    [
+      0.005013250989881576,
+      0.0013463147534664313,
+      -2.6605482435311814
+    ],
+    [
+      2.3202153074715916e-18,
+      0.020336438644466603,
+      -5.429829118072584
+    ],
+    [
+      1.18306993556365e-18,
+      0.002301511935956349,
+      1.0
+    ]
+  ],
+  "held_out_landmarks": [
+    {
+      "name": "left_side_pocket_gap",
+      "image_px": [
+        424,
+        377
+      ],
+      "hypothesized_world_m": [
+        0,
+        1.27
+      ],
+      "conditional_world_m": [
+        -0.01465417432772656,
+        1.19775348485779
+      ],
+      "residual_m": 0.0737177304006369
+    },
+    {
+      "name": "right_side_pocket_gap",
+      "image_px": [
+        912,
+        377
+      ],
+      "hypothesized_world_m": [
+        1.27,
+        1.27
+      ],
+      "conditional_world_m": [
+        1.2952487974239384,
+        1.19775348485779
+      ],
+      "residual_m": 0.07653143616546511
+    }
+  ],
+  "maximum_landmark_residual_m": 0.07653143616546511,
+  "proposed_landmark_gate_passed": false,
+  "camera_stability": {
+    "status": "measured",
+    "reference_frame": 123,
+    "reference_region_analysis_px": [
+      350,
+      30,
+      950,
+      220
+    ],
+    "measured_frames": 94,
+    "median_shift_px": 0.02916267519448303,
+    "p95_shift_px": 0.03682054845524178,
+    "maximum_shift_px": 0.03699498679074124,
+    "limitation": "Checks this short fragment and static sign only; not full lens/camera calibration."
+  },
+  "conditional_track_displacement_m": 0.8069259545538846,
+  "corner_jitter_sensitivity": {
+    "draws": 500,
+    "random_seed": 20261124,
+    "displacement_m_p05_p50_p95": [
+      0.7970610933610689,
+      0.8071880710000765,
+      0.8173812058242564
+    ],
+    "note": "Only chosen corner perturbations; NOT a confidence interval for true metric distance. Does not include unknown plane, distortion, table dimensions or timing."
+  },
+  "metric_calibration_approved": false,
+  "physics_fit_approved": false,
+  "reason": "Approximate boundary and held-out correspondences, uncorrected ball-center height and lens distortion; real-time cadence/phase unverified.",
+  "game_parameters_changed": false
+}

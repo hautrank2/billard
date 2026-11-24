@@ -42,3 +42,18 @@ export const subscribeAutoOverhead = (listener: () => void) => {
     listeners.delete(listener);
   };
 };
+
+const TUTORIAL_KEY = "rollnine-game-tutorial-v1";
+let tutorialSeenThisVisit = false;
+
+export const hasSeenGameTutorial = () => {
+  if (tutorialSeenThisVisit) return true;
+  try { return window.localStorage.getItem(TUTORIAL_KEY) === "seen"; }
+  catch { return false; }
+};
+
+export const completeGameTutorial = () => {
+  tutorialSeenThisVisit = true;
+  try { window.localStorage.setItem(TUTORIAL_KEY, "seen"); }
+  catch { /* Dismissing the tutorial still lasts for this visit. */ }
+};

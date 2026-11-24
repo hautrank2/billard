@@ -1,0 +1,112 @@
+{
+  "status": "ordered_repeated_content_supported",
+  "input_sha256": "90cb0c00f87f446cfa0a7ddb84daf48d699d96e94918adee334244696d7f1696",
+  "script_sha256": "6b62879061f4cbe7f28d248e1cff6ea539dd746750eadd11c17eb7590a609b52",
+  "plan_sha256": "f6f66b9de836294d7dacc2e5cc73aa84b012554ca7da0917c8f1ef4c2b590d94",
+  "plan": {
+    "purpose": "Test suspected recurring shot content in the two cached end-view blocks, without inferring playback speed.",
+    "input_sha256": "90cb0c00f87f446cfa0a7ddb84daf48d699d96e94918adee334244696d7f1696",
+    "analysis_size": [
+      1280,
+      720
+    ],
+    "region_xyxy_analysis_px": [
+      500,
+      330,
+      901,
+      411
+    ],
+    "descriptor_size": [
+      160,
+      32
+    ],
+    "reference_frames_inclusive": [
+      60,
+      217
+    ],
+    "repeat_search_frames_inclusive": [
+      974,
+      1199
+    ],
+    "offset_search_inclusive": [
+      914,
+      982
+    ],
+    "random_seed": 20261124,
+    "shuffle_controls": 64,
+    "minimum_check_correlation": 0.9,
+    "minimum_control_margin": 0.2,
+    "visual_reference_frames": [
+      129,
+      169,
+      209
+    ],
+    "same_shot_group_id": "JD9sXxrFhdA-shot-source-estimate-1368",
+    "selection_policy": "Select a constant frame offset on even-indexed frames; evaluate odd-indexed frames against reversed order and 64 shuffled orders. Fixed thresholds support conservative same-shot grouping only, never physics or timing approval."
+  },
+  "tool_versions": {
+    "opencv": "5.1.0",
+    "numpy": "2.5.5"
+  },
+  "best_alignment": {
+    "offset_frames": 960,
+    "fit_temporal_correlation": 0.8874361408037355
+  },
+  "top_offset_candidates": [
+    {
+      "offset_frames": 960,
+      "fit_temporal_correlation": 0.8874361408037355
+    },
+    {
+      "offset_frames": 961,
+      "fit_temporal_correlation": 0.7340147161049194
+    },
+    {
+      "offset_frames": 959,
+      "fit_temporal_correlation": 0.6885475206662209
+    },
+    {
+      "offset_frames": 958,
+      "fit_temporal_correlation": 0.5448686490621416
+    },
+    {
+      "offset_frames": 962,
+      "fit_temporal_correlation": 0.4829176530157091
+    },
+    {
+      "offset_frames": 957,
+      "fit_temporal_correlation": 0.3571988863446064
+    },
+    {
+      "offset_frames": 963,
+      "fit_temporal_correlation": 0.3287295575101308
+    }
+  ],
+  "order_check": {
+    "frames": 79,
+    "ordered_correlation": 0.9028445972506041,
+    "reversed_correlation": 0.01029816475185566,
+    "shuffled_max_correlation": 0.09598120186264221,
+    "shuffled_median_correlation": 0.028689271361387637,
+    "grouping_rule_passed": true
+  },
+  "matched_frame_count": 158,
+  "paired_reference_frames_inclusive": [
+    60,
+    217
+  ],
+  "paired_repeat_frames_inclusive": [
+    1020,
+    1177
+  ],
+  "grouping_recommendation": "Keep both occurrences, overlapping pilot-001 material and the intervening views in the same shot group; never split them across training and validation.",
+  "metric_calibration_approved": false,
+  "physics_fit_approved": false,
+  "game_parameters_changed": false,
+  "limitations": [
+    "Checks cached decoded content only; does not prove editorial replay, wall-clock speed, original FPS or absolute source time.",
+    "Alternating frames check temporal order, not independent-shot or external validation; nearby frames are correlated.",
+    "The moving ROI was declared using previous visual inspection; this is a targeted duplicate audit, not blind whole-video discovery.",
+    "Original timestamps and held frames are preserved; frame-pair offset is not elapsed physical shot time."
+  ]
+}

@@ -1,3 +1,4 @@
+import { HALL_BOUNDS } from "~/app/_components/lobby/hall-layout";
 import { cookies } from "next/headers";
 import { z } from "zod";
 
@@ -38,7 +39,7 @@ const shot = z.strictObject({
 
 const actionSchema = z.discriminatedUnion("type", [
   z.strictObject({ type: z.literal("motion"), motion: z.strictObject({
-    x: z.number().min(-12).max(12), z: z.number().min(-4.3).max(4.3), y: z.number().min(0).max(1.5),
+    x: z.number().min(-HALL_BOUNDS.x).max(HALL_BOUNDS.x), z: z.number().min(-HALL_BOUNDS.z).max(HALL_BOUNDS.z), y: z.number().min(0).max(2),
     yaw: z.number().min(-Math.PI).max(Math.PI), pitch: z.number().min(-1.35).max(1.35),
     sitting: z.boolean(), action: z.enum(["idle", "hit", "wave"]),
   }) }),

@@ -52,6 +52,8 @@ import {
 import { replayShot } from "./match-play";
 import { applyTuning, DEFAULT_TUNING, loadSavedTuning } from "./physics-tuning";
 import {
+  completeGameTutorial,
+  hasSeenGameTutorial,
   getAutoOverhead,
   getServerAutoOverhead,
   setAutoOverhead,
@@ -139,6 +141,7 @@ export const useBilliardGame = ({ match, loadout, onShot, onComputer, matchBusy,
   const [error, setError] = useState("");
   const [ready, setReady] = useState(false);
   const [preparingShot, setPreparingShot] = useState(false);
+  const tutorialChecked = useRef(false);
   const [help, setHelpOpen] = useState(false);
   const [screen, setScreen] = useState<"play" | "setup">("play");
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -664,6 +667,18 @@ export const useBilliardGame = ({ match, loadout, onShot, onComputer, matchBusy,
     updateNavigation();
     cancelDrag();
   });
+  useEffect(() => {
+    if (!ready || screen !== "play" || tutorialChecked.current) return;
+    const timer = window.setTimeout(() => {
+      tutorialChecked.current = true;
+      if (!hasSeenGameTutorial()) {
+        clearInput();
+        setHelpOpen(true);
+      }
+    }, 0);
+    return () => window.clearTimeout(timer);
+  }, [ready, screen]);
+
   const onWheel = useEffectEvent((event: WheelEvent) => {
     if (screen !== "play" || help || preparingShotRef.current) return;
     event.preventDefault();
@@ -869,6 +884,7 @@ export const useBilliardGame = ({ match, loadout, onShot, onComputer, matchBusy,
         pressedRef.current.clear();
         updateNavigation();
       }
+      if (!open && help) completeGameTutorial();
       setHelpOpen(open);
     },
     openSetup,

@@ -1,0 +1,22 @@
+{
+  "table_width_m_hypothesis": 1.27,
+  "table_length_m_hypothesis": 2.54,
+  "ball_radius_m_hypothesis": 0.0286,
+  "size_status": "Standard pool size assumptions, not direct equipment measurements.",
+  "analysis_size": [1280, 720],
+  "end_boundary_corners_px": [[459, 267], [868, 267], [957, 550], [383, 550]],
+  "overhead_boundary_corners_px": [[1041, 139], [1036, 539], [239, 535], [239, 135]],
+  "corner_order_world": ["far_left", "far_right", "near_right", "near_left"],
+  "focal_grid_px": {"min": 600, "max": 6000, "steps": 90},
+  "intrinsic_assumptions": "Square pixels, principal point at image center, zero lens distortion, single constant pose per view.",
+  "maximum_corner_rms_px": 1.0,
+  "training_ball_names": ["brown_orange_solid", "near_yellow_white_stripe"],
+  "held_out_ball_names": ["far_blue_white_stripe", "dark_ball_near_left_rail"],
+  "split_note": "Chosen before focal search. Do not use held-out balls to select focal lengths, radius, corners or model penalties.",
+  "joint_corner_penalty_m_per_px": 0.002,
+  "proposed_crossview_gate_m": 0.03,
+  "near_best_training_margin_m": 0.005,
+  "end_stability_frames": [270, 300, 330, 360, 390, 420],
+  "overhead_stability_frames": [450, 480, 510, 540, 570, 600],
+  "limitations": ["Approximate visible boundary is not surveyed geometry", "Lens distortion and principal-point crop unknown", "Visual correspondences have finite annotation uncertainty", "Two training and two held-out balls do not establish whole-table accuracy", "Metric dimensions are assumptions"]
+}

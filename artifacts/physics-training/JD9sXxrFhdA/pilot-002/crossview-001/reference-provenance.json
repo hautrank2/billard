@@ -1,0 +1,21 @@
+{
+  "input_sha256": "90cb0c00f87f446cfa0a7ddb84daf48d699d96e94918adee334244696d7f1696",
+  "script_sha256": "d7bc33550f8452693bcc813b187eedf0e25d906de731a76b13004e9a52a7dbec",
+  "blind_annotation_frames": [
+    129,
+    139,
+    149,
+    159,
+    169,
+    179,
+    189,
+    199,
+    209
+  ],
+  "analysis_size": [
+    1280,
+    720
+  ],
+  "method": "Fixed raw image crop and coordinate grid only. No algorithm outputs overlaid.",
+  "limitation": "Agent visual labels are approximate and from the same source, not external expert ground truth."
+}

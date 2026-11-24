@@ -1,0 +1,9 @@
+{
+  "width": 1280,
+  "height": 720,
+  "points": [[465, 270], [865, 270], [945, 545], [390, 545]],
+  "reference": "frame-0180.jpg",
+  "method": "Manually inspected approximate cloth interior; excludes rails and pockets.",
+  "scope": "This camera only. Validate on each new interval; do not reuse after cuts, pan or zoom.",
+  "metric_calibration": false
+}

@@ -41,4 +41,10 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# Local video calibration tools and source media; reports stay reviewable.
+/.training-tools/
+/artifacts/physics-training/**/media/
+/artifacts/physics-training/**/*.mp4
+__pycache__/
+
 package-lock.json

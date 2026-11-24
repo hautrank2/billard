@@ -1,0 +1,115 @@
+{
+  "reviewed_on": "2026-11-24",
+  "source_id": "JD9sXxrFhdA",
+  "status": "tracking_pilot_complete_physics_fit_not_approved",
+  "acquisition": {
+    "downloaded_seconds_including_overlap": 50,
+    "unique_requested_source_seconds": 46,
+    "source_offset_independently_verified": false,
+    "downloaded_media_bytes": 18187574,
+    "resolution": "1920x1080",
+    "decoded_nominal_fps": 60,
+    "decoded_frames": 3000,
+    "paid_external_model_api_calls": 0,
+    "codex_agent_credit_usage": "Not measured; agent tool orchestration and image review still use account resources."
+  },
+  "reviewed_artifacts": [
+    "pilot-001/analysis-v1/contact-sheet.jpg",
+    "pilot-001/analysis-v2/contact-sheet.jpg",
+    "pilot-001/frame-0180.jpg",
+    "pilot-001/frame-1770.jpg",
+    "pilot-002/analysis-v1/contact-sheet.jpg",
+    "pilot-002/frame-0000.jpg",
+    "pilot-002/frame-0180.jpg",
+    "pilot-002/frame-1140.jpg",
+    "pilot-002/curated-cue-fragment/review-samples.jpg"
+  ],
+  "pilot_001": {
+    "requested_source_interval_s": [1340, 1370],
+    "visual_findings": [
+      "Mostly pre-shot positioning; cue-ball motion occurs near the end.",
+      "v1 includes rail details and cue fragments as false positives.",
+      "Manually limited cloth ROI in v2 reduces rail clutter, but hand/cue errors and many short-lived IDs remain."
+    ],
+    "physics_fit": "rejected_pending_tracking_and_camera_validation"
+  },
+  "pilot_002": {
+    "requested_source_interval_s": [1366, 1386],
+    "candidate_cuts": [
+      {"clip_frame": 428, "clip_time_s": 7.133333, "source_time_estimate_s": 1373.133333, "change": "end view to overhead"},
+      {"clip_frame": 609, "clip_time_s": 10.15, "source_time_estimate_s": 1376.15, "change": "overhead to wide venue view"}
+    ],
+    "table_gate_rejected_frames": [609, 973],
+    "table_gate_rejection_is_inclusive": true,
+    "table_reappears_at_frame": 974,
+    "repeated_sequence_status": "suspected_replay_or_repeated_footage_not_confirmed",
+    "repeated_sequence_evidence": {
+      "comparison_method": "mean absolute BGR difference at 1280x720, range 0..255",
+      "pairs": [{"frames": [60, 1020], "difference": 3.518}, {"frames": [120, 1080], "difference": 3.117}, {"frames": [180, 1140], "difference": 3.037}],
+      "warning": "Similarity alone is not proof of replay, playback speed, or real-time timestamps."
+    },
+    "physics_fit": "rejected_pending_tracking_camera_and_replay_validation"
+  },
+  "selected_fragment": {
+    "file": "pilot-002/curated-cue-fragment/selected-track.csv",
+    "track_id": 60,
+    "frames": [123, 217],
+    "observations": 95,
+    "duration_s": 1.566667,
+    "source_time_estimate_s": [1368.05, 1369.616667],
+    "identity": "cue ball, visually plausible on sampled frames",
+    "manual_review_sample_frames": [123, 146, 170, 193, 217],
+    "sample_findings": "Yellow outlines follow the same moving white cue ball in all five inspected samples. Not all 95 frames have independent labels.",
+    "coordinate_qa": {"negative_x_steps": 0, "zero_x_steps": 32, "maximum_x_step_px": 12.722, "maximum_absolute_y_step_px": 1.379},
+    "timing_warning": "Zero and large position steps require duplicate-frame/contour-jitter review before differentiating positions into velocity or acceleration.",
+    "approved_for": ["tracking_demonstration", "manual_annotation_seed"],
+    "not_approved_for": ["metric_physics_fit", "spin_estimation", "cushion_restitution", "accuracy_benchmark", "whole_shot_reconstruction"]
+  },
+  "split_policy": "All overlapping intervals and suspected replay copies belong to one shot group. Do not split them between fit and validation.",
+  "game_physics_coefficients_changed": false,
+  "latest_measurement_stage": {
+    "status": "raw_reference_timing_and_height_aware_crossview_checks_executed",
+    "log": "docs/physics-training/runs/JD9sXxrFhdA-crossview-2026-11-24.md",
+    "reference_report": "pilot-002/reference-audit-001/reference-audit.json",
+    "geometry_report": "pilot-002/geometry-001/crossview-report.json",
+    "additional_downloaded_bytes": 0,
+    "visual_reference_samples": 9,
+    "visual_reference_uncertainty_px": 2.5,
+    "color_visual_reference_difference_px_median": 1.1337839300324921,
+    "coarse_clock_rate_interval": [0.875, 1.0714],
+    "cached_overlap_best_offset_difference_frames": 0,
+    "held_out_planar_crossview_max_residual_m": 0.07378566696291732,
+    "held_out_height_aware_crossview_max_residual_m": 0.0349294655324347,
+    "proposed_crossview_gate_passed": false,
+    "focal_search_boundary_hit": true,
+    "metric_calibration_approved": false,
+    "physics_fit_approved": false,
+    "regression_tests_passed": 12
+  },
+  "followup_validation": {
+    "status": "cadence_center_and_camera_audit_completed_physics_fit_not_approved",
+    "log": "docs/physics-training/runs/JD9sXxrFhdA-validation-2026-11-24.md",
+    "cadence_report": "pilot-002/validation-002/validation.json",
+    "camera_report": "pilot-002/camera-002/camera-report.json",
+    "additional_downloaded_bytes": 0,
+    "near_hold_pairs": 32,
+    "adjacent_frame_pairs": 94,
+    "provisional_content_groups": 63,
+    "edge_circle_frames_found": 86,
+    "center_detector_difference_px_median": 2.7891726257049347,
+    "center_detector_difference_px_p95": 3.9718450085468735,
+    "camera_stability_p95_shift_px": 0.03682054845524178,
+    "conditional_landmark_max_residual_m": 0.07653143616546511,
+    "proposed_landmark_gate_passed": false,
+    "independent_all_frame_ground_truth": false,
+    "verified_metric_calibration": false,
+    "verified_real_time_cadence": false
+  },
+  "next_steps": [
+    "Read the newest crossview-stage report. Nine approximate detector-free visual labels support the selected color track, but do not replace expert held-out ground truth.",
+    "Retain PTS/hold groups. Coarse shot-clock timing supports near-real-time pre-shot playback and cached clip overlap aligns exactly; later replay speed and source effective cadence remain unverified.",
+    "Improve physical camera/plane constraints without tuning against the existing held-out balls. The height-aware cross-view model improves consistency but still fails the 3cm gate and has weak focal identification.",
+    "Improve ball discrimination and occlusion rejection; freeze the detector before collecting held-out tracking labels.",
+    "Only then expand the number of source intervals and fit bounded physical parameters against held-out whole shots."
+  ]
+}

@@ -1,0 +1,262 @@
+{
+  "status": "visual_reference_and_timing_audit_complete",
+  "script_sha256": "efbf3d2a9f42a17cc02853c7e3c589702b87949dea4c80bc2e90989a4a254b8a",
+  "labels_sha256": "523d405a448cc14669d0ba41c8b8dbe59cc0179bc4bef1930c1f6556bd1b5cb2",
+  "source_sha256": {
+    "pilot-001": "33ffea00a4f25455690491feec3889f49c61f086c5683e8eab34255769fc582e",
+    "pilot-002": "90cb0c00f87f446cfa0a7ddb84daf48d699d96e94918adee334244696d7f1696"
+  },
+  "center_reference": {
+    "method": "Visual reading of detector-free fixed crops in blind-sheet-1/2/3.jpg before looking up algorithm positions for these frames.",
+    "expert_ground_truth": false,
+    "visual_label_uncertainty_px": 2.5,
+    "samples": [
+      {
+        "frame": 129,
+        "visual_label_px": [
+          585,
+          369
+        ],
+        "color_center_px": [
+          585.0,
+          368.0
+        ],
+        "edge_center_px": [
+          584.3333333333334,
+          368.3333333333333
+        ],
+        "color_label_difference_px": 1.0,
+        "edge_label_difference_px": 0.9428090415820499
+      },
+      {
+        "frame": 139,
+        "visual_label_px": [
+          610.5,
+          370.0
+        ],
+        "color_center_px": [
+          610.287,
+          368.587
+        ],
+        "edge_center_px": [
+          609.6666666666666,
+          371.6666666666667
+        ],
+        "color_label_difference_px": 1.4289639603572988,
+        "edge_label_difference_px": 1.8633899812498587
+      },
+      {
+        "frame": 149,
+        "visual_label_px": [
+          647,
+          370
+        ],
+        "color_center_px": [
+          647.5,
+          369.5
+        ],
+        "edge_center_px": [
+          647.0,
+          372.3333333333333
+        ],
+        "color_label_difference_px": 0.7071067811865476,
+        "edge_label_difference_px": 2.3333333333333144
+      },
+      {
+        "frame": 159,
+        "visual_label_px": [
+          683.5,
+          371.0
+        ],
+        "color_center_px": [
+          683.5,
+          370.0
+        ],
+        "edge_center_px": [
+          683.6666666666666,
+          373.6666666666667
+        ],
+        "color_label_difference_px": 1.0,
+        "edge_label_difference_px": 2.671869923646916
+      },
+      {
+        "frame": 169,
+        "visual_label_px": [
+          715.5,
+          372.0
+        ],
+        "color_center_px": [
+          714.861,
+          370.0
+        ],
+        "edge_center_px": [
+          714.3333333333334,
+          374.3333333333333
+        ],
+        "color_label_difference_px": 2.099600200038096,
+        "edge_label_difference_px": 2.6087459737497207
+      },
+      {
+        "frame": 179,
+        "visual_label_px": [
+          749.5,
+          373.0
+        ],
+        "color_center_px": [
+          748.548,
+          371.384
+        ],
+        "edge_center_px": [
+          747.6666666666666,
+          375.0
+        ],
+        "color_label_difference_px": 1.8755692469221044,
+        "edge_label_difference_px": 2.7131367660166434
+      },
+      {
+        "frame": 189,
+        "visual_label_px": [
+          775,
+          373
+        ],
+        "color_center_px": [
+          774.167,
+          372.5
+        ],
+        "edge_center_px": [
+          773.6666666666666,
+          373.6666666666667
+        ],
+        "color_label_difference_px": 0.9715394999689668,
+        "edge_label_difference_px": 1.4907119849999022
+      },
+      {
+        "frame": 199,
+        "visual_label_px": [
+          803,
+          374
+        ],
+        "color_center_px": [
+          802.671,
+          372.915
+        ],
+        "edge_center_px": [
+          803.0,
+          376.3333333333333
+        ],
+        "color_label_difference_px": 1.1337839300324921,
+        "edge_label_difference_px": 2.3333333333333144
+      },
+      {
+        "frame": 209,
+        "visual_label_px": [
+          833,
+          375
+        ],
+        "color_center_px": [
+          833.977,
+          373.558
+        ],
+        "edge_center_px": [
+          833.6666666666666,
+          376.3333333333333
+        ],
+        "color_label_difference_px": 1.741807394633509,
+        "edge_label_difference_px": 1.4907119849998258
+      }
+    ],
+    "color_median_difference_px": 1.1337839300324921,
+    "color_max_difference_px": 2.099600200038096,
+    "edge_found_samples": 9,
+    "edge_median_difference_px": 2.3333333333333144,
+    "edge_max_difference_px": 2.7131367660166434,
+    "decision": "Do not change production detector from nine approximate same-agent labels. Retain both observations and uncertainty."
+  },
+  "shot_clock": {
+    "pilot": "pilot-001",
+    "sample_frames": [
+      0,
+      120,
+      240,
+      360,
+      480,
+      600,
+      720,
+      840
+    ],
+    "clip_times_s": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14
+    ],
+    "visually_read_remaining_seconds": [
+      19,
+      18,
+      16,
+      14,
+      12,
+      9,
+      8,
+      6
+    ],
+    "linear_remaining_clock_seconds_per_video_second": -0.9761904761904764,
+    "display_uncertainty_seconds": 1.0,
+    "feasible_clock_seconds_per_video_second": [
+      0.875,
+      1.0714000000000001
+    ],
+    "interpretation": "These pre-shot samples support approximately real-time playback at the coarse one-second display scale; they do not prove 60 independent motion samples per second or the speed of every later replay."
+  },
+  "overlap_alignment": {
+    "expected_first_clip_start_frame": 1560,
+    "best": {
+      "first_clip_start_frame": 1560,
+      "compared_frames": 180,
+      "mean_absolute_gray_difference": 0.9571141600608826,
+      "difference_from_requested_offset_frames": 0,
+      "difference_from_requested_offset_seconds": 0.0
+    },
+    "near_best_frame_range": [
+      1560,
+      1560
+    ],
+    "best_candidates": [
+      {
+        "first_clip_start_frame": 1560,
+        "compared_frames": 180,
+        "mean_absolute_gray_difference": 0.9571141600608826,
+        "difference_from_requested_offset_frames": 0,
+        "difference_from_requested_offset_seconds": 0.0
+      },
+      {
+        "first_clip_start_frame": 1559,
+        "compared_frames": 180,
+        "mean_absolute_gray_difference": 1.5541605949401855
+      },
+      {
+        "first_clip_start_frame": 1561,
+        "compared_frames": 180,
+        "mean_absolute_gray_difference": 1.5678919553756714
+      },
+      {
+        "first_clip_start_frame": 1558,
+        "compared_frames": 180,
+        "mean_absolute_gray_difference": 2.104095935821533
+      },
+      {
+        "first_clip_start_frame": 1562,
+        "compared_frames": 180,
+        "mean_absolute_gray_difference": 2.141022205352783
+      }
+    ],
+    "limitation": "Relative alignment of cached re-encoded clips, not an independent absolute YouTube timestamp measurement."
+  },
+  "motion_time_axis": "Original decoded presentation timestamps, with near-hold groups from validation-002. Never evenly resample after removing holds.",
+  "real_time_phase_approved": false,
+  "physics_fit_approved": false
+}

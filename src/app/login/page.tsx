@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
+import { BrandLogo } from "~/components/brand-logo";
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 import type { Gender } from "../_components/lobby/hall-types";
@@ -43,9 +44,9 @@ export default function LoginPage() {
   }, []);
 
   return (
-    <main className="black-nine login">
+    <main className="rollnine login">
       <header className="login-header">
-        <div className="lobby-wordmark"><span className="lobby-mark" aria-hidden="true">9</span> BLACK<span className="lobby-gold"> / </span>NINE</div>
+        <BrandLogo />
         <Link href="/billiard">Luyện tập <ArrowUpRight size={15} aria-hidden="true" /></Link>
       </header>
       <div className="login-layout">

@@ -1,0 +1,20 @@
+{
+  "image_width": 1280,
+  "image_height": 720,
+  "reference_frame": 180,
+  "boundary_corners_px": [[459, 267], [868, 267], [957, 550], [383, 550]],
+  "corner_order": ["far_left", "far_right", "near_right", "near_left"],
+  "boundary_annotation": "Approximate visible cloth boundary from camera-reference-grid.jpg; not surveyed cushion-nose geometry.",
+  "held_out_landmarks": [
+    {"name": "left_side_pocket_gap", "image_px": [424, 377], "hypothesized_world_m": [0, 1.27]},
+    {"name": "right_side_pocket_gap", "image_px": [912, 377], "hypothesized_world_m": [1.27, 1.27]}
+  ],
+  "hypothesized_dimensions_m": {"width": 1.27, "length": 2.54},
+  "dimension_status": "Standard 9ft assumption supported by manufacturer documentation; exact equipment of this video not independently confirmed.",
+  "dimension_source": "https://int.predatorcues.com/pages/predator-apex-9ft-professional-table",
+  "coordinate_convention": "x from left rail, z from far rail; approximate horizontal plane",
+  "corner_jitter_sigma_px": 3,
+  "proposed_landmark_gate_m": 0.03,
+  "gate_status": "Pilot engineering target, not a certified measurement tolerance.",
+  "limitations": ["Boundary plane and ball-center plane differ", "Lens distortion uncalibrated", "Corners are approximate visual annotations", "Pocket landmark correspondence is approximate", "No independent survey measurements"]
+}

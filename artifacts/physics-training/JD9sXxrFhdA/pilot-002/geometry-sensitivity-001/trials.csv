@@ -1,0 +1,641 @@
+scenario,trial,accepted_pose_pair,failure,training_rms_m,held_out_max_residual_m,diagnostic_gate_passed,end_focal_px,overhead_focal_px,focal_boundary_hit,endpoint_chord_m_hypothesis
+boundary_sigma_1px,0,True,,0.03171389943709843,0.04472920001422731,False,2761.0393659082797,3766.2058998934804,False,0.7944781452474642
+boundary_sigma_1px,1,True,,0.02334562998168223,0.02559144400339736,True,2690.5225952515025,4398.653880266666,False,0.800572840902646
+boundary_sigma_1px,2,True,,0.027596686099354714,0.03416863959451024,False,2833.4043332509455,6000.0,True,0.7920768676375336
+boundary_sigma_1px,3,True,,0.028410457568155197,0.03463716398734366,False,2761.0393659082797,4176.8403876087405,False,0.7924071806171996
+boundary_sigma_1px,4,True,,0.01923609443107288,0.02156995486481464,True,2761.0393659082797,6000.0,True,0.7960841138921423
+boundary_sigma_1px,5,True,,0.027317413182789817,0.03644644336456693,False,2761.0393659082797,5697.434489692814,False,0.7937640303361319
+boundary_sigma_1px,6,True,,0.026795438878568324,0.03612530390295869,False,2690.5225952515025,6000.0,True,0.7962884741126665
+boundary_sigma_1px,7,True,,0.036579455400606115,0.049645944026046426,False,2690.5225952515025,5697.434489692814,False,0.7955884559346812
+boundary_sigma_1px,8,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_1px,9,True,,0.024673303986171492,0.032491621561408945,False,2761.0393659082797,6000.0,True,0.7963719891213189
+boundary_sigma_1px,10,True,,0.03253097710767165,0.04593183906182267,False,2761.0393659082797,2024.1427534035772,False,0.7931241581838114
+boundary_sigma_1px,11,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_1px,12,True,,0.02864177775982534,0.03427371747972429,False,2761.0393659082797,3670.017239576566,False,0.7927907607169379
+boundary_sigma_1px,13,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_1px,14,True,,0.026254685836048695,0.03096739266542301,False,2761.0393659082797,3864.915599695928,False,0.7959916336487712
+boundary_sigma_1px,15,True,,0.02407113810732359,0.03283358622358757,False,2690.5225952515025,6000.0,True,0.7964671658029642
+boundary_sigma_1px,16,True,,0.029419319994788765,0.03218459617043719,False,2761.0393659082797,719.1225969457569,False,0.7959026098732469
+boundary_sigma_1px,17,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_1px,18,True,,0.024004211037955338,0.0295281994009019,True,2761.0393659082797,2907.6659372599233,False,0.7949069263360977
+boundary_sigma_1px,19,True,,0.020690744829304854,0.023575961891563274,True,2761.0393659082797,4176.8403876087405,False,0.7976353924689338
+boundary_sigma_1px,20,True,,0.028286187726618374,0.04289223574456384,False,2761.0393659082797,2489.5954321288264,False,0.7949153910510954
+boundary_sigma_1px,21,True,,0.020039531796220693,0.030032861706254008,False,2761.0393659082797,6000.0,True,0.7975325041572638
+boundary_sigma_1px,22,True,,0.02759655538476833,0.03836685812364936,False,2621.8068184542362,2426.01132236086,False,0.8004712072670814
+boundary_sigma_1px,23,True,,0.02605130739417282,0.031479909318494585,False,2761.0393659082797,6000.0,True,0.7967053281792
+boundary_sigma_1px,24,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_1px,25,True,,0.02940520883648419,0.045298232744375874,False,2690.5225952515025,2761.0393659082797,False,0.7951364575913701
+boundary_sigma_1px,26,True,,0.025213417424234098,0.038188231796322435,False,2690.5225952515025,4398.653880266666,False,0.7997214085797603
+boundary_sigma_1px,27,True,,0.015924378249293082,0.02843513013660532,True,2761.0393659082797,6000.0,True,0.7938532203532872
+boundary_sigma_1px,28,True,,0.018488308135216028,0.03606758267888001,False,2833.4043332509455,6000.0,True,0.7968506765769809
+boundary_sigma_1px,29,True,,0.03335081161106156,0.03974706154000962,False,2761.0393659082797,3395.941803874636,False,0.7960403694417835
+boundary_sigma_1px,30,True,,0.0273469518754863,0.025010642562038696,True,2761.0393659082797,6000.0,True,0.793917087232794
+boundary_sigma_1px,31,True,,0.031912221982547596,0.04785144238315492,False,2761.0393659082797,6000.0,True,0.7939510183881854
+boundary_sigma_1px,32,True,,0.02612340200965672,0.025974968970057626,True,2761.0393659082797,6000.0,True,0.7961720983119992
+boundary_sigma_1px,33,True,,0.029215402339594073,0.03587500207862657,False,2761.0393659082797,2761.0393659082797,False,0.7950396835897503
+boundary_sigma_1px,34,True,,0.020445405530905857,0.026103331952583596,True,2761.0393659082797,6000.0,True,0.798178374395937
+boundary_sigma_1px,35,True,,0.02497676183710871,0.03337780271843895,False,2690.5225952515025,3966.212413717325,False,0.7986006325532724
+boundary_sigma_1px,36,True,,0.03105003647803198,0.04121381376766966,False,2761.0393659082797,2833.4043332509455,False,0.79174303658162
+boundary_sigma_1px,37,True,,0.031297978208072265,0.043126330319530816,False,2833.4043332509455,6000.0,True,0.7929206476103458
+boundary_sigma_1px,38,True,,0.01985043240225137,0.025179770006542257,True,2690.5225952515025,6000.0,True,0.8039015398288623
+boundary_sigma_1px,39,True,,0.026789262078751538,0.03255133233690734,False,2833.4043332509455,6000.0,True,0.7929723865869329
+boundary_sigma_1px,40,True,,0.028007064576840875,0.030001923883335203,False,2690.5225952515025,3395.941803874636,False,0.7998505444173309
+boundary_sigma_1px,41,True,,0.02249786483297724,0.040559522563793686,False,2761.0393659082797,2761.0393659082797,False,0.7953854637380707
+boundary_sigma_1px,42,True,,0.017389859679340612,0.02457855786385995,True,2761.0393659082797,6000.0,True,0.794119124788032
+boundary_sigma_1px,43,True,,0.02670082504011131,0.03511240580568495,False,2761.0393659082797,6000.0,True,0.7932198209981681
+boundary_sigma_1px,44,True,,0.02913108130290898,0.0392239004397115,False,2761.0393659082797,2364.051146732078,False,0.7929273199112145
+boundary_sigma_1px,45,True,,0.031252915298318126,0.036630979635239855,False,2761.0393659082797,2426.01132236086,False,0.7942697702344231
+boundary_sigma_1px,46,True,,0.029167280697223137,0.03788016419467423,False,2761.0393659082797,1922.0701225505559,False,0.7953084105340372
+boundary_sigma_1px,47,True,,0.021799414044963175,0.020838061286173,True,2761.0393659082797,2131.636009574597,False,0.7966077100433961
+boundary_sigma_1px,48,True,,0.026037841208602214,0.039588076089742144,False,2690.5225952515025,3142.3342132948396,False,0.7956374575886603
+boundary_sigma_1px,49,True,,0.039032187328187896,0.04910025270321844,False,2761.0393659082797,1872.9805732700609,False,0.793462097318381
+boundary_sigma_1px,50,True,,0.017723004681611386,0.0309088717621677,False,2761.0393659082797,4286.312538559186,False,0.7938183824113719
+boundary_sigma_1px,51,True,,0.03227084206775831,0.041345623895463715,False,2761.0393659082797,6000.0,True,0.795703216870314
+boundary_sigma_1px,52,True,,0.02558391628220637,0.03204053883176733,False,2761.0393659082797,6000.0,True,0.7934688686212721
+boundary_sigma_1px,53,True,,0.02232644892631812,0.02613945739838158,True,2690.5225952515025,2303.6734300673425,False,0.8012087940404186
+boundary_sigma_1px,54,True,,0.02538425300484915,0.027385900514198345,True,2833.4043332509455,6000.0,True,0.7905967060305416
+boundary_sigma_1px,55,True,,0.027034984105631918,0.03567519414781061,False,2761.0393659082797,6000.0,True,0.794239516321904
+boundary_sigma_1px,56,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_1px,57,True,,0.019295008512439243,0.03330617225834072,False,2761.0393659082797,6000.0,True,0.7969924632984307
+boundary_sigma_1px,58,True,,0.029389790975255334,0.03963598726812127,False,2690.5225952515025,6000.0,True,0.7948828174329925
+boundary_sigma_1px,59,True,,0.0277925995901039,0.03510659999795227,False,2761.0393659082797,6000.0,True,0.7961582644059373
+boundary_sigma_1px,60,True,,0.027893737573835627,0.03842170667405331,False,2761.0393659082797,2621.8068184542362,False,0.7955183077299245
+boundary_sigma_1px,61,True,,0.03534286423920227,0.04755759655151177,False,2761.0393659082797,2187.5047422424386,False,0.7944791449685108
+boundary_sigma_1px,62,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_1px,63,True,,0.02494067636515234,0.03756968810788819,False,2761.0393659082797,2244.837756464866,False,0.7962757735654681
+boundary_sigma_1px,64,True,,0.025622500106186642,0.035804684413339505,False,2761.0393659082797,6000.0,True,0.7952952544695059
+boundary_sigma_1px,65,True,,0.0236764072978904,0.02219457038865976,True,2761.0393659082797,5697.434489692814,False,0.7979882698122626
+boundary_sigma_1px,66,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_1px,67,True,,0.03253567155691727,0.04562771372215058,False,2761.0393659082797,6000.0,True,0.7953813008660682
+boundary_sigma_1px,68,True,,0.019244050215965224,0.023247448609379114,True,2833.4043332509455,3484.947133088459,False,0.7949429252761314
+boundary_sigma_1px,69,True,,0.02398794505098257,0.035626702877901775,False,2761.0393659082797,6000.0,True,0.7958403765397977
+boundary_sigma_1px,70,True,,0.02005938462052624,0.03412355049314137,False,2761.0393659082797,4398.653880266666,False,0.7966430914555646
+boundary_sigma_1px,71,True,,0.02737584432864287,0.03522447388470476,False,2833.4043332509455,3062.079196368287,False,0.7917704341914016
+boundary_sigma_1px,72,True,,0.03215118858324706,0.04349168460273137,False,2761.0393659082797,2554.846038247292,False,0.7943286090360452
+boundary_sigma_1px,73,True,,0.0171482098235414,0.02469520724562758,True,2833.4043332509455,6000.0,True,0.7954052637029833
+boundary_sigma_1px,74,True,,0.02073462646865087,0.03567200710023762,False,2690.5225952515025,6000.0,True,0.7970604848546614
+boundary_sigma_1px,75,True,,0.023645338662893256,0.022111049207604046,True,2761.0393659082797,4398.653880266666,False,0.7947223958157085
+boundary_sigma_1px,76,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_1px,77,True,,0.02957064009518523,0.04125657619471156,False,2761.0393659082797,4286.312538559186,False,0.7946286349143451
+boundary_sigma_1px,78,True,,0.026580795901190283,0.041547450386092595,False,2761.0393659082797,4070.1641484649836,False,0.7950540157825187
+boundary_sigma_1px,79,True,,0.017730797946635915,0.02255314739144213,True,2761.0393659082797,6000.0,True,0.7960319171422384
+boundary_sigma_1px,80,True,,0.028367887570300267,0.034997321270482704,False,2761.0393659082797,2690.5225952515025,False,0.7938222012088854
+boundary_sigma_1px,81,True,,0.022327011410573205,0.029299141842878393,True,2761.0393659082797,2554.846038247292,False,0.7964764407979958
+boundary_sigma_1px,82,True,,0.0227566055496815,0.02801691121528454,True,2833.4043332509455,6000.0,True,0.7934797531351474
+boundary_sigma_1px,83,True,,0.02554642016562861,0.029265112412877905,True,2690.5225952515025,6000.0,True,0.7969458037976096
+boundary_sigma_1px,84,True,,0.03126902981191203,0.04146269624840057,False,2761.0393659082797,3670.017239576566,False,0.7979171227022956
+boundary_sigma_1px,85,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_1px,86,True,,0.03206091032332227,0.030572474513234242,False,2761.0393659082797,2907.6659372599233,False,0.796528364029791
+boundary_sigma_1px,87,True,,0.02310735791562931,0.025561261811144136,True,2833.4043332509455,6000.0,True,0.7930130400354342
+boundary_sigma_1px,88,True,,0.0236230385143558,0.03313528553581515,False,2761.0393659082797,3576.285231556281,False,0.7937322230860577
+boundary_sigma_1px,89,True,,0.030983989466490232,0.03944809411640825,False,2761.0393659082797,6000.0,True,0.7976590880315141
+boundary_sigma_1px,90,True,,0.02457495735399806,0.03857591109875631,False,2761.0393659082797,3576.285231556281,False,0.7945152932199897
+boundary_sigma_1px,91,True,,0.028073615888205672,0.027145039292252676,True,2833.4043332509455,6000.0,True,0.7928747696127044
+boundary_sigma_1px,92,True,,0.029120586932594353,0.03834959823122527,False,2833.4043332509455,1972.4462755913614,False,0.793971722504208
+boundary_sigma_1px,93,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_1px,94,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_1px,95,True,,0.02873109868048865,0.031098992514525785,False,2761.0393659082797,6000.0,True,0.7975697324698332
+boundary_sigma_1px,96,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_1px,97,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_1px,98,True,,0.03305164451191705,0.040210777927878534,False,2761.0393659082797,6000.0,True,0.7949360838819507
+boundary_sigma_1px,99,True,,0.025169109274827878,0.03721568039748378,False,2690.5225952515025,6000.0,True,0.7956418140568361
+boundary_sigma_1px,100,True,,0.027566709847056385,0.035431398015763026,False,2761.0393659082797,4176.8403876087405,False,0.7928164537507582
+boundary_sigma_1px,101,True,,0.03236593677700901,0.035203360172856336,False,2761.0393659082797,2131.636009574597,False,0.7962437537335073
+boundary_sigma_1px,102,True,,0.02524411740165878,0.02460887146249871,True,2761.0393659082797,6000.0,True,0.7957934393788525
+boundary_sigma_1px,103,True,,0.02259063419511276,0.03402093296561429,False,2761.0393659082797,2907.6659372599233,False,0.7945192990416107
+boundary_sigma_1px,104,True,,0.027451657747669354,0.03570878391130651,False,2761.0393659082797,4878.245020732759,False,0.7943166901980689
+boundary_sigma_1px,105,True,,0.025163626756248652,0.028465316845404282,True,2761.0393659082797,6000.0,True,0.7950571261568025
+boundary_sigma_1px,106,True,,0.023978293123283874,0.041517357800012276,False,2761.0393659082797,5551.922373421515,False,0.7964295615767384
+boundary_sigma_1px,107,True,,0.02902786182766047,0.04079602504795651,False,2833.4043332509455,6000.0,True,0.7944295152214078
+boundary_sigma_1px,108,True,,0.027185439913320425,0.03918095823108257,False,2761.0393659082797,6000.0,True,0.7931396796911838
+boundary_sigma_1px,109,True,,0.030383995020657965,0.04262783247939923,False,2761.0393659082797,2554.846038247292,False,0.7946353927493044
+boundary_sigma_1px,110,True,,0.03465358611227097,0.04078416852486036,False,2761.0393659082797,6000.0,True,0.793864293681973
+boundary_sigma_1px,111,True,,0.030339657684094662,0.03179824963203424,False,2761.0393659082797,2761.0393659082797,False,0.7965361261408902
+boundary_sigma_1px,112,True,,0.02200288402087948,0.029821225687553223,True,2833.4043332509455,5551.922373421515,False,0.796832218254628
+boundary_sigma_1px,113,True,,0.030259601373389886,0.0475037121665718,False,2761.0393659082797,5697.434489692814,False,0.7929223907935943
+boundary_sigma_1px,114,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_1px,115,True,,0.027603895694626242,0.03120133123122129,False,2761.0393659082797,1446.0180772912468,False,0.796117306483921
+boundary_sigma_1px,116,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_1px,117,True,,0.02264966523870365,0.03587050084362516,False,2761.0393659082797,6000.0,True,0.7972120653800291
+boundary_sigma_1px,118,True,,0.01955909721848355,0.025782936930205298,True,2761.0393659082797,6000.0,True,0.7953728557919348
+boundary_sigma_1px,119,True,,0.03643362566461198,0.046582750120591467,False,2761.0393659082797,2983.873887494627,False,0.7927403533849184
+boundary_sigma_1px,120,True,,0.02584545586338507,0.030244835624751883,False,2761.0393659082797,4513.939612273054,False,0.7932493282670784
+boundary_sigma_1px,121,True,,0.01604422497788023,0.02796450933448003,True,2761.0393659082797,6000.0,True,0.7981213947872253
+boundary_sigma_1px,122,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_1px,123,True,,0.022533290328275078,0.03509626335822983,False,2833.4043332509455,3484.947133088459,False,0.7940566976120573
+boundary_sigma_1px,124,True,,0.023219448715977767,0.03460610009912431,False,2761.0393659082797,6000.0,True,0.7954664318983088
+boundary_sigma_1px,125,True,,0.028002764650025592,0.04458253918293049,False,2761.0393659082797,6000.0,True,0.7967915007241421
+boundary_sigma_1px,126,True,,0.03555223951284923,0.04464531404478098,False,2690.5225952515025,5410.126627390205,False,0.7966141598294242
+boundary_sigma_1px,127,True,,0.02859914389517754,0.036657407495709296,False,2690.5225952515025,6000.0,True,0.7979416337555109
+boundary_sigma_2px,0,True,,0.036450974101527894,0.04185913193304459,False,2690.5225952515025,2907.6659372599233,False,0.7970413800243887
+boundary_sigma_2px,1,True,,0.03411175573322864,0.056314405927414546,False,2761.0393659082797,1373.0988777130738,False,0.8007602803285263
+boundary_sigma_2px,2,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,3,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,4,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,5,True,,0.015655094179706442,0.016916009340860856,True,2690.5225952515025,3766.2058998934804,False,0.796179182067211
+boundary_sigma_2px,6,True,,0.019032615986677957,0.03751024065098024,False,2621.8068184542362,2077.1941608031107,False,0.7961776714442159
+boundary_sigma_2px,7,True,,0.04240994692577199,0.05072395299687743,False,2690.5225952515025,6000.0,True,0.7973096683387925
+boundary_sigma_2px,8,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,9,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,10,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,11,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,12,True,,0.019185591594334594,0.02438448036404564,True,2833.4043332509455,6000.0,True,0.7951393402281374
+boundary_sigma_2px,13,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,14,True,,0.023191289077091164,0.030433871798509957,False,2690.5225952515025,6000.0,True,0.7980366372790948
+boundary_sigma_2px,15,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,16,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,17,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,18,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,19,True,,0.01621287961040309,0.024056102834163543,True,2690.5225952515025,5846.760379745086,False,0.7942067840603928
+boundary_sigma_2px,20,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,21,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,22,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,23,True,,0.021556123977437,0.0252635098565624,True,2833.4043332509455,3864.915599695928,False,0.7967325782817166
+boundary_sigma_2px,24,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,25,True,,0.028097050155131212,0.042382640945093454,False,2621.8068184542362,1972.4462755913614,False,0.7998694159172695
+boundary_sigma_2px,26,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,27,True,,0.03360132447422527,0.04250010489007605,False,2690.5225952515025,6000.0,True,0.7957823570361483
+boundary_sigma_2px,28,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,29,True,,0.03814949936941308,0.04958883483598096,False,2761.0393659082797,6000.0,True,0.7892962353148228
+boundary_sigma_2px,30,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,31,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,32,True,,0.026155380590156575,0.023280013168339473,True,2833.4043332509455,6000.0,True,0.7933154175829179
+boundary_sigma_2px,33,True,,0.021590862587773013,0.025925012872613243,True,2761.0393659082797,6000.0,True,0.7934495914670081
+boundary_sigma_2px,34,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,35,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,36,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,37,True,,0.020469836810614355,0.0250953240546654,True,2690.5225952515025,6000.0,True,0.7977059925241738
+boundary_sigma_2px,38,True,,0.03662988156025073,0.04830859503236563,False,2761.0393659082797,6000.0,True,0.7921827630248743
+boundary_sigma_2px,39,True,,0.04293396365547813,0.04415804541425263,False,2833.4043332509455,6000.0,True,0.7952688108659653
+boundary_sigma_2px,40,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,41,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,42,True,,0.035636642086904514,0.04429088666382704,False,2621.8068184542362,3224.6926597308316,False,0.7935472106693034
+boundary_sigma_2px,43,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,44,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,45,True,,0.02241039580023894,0.03079530359200283,False,2761.0393659082797,6000.0,True,0.7920196172472121
+boundary_sigma_2px,46,True,,0.032206804941261345,0.04954004038626608,False,2833.4043332509455,6000.0,True,0.7896676139175
+boundary_sigma_2px,47,True,,0.020945899299298295,0.032127090571353274,False,2690.5225952515025,6000.0,True,0.8007060694803133
+boundary_sigma_2px,48,True,,0.030781270788494297,0.05073412891701739,False,2621.8068184542362,4176.8403876087405,False,0.7952419046173682
+boundary_sigma_2px,49,True,,0.040667735042247466,0.04981968526086053,False,2690.5225952515025,6000.0,True,0.7947001081753648
+boundary_sigma_2px,50,True,,0.03680070665543128,0.04350776168266129,False,2761.0393659082797,5697.434489692814,False,0.7966010952846992
+boundary_sigma_2px,51,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,52,True,,0.03587801803132484,0.054308608769312115,False,2833.4043332509455,1603.6793704277402,False,0.7931142327267324
+boundary_sigma_2px,53,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,54,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,55,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,56,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,57,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,58,True,,0.023630987748262576,0.033491653123741236,False,2907.6659372599233,2244.837756464866,False,0.7929383989419841
+boundary_sigma_2px,59,True,,0.042934476983187524,0.04512979084197928,False,2833.4043332509455,1922.0701225505559,False,0.793524112524555
+boundary_sigma_2px,60,True,,0.04069130255842434,0.049367654198228854,False,2761.0393659082797,2364.051146732078,False,0.7981420347425182
+boundary_sigma_2px,61,True,,0.02427246103899535,0.037246046267262634,False,2621.8068184542362,6000.0,True,0.7974893601383575
+boundary_sigma_2px,62,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,63,True,,0.02940062434602509,0.030555885363323976,False,2907.6659372599233,6000.0,True,0.790081662246609
+boundary_sigma_2px,64,True,,0.023053025953793355,0.0394749644960108,False,2690.5225952515025,6000.0,True,0.7972782361909259
+boundary_sigma_2px,65,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,66,True,,0.024688867416711936,0.052087721171605525,False,2621.8068184542362,6000.0,True,0.7976852678645369
+boundary_sigma_2px,67,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,68,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,69,True,,0.030094203423111417,0.030562711972806952,False,2761.0393659082797,6000.0,True,0.7905777734907299
+boundary_sigma_2px,70,True,,0.04598366168365457,0.041552960139074085,False,2907.6659372599233,600.0,True,0.794878311112579
+boundary_sigma_2px,71,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,72,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,73,True,,0.022144058146346252,0.02577705565605081,True,2621.8068184542362,4398.653880266666,False,0.7980076846902171
+boundary_sigma_2px,74,True,,0.027649190147266793,0.03215615591735894,False,2690.5225952515025,2833.4043332509455,False,0.803847112220983
+boundary_sigma_2px,75,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,76,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,77,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,78,True,,0.024850857286144955,0.027189581441122625,True,2690.5225952515025,4070.1641484649836,False,0.8089242799122245
+boundary_sigma_2px,79,True,,0.023130575281255804,0.021782784052886243,True,2690.5225952515025,3766.2058998934804,False,0.8011549505931711
+boundary_sigma_2px,80,True,,0.02063347909068552,0.03838865009031126,False,2690.5225952515025,2364.051146732078,False,0.7988061174358516
+boundary_sigma_2px,81,True,,0.03215370197888524,0.033586463244668546,False,2833.4043332509455,4176.8403876087405,False,0.7949901916251946
+boundary_sigma_2px,82,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,83,True,,0.03213756717408127,0.028140360485292486,True,2833.4043332509455,1972.4462755913614,False,0.7933034763291681
+boundary_sigma_2px,84,True,,0.03610732545463619,0.04572615298762064,False,2690.5225952515025,2690.5225952515025,False,0.7960891133042813
+boundary_sigma_2px,85,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,86,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,87,True,,0.03601465441303138,0.05334665146474361,False,2690.5225952515025,6000.0,True,0.795182732948072
+boundary_sigma_2px,88,True,,0.023659773466211006,0.023645659890785094,True,2690.5225952515025,2833.4043332509455,False,0.7960168879984405
+boundary_sigma_2px,89,True,,0.04616688442537893,0.05279044637943883,False,2690.5225952515025,2761.0393659082797,False,0.7974123806747841
+boundary_sigma_2px,90,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,91,True,,0.029493408696136442,0.038629171188933796,False,2833.4043332509455,2690.5225952515025,False,0.7951898497577554
+boundary_sigma_2px,92,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,93,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,94,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,95,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,96,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,97,True,,0.047370833363065065,0.0690119541253949,False,2621.8068184542362,1733.1071249536535,False,0.7978633795938531
+boundary_sigma_2px,98,True,,0.02715152374622286,0.02382156535101857,True,2690.5225952515025,5846.760379745086,False,0.794959587075771
+boundary_sigma_2px,99,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,100,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,101,True,,0.0311349153952081,0.06376995075866881,False,2690.5225952515025,6000.0,True,0.8019583230483732
+boundary_sigma_2px,102,True,,0.027208731478833736,0.030741667252206013,False,2833.4043332509455,1087.8730465246467,False,0.7913917058748713
+boundary_sigma_2px,103,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,104,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,105,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,106,True,,0.029172429635201152,0.04035964890524222,False,2907.6659372599233,4513.939612273054,False,0.7937249750534349
+boundary_sigma_2px,107,True,,0.01633544884290016,0.01703858788505078,True,2621.8068184542362,4753.654951651505,False,0.7997382818905248
+boundary_sigma_2px,108,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,109,True,,0.030411959833437186,0.04601380392867664,False,2761.0393659082797,3864.915599695928,False,0.7936527377259366
+boundary_sigma_2px,110,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,111,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,112,True,,0.028416735393191377,0.029852028877766015,True,2833.4043332509455,3062.079196368287,False,0.7996192017173027
+boundary_sigma_2px,113,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,114,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,115,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,116,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,117,True,,0.02063808249784231,0.023944433887276087,True,2761.0393659082797,6000.0,True,0.7933536018467444
+boundary_sigma_2px,118,True,,0.01682998211862183,0.022297324908516474,True,2690.5225952515025,6000.0,True,0.7977134018415097
+boundary_sigma_2px,119,True,,0.030474158801507195,0.040886232664335366,False,2761.0393659082797,5137.307006749738,False,0.794490120353611
+boundary_sigma_2px,120,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,121,True,,0.01693475648066402,0.033162730112620005,False,2690.5225952515025,3062.079196368287,False,0.796752536081034
+boundary_sigma_2px,122,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,123,True,,0.036718565227902254,0.041443451259709316,False,2690.5225952515025,1922.0701225505559,False,0.7937441341751004
+boundary_sigma_2px,124,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_2px,125,True,,0.02130634290552403,0.03249740901319213,False,2761.0393659082797,6000.0,True,0.7938216377259698
+boundary_sigma_2px,126,True,,0.017447539398315774,0.03935580516524509,False,2690.5225952515025,6000.0,True,0.7971119712513286
+boundary_sigma_2px,127,True,,0.02545583121375275,0.0433359177198054,False,2833.4043332509455,3062.079196368287,False,0.7872518341359072
+boundary_sigma_4px,0,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,1,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,2,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,3,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,4,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,5,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,6,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,7,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,8,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,9,True,,0.05560782965809574,0.06562555051500575,False,2833.4043332509455,1825.1447679712726,False,0.8010846882514269
+boundary_sigma_4px,10,True,,0.0315008306958254,0.03332691832543773,False,2690.5225952515025,6000.0,True,0.7945739986509133
+boundary_sigma_4px,11,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,12,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,13,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,14,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,15,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,16,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,17,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,18,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,19,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,20,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,21,True,,0.023754090418077953,0.04625990737076052,False,2833.4043332509455,5006.1005109418675,False,0.7996841310567374
+boundary_sigma_4px,22,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,23,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,24,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,25,True,,0.02748206991134335,0.05971381207873212,False,2621.8068184542362,3864.915599695928,False,0.7931852303061819
+boundary_sigma_4px,26,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,27,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,28,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,29,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,30,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,31,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,32,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,33,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,34,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,35,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,36,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,37,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,38,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,39,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,40,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,41,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,42,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,43,True,,0.02570887257626088,0.015879439042886374,True,2761.0393659082797,2364.051146732078,False,0.8012644111149138
+boundary_sigma_4px,44,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,45,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,46,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,47,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,48,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,49,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,50,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,51,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,52,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,53,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,54,True,,0.02331292179438534,0.022213773071802643,True,3062.079196368287,6000.0,True,0.787218181026111
+boundary_sigma_4px,55,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,56,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,57,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,58,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,59,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,60,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,61,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,62,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,63,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,64,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,65,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,66,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,67,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,68,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,69,True,,0.017757746741936784,0.020926442317567198,True,2761.0393659082797,6000.0,True,0.8056600695607928
+boundary_sigma_4px,70,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,71,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,72,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,73,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,74,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,75,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,76,True,,0.01112769931018587,0.021524555901354547,True,2761.0393659082797,682.8589810260369,False,0.8033660635645563
+boundary_sigma_4px,77,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,78,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,79,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,80,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,81,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,82,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,83,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,84,True,,0.020714427748130152,0.029674650474679785,True,2690.5225952515025,5137.307006749738,False,0.8057486228964685
+boundary_sigma_4px,85,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,86,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,87,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,88,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,89,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,90,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,91,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,92,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,93,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,94,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,95,True,,0.042674860623964105,0.0731674940874485,False,2554.846038247292,6000.0,True,0.7967236278659032
+boundary_sigma_4px,96,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,97,True,,0.024198274539547253,0.012871382335473289,True,2833.4043332509455,6000.0,True,0.7857738488998952
+boundary_sigma_4px,98,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,99,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,100,True,,0.014715302142735628,0.020130294803462463,True,2833.4043332509455,6000.0,True,0.8029243253964163
+boundary_sigma_4px,101,True,,0.03133308600659497,0.04788947696492507,False,2761.0393659082797,6000.0,True,0.7927437798265081
+boundary_sigma_4px,102,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,103,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,104,True,,0.027399040765413628,0.02029194180847509,True,2833.4043332509455,6000.0,True,0.7971240668110661
+boundary_sigma_4px,105,True,,0.03639163398781637,0.05054950223943163,False,2907.6659372599233,4878.245020732759,False,0.7822742373373349
+boundary_sigma_4px,106,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,107,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,108,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,109,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,110,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,111,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,112,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,113,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,114,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,115,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,116,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,117,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,118,True,,0.028472118577527787,0.02096630650163073,True,2621.8068184542362,2554.846038247292,False,0.8041190116498035
+boundary_sigma_4px,119,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,120,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,121,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,122,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,123,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,124,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,125,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,126,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+boundary_sigma_4px,127,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+centers_sigma_2_5px,0,True,,0.013386646438608171,0.04407128032899666,False,2761.0393659082797,1825.1447679712726,False,0.7952159920297974
+centers_sigma_2_5px,1,True,,0.03531941201012706,0.018932665774476016,True,2690.5225952515025,3766.2058998934804,False,0.7967876514072711
+centers_sigma_2_5px,2,True,,0.03133991690793519,0.05376267272846068,False,2690.5225952515025,2907.6659372599233,False,0.7967876514072711
+centers_sigma_2_5px,3,True,,0.0385762200709037,0.03718093041492324,False,2690.5225952515025,6000.0,True,0.7967876514072711
+centers_sigma_2_5px,4,True,,0.030709304500728448,0.04059310095038592,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,5,True,,0.026018884409470335,0.05682921223345551,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,6,True,,0.03962433828351175,0.04681555970247876,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,7,True,,0.03729546062818648,0.050434047508346735,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,8,True,,0.039285152293946114,0.048398758888189335,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,9,True,,0.039303176548691456,0.04767887543714192,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,10,True,,0.022942697931757152,0.0323321758348415,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,11,True,,0.02687198996938408,0.058012660403056616,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,12,True,,0.029657793015219657,0.08975418984574571,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,13,True,,0.023213649852041177,0.0659377301457372,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,14,True,,0.03874683318395164,0.07978602020650152,False,2690.5225952515025,3576.285231556281,False,0.7967876514072711
+centers_sigma_2_5px,15,True,,0.04454482292489813,0.061833020892535576,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,16,True,,0.013307097400157977,0.07201258554871379,False,2761.0393659082797,1603.6793704277402,False,0.7952159920297974
+centers_sigma_2_5px,17,True,,0.03970497298824049,0.0360103159264299,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,18,True,,0.017674086023616583,0.0430420830747045,False,2761.0393659082797,3670.017239576566,False,0.7952159920297974
+centers_sigma_2_5px,19,True,,0.017681515272816452,0.053781430331036925,False,2761.0393659082797,3224.6926597308316,False,0.7952159920297974
+centers_sigma_2_5px,20,True,,0.031318331930486124,0.048297946713222774,False,2761.0393659082797,2303.6734300673425,False,0.7952159920297974
+centers_sigma_2_5px,21,True,,0.03765488515218456,0.029748357020094453,True,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,22,True,,0.03958125895592595,0.05147020744680244,False,2690.5225952515025,4398.653880266666,False,0.7967876514072711
+centers_sigma_2_5px,23,True,,0.03137205325586338,0.03483068102912385,False,2761.0393659082797,2761.0393659082797,False,0.7952159920297974
+centers_sigma_2_5px,24,True,,0.039672936103946996,0.040653788936217475,False,2690.5225952515025,4753.654951651505,False,0.7967876514072711
+centers_sigma_2_5px,25,True,,0.035414225199849485,0.08461094620513225,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,26,True,,0.0403581764061508,0.011376880339386079,True,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,27,True,,0.01971120356660535,0.11421494507213371,False,2690.5225952515025,6000.0,True,0.7967876514072711
+centers_sigma_2_5px,28,True,,0.03832976509166064,0.064880459620339,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,29,True,,0.03645555124384274,0.019065353365621526,True,2761.0393659082797,3670.017239576566,False,0.7952159920297974
+centers_sigma_2_5px,30,True,,0.036330722242964436,0.042598891356478555,False,2690.5225952515025,2554.846038247292,False,0.7967876514072711
+centers_sigma_2_5px,31,True,,0.04933188202558865,0.05822346893231686,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,32,True,,0.04075370598417685,0.05203991511560075,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,33,True,,0.03211409132970179,0.06944583904074991,False,2761.0393659082797,4286.312538559186,False,0.7952159920297974
+centers_sigma_2_5px,34,True,,0.050430006428082624,0.032339997401233174,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,35,True,,0.026077052656141846,0.06790230662510997,False,2690.5225952515025,2077.1941608031107,False,0.7967876514072711
+centers_sigma_2_5px,36,True,,0.037315028124592524,0.05277251909329233,False,2761.0393659082797,2077.1941608031107,False,0.7952159920297974
+centers_sigma_2_5px,37,True,,0.03180273506855681,0.03042220351937757,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,38,True,,0.02992479726403898,0.019920795570385764,True,2761.0393659082797,600.0,True,0.7952159920297974
+centers_sigma_2_5px,39,True,,0.038919634951180074,0.05147866354502932,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,40,True,,0.035416322848497585,0.018118969034296387,True,2761.0393659082797,3224.6926597308316,False,0.7952159920297974
+centers_sigma_2_5px,41,True,,0.03350639930038472,0.06239666686148131,False,2761.0393659082797,665.418805869356,False,0.7952159920297974
+centers_sigma_2_5px,42,True,,0.04085938753894874,0.07611666652318236,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,43,True,,0.04119268132380401,0.035139326067672935,False,2761.0393659082797,955.8691414353674,False,0.7952159920297974
+centers_sigma_2_5px,44,True,,0.030618879866703815,0.06604194298305535,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,45,True,,0.03311851056138188,0.06887125797162967,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,46,True,,0.04571779328557701,0.03798515127943807,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,47,True,,0.025703950382465177,0.040213880964785544,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,48,True,,0.0375032352099302,0.04556227065915333,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,49,True,,0.028951817485420032,0.04103593868470598,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,50,True,,0.027419308208372153,0.03642126415281921,False,2690.5225952515025,6000.0,True,0.7967876514072711
+centers_sigma_2_5px,51,True,,0.03426580771763919,0.0498686199389059,False,2690.5225952515025,2761.0393659082797,False,0.7967876514072711
+centers_sigma_2_5px,52,True,,0.03207093773962287,0.05343562009377405,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,53,True,,0.027176424880422285,0.04363643887763398,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,54,True,,0.05373607996731499,0.019710376868763133,True,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,55,True,,0.05329866445853295,0.06964992500300979,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,56,True,,0.04101114653414444,0.05230905998105978,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,57,True,,0.0466620962799224,0.07732681781019983,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,58,True,,0.03735211375661353,0.043246794657813024,False,2690.5225952515025,6000.0,True,0.7967876514072711
+centers_sigma_2_5px,59,True,,0.032077338747722395,0.06379510111888874,False,2761.0393659082797,2907.6659372599233,False,0.7952159920297974
+centers_sigma_2_5px,60,True,,0.016627002310734128,0.07490192377291102,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,61,True,,0.04528337930398248,0.033183634215805585,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,62,True,,0.02596540745634246,0.023219762294533493,True,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,63,True,,0.027889376967499595,0.03316167656140014,False,2761.0393659082797,3766.2058998934804,False,0.7952159920297974
+centers_sigma_2_5px,64,True,,0.04435464598925077,0.05795596479093075,False,2690.5225952515025,3966.212413717325,False,0.7967876514072711
+centers_sigma_2_5px,65,True,,0.025474159673859388,0.04435862740410783,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,66,True,,0.03219613081396777,0.07405162676553184,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,67,True,,0.05283842998023812,0.02051644765879659,True,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,68,True,,0.043954874106940926,0.03947133563196055,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,69,True,,0.02118934462063633,0.05302435781008468,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,70,True,,0.02492073640007419,0.036849143766022864,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,71,True,,0.05683340127426384,0.07331491836178715,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,72,True,,0.06865063927887896,0.046713162948076356,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,73,True,,0.028229452769891156,0.10510300942602172,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,74,True,,0.026024217620966288,0.04716999098531863,False,2690.5225952515025,1778.530686112245,False,0.7967876514072711
+centers_sigma_2_5px,75,True,,0.05071726685266246,0.06126790085587651,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,76,True,,0.03677875606142657,0.0762537387619376,False,2690.5225952515025,3670.017239576566,False,0.7967876514072711
+centers_sigma_2_5px,77,True,,0.016290312785116622,0.03843117224397938,False,2690.5225952515025,2983.873887494627,False,0.7967876514072711
+centers_sigma_2_5px,78,True,,0.035818727046711206,0.05686806785102239,False,2690.5225952515025,1872.9805732700609,False,0.7967876514072711
+centers_sigma_2_5px,79,True,,0.019763322937826684,0.061400019806109284,False,2761.0393659082797,2303.6734300673425,False,0.7952159920297974
+centers_sigma_2_5px,80,True,,0.050646217791973265,0.027326820133369525,True,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,81,True,,0.05401039690644117,0.04964525859746442,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,82,True,,0.02983288550319048,0.06346608376284806,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,83,True,,0.03683762206501843,0.036908475798171886,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,84,True,,0.014944896012802623,0.05907661331406885,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,85,True,,0.020738139513574873,0.04222579794886699,False,2761.0393659082797,1446.0180772912468,False,0.7952159920297974
+centers_sigma_2_5px,86,True,,0.010521569360828134,0.06037278048778741,False,2690.5225952515025,6000.0,True,0.7967876514072711
+centers_sigma_2_5px,87,True,,0.028676600095275003,0.08229961058461033,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,88,True,,0.015498097323399202,0.026240247570422502,True,2761.0393659082797,3670.017239576566,False,0.7952159920297974
+centers_sigma_2_5px,89,True,,0.023130686764054473,0.02950783120344983,True,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,90,True,,0.0464699908060012,0.049617823636207224,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,91,True,,0.02449845427996334,0.03951388427252991,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,92,True,,0.029483236731467428,0.04583791982776889,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,93,True,,0.033459859356922056,0.0537982679369135,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,94,True,,0.04032991774970166,0.04377872302196639,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,95,True,,0.0288504867489507,0.04767620861620912,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,96,True,,0.028975076785099984,0.06013756191858773,False,2761.0393659082797,2077.1941608031107,False,0.7952159920297974
+centers_sigma_2_5px,97,True,,0.02578147293491976,0.07638931596523589,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,98,True,,0.03281717923827311,0.05916248881555086,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,99,True,,0.026395378943470254,0.061436781580461924,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,100,True,,0.056282636994097586,0.06575616495703482,False,2761.0393659082797,5006.1005109418675,False,0.7952159920297974
+centers_sigma_2_5px,101,True,,0.030411583645370135,0.027586412469400204,True,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,102,True,,0.033481611985645365,0.02847684283147886,True,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,103,True,,0.02451234205835316,0.07953587416048598,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,104,True,,0.020446368974461292,0.04534738864249417,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,105,True,,0.027742375322172896,0.041448777803650895,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,106,True,,0.029757170803253158,0.06293949704761292,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,107,True,,0.056289852407564,0.04603523481964979,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,108,True,,0.021881247036690334,0.04312429863444584,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,109,True,,0.018258311533453846,0.04876428966812397,False,2761.0393659082797,3670.017239576566,False,0.7952159920297974
+centers_sigma_2_5px,110,True,,0.023186971882656605,0.03781888930944156,False,2690.5225952515025,5697.434489692814,False,0.7967876514072711
+centers_sigma_2_5px,111,True,,0.04245313193002712,0.01603175058683631,True,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,112,True,,0.0035393066498716854,0.04069618785180393,False,2690.5225952515025,2303.6734300673425,False,0.7967876514072711
+centers_sigma_2_5px,113,True,,0.05236780246967468,0.04139891210742366,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,114,True,,0.046476598202346404,0.02790142876111172,True,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,115,True,,0.044009205999179866,0.04136799262825939,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,116,True,,0.0507870197700709,0.005825071255681335,True,2690.5225952515025,3670.017239576566,False,0.7967876514072711
+centers_sigma_2_5px,117,True,,0.05523073072312184,0.03135628287525986,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,118,True,,0.06325292470056774,0.03617055640516854,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,119,True,,0.03282969536092687,0.03889759677245618,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,120,True,,0.03422052921449572,0.06121797946583949,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,121,True,,0.02948721564341894,0.05978400615754665,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,122,True,,0.030179477785864318,0.05963770224006652,False,2761.0393659082797,2833.4043332509455,False,0.7952159920297974
+centers_sigma_2_5px,123,True,,0.03806923431063717,0.02589518718938164,True,2761.0393659082797,2554.846038247292,False,0.7952159920297974
+centers_sigma_2_5px,124,True,,0.03850683554957485,0.032652094476510886,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,125,True,,0.0322898546189587,0.04935545448830471,False,2761.0393659082797,6000.0,True,0.7952159920297974
+centers_sigma_2_5px,126,True,,0.02836037302655827,0.041292562870244735,False,2690.5225952515025,4513.939612273054,False,0.7967876514072711
+centers_sigma_2_5px,127,True,,0.018631922243666263,0.03990981091462469,False,2761.0393659082797,665.418805869356,False,0.7952159920297974
+combined_boundary_2px_centers_2_5px,0,True,,0.021493786308175264,0.05023887357373498,False,2761.0393659082797,4398.653880266666,False,0.7969923643828938
+combined_boundary_2px_centers_2_5px,1,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,2,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,3,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,4,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,5,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,6,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,7,True,,0.042219004513300545,0.13488166316011538,False,2690.5225952515025,6000.0,True,0.7971476925447467
+combined_boundary_2px_centers_2_5px,8,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,9,True,,0.035130619047867025,0.03886813219254991,False,2690.5225952515025,3309.2096651357147,False,0.7957249719006961
+combined_boundary_2px_centers_2_5px,10,True,,0.03584506682135928,0.0588309987419516,False,2761.0393659082797,5006.1005109418675,False,0.7983930320698502
+combined_boundary_2px_centers_2_5px,11,True,,0.04583012502964227,0.1114961893127419,False,2761.0393659082797,682.8589810260369,False,0.7930308457240186
+combined_boundary_2px_centers_2_5px,12,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,13,True,,0.023129705231796745,0.05242233022042197,False,2690.5225952515025,6000.0,True,0.7958364925039336
+combined_boundary_2px_centers_2_5px,14,True,,0.05718273621462919,0.07548243620948791,False,2690.5225952515025,5846.760379745086,False,0.7969097561083309
+combined_boundary_2px_centers_2_5px,15,True,,0.03732583317222582,0.04814866569742645,False,2761.0393659082797,1922.0701225505559,False,0.7966561913973577
+combined_boundary_2px_centers_2_5px,16,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,17,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,18,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,19,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,20,True,,0.028254695593802847,0.0612410520817412,False,2690.5225952515025,6000.0,True,0.80021954547713
+combined_boundary_2px_centers_2_5px,21,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,22,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,23,True,,0.020209265081369172,0.043059839350799795,False,2761.0393659082797,4286.312538559186,False,0.7930028678258898
+combined_boundary_2px_centers_2_5px,24,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,25,True,,0.029160742546104394,0.044035775088351,False,2833.4043332509455,6000.0,True,0.7894232158443979
+combined_boundary_2px_centers_2_5px,26,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,27,True,,0.01453392524539913,0.03962584312285678,False,2761.0393659082797,839.8827588083699,False,0.7970242463236221
+combined_boundary_2px_centers_2_5px,28,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,29,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,30,True,,0.01929205027327594,0.053671261597301706,False,2761.0393659082797,6000.0,True,0.7928945793462469
+combined_boundary_2px_centers_2_5px,31,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,32,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,33,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,34,True,,0.05562522278722796,0.03985636885948241,False,2690.5225952515025,2024.1427534035772,False,0.7944810873412282
+combined_boundary_2px_centers_2_5px,35,True,,0.0519415662166706,0.06999051084425804,False,2833.4043332509455,682.8589810260369,False,0.7933128648180272
+combined_boundary_2px_centers_2_5px,36,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,37,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,38,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,39,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,40,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,41,True,,0.046032410234650954,0.05425218461954946,False,2833.4043332509455,2024.1427534035772,False,0.797359773630708
+combined_boundary_2px_centers_2_5px,42,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,43,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,44,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,45,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,46,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,47,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,48,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,49,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,50,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,51,True,,0.03878029073260655,0.11365727448461305,False,2761.0393659082797,6000.0,True,0.7931269064592958
+combined_boundary_2px_centers_2_5px,52,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,53,True,,0.040761065157058705,0.04609259014454356,False,2621.8068184542362,2131.636009574597,False,0.7985916026657157
+combined_boundary_2px_centers_2_5px,54,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,55,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,56,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,57,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,58,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,59,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,60,True,,0.03856075552824129,0.05434529925827138,False,2690.5225952515025,3576.285231556281,False,0.7924282516602115
+combined_boundary_2px_centers_2_5px,61,True,,0.02584477765690518,0.08721429707285447,False,2554.846038247292,6000.0,True,0.8029065602871859
+combined_boundary_2px_centers_2_5px,62,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,63,True,,0.05134364155711245,0.04826171623811173,False,2761.0393659082797,1338.0300192808745,False,0.7898030475590728
+combined_boundary_2px_centers_2_5px,64,True,,0.02215380580750812,0.07101850930023311,False,2690.5225952515025,3864.915599695928,False,0.7974446654331541
+combined_boundary_2px_centers_2_5px,65,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,66,True,,0.046636153435008425,0.06937876786121501,False,2621.8068184542362,1006.6311177404033,False,0.7975729161416505
+combined_boundary_2px_centers_2_5px,67,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,68,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,69,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,70,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,71,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,72,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,73,True,,0.030250272758650252,0.03347126726599795,False,2761.0393659082797,6000.0,True,0.7931607409832933
+combined_boundary_2px_centers_2_5px,74,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,75,True,,0.035209658760180146,0.01588806138534535,True,2833.4043332509455,6000.0,True,0.7959182490705857
+combined_boundary_2px_centers_2_5px,76,True,,0.02051129064153047,0.019606008877204473,True,2690.5225952515025,6000.0,True,0.7988702201331314
+combined_boundary_2px_centers_2_5px,77,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,78,True,,0.03256743384282896,0.02658124401941629,True,2690.5225952515025,2907.6659372599233,False,0.7924830273916631
+combined_boundary_2px_centers_2_5px,79,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,80,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,81,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,82,True,,0.02657919550087716,0.07601540563644774,False,2833.4043332509455,3309.2096651357147,False,0.7931468959211249
+combined_boundary_2px_centers_2_5px,83,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,84,True,,0.02523346613932741,0.02946842614001733,True,2690.5225952515025,1409.0868671169376,False,0.7964305953020785
+combined_boundary_2px_centers_2_5px,85,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,86,True,,0.027533690025774916,0.034566479967650575,False,2833.4043332509455,5551.922373421515,False,0.7958963971442099
+combined_boundary_2px_centers_2_5px,87,True,,0.04280196573614958,0.036932017272836064,False,2833.4043332509455,6000.0,True,0.7897893223240225
+combined_boundary_2px_centers_2_5px,88,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,89,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,90,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,91,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,92,True,,0.03516382293317498,0.0429917960752382,False,2690.5225952515025,5006.1005109418675,False,0.7937438500644663
+combined_boundary_2px_centers_2_5px,93,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,94,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,95,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,96,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,97,True,,0.03649189409014041,0.06538784955804336,False,2761.0393659082797,2187.5047422424386,False,0.7907422241117201
+combined_boundary_2px_centers_2_5px,98,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,99,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,100,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,101,True,,0.0365735238876828,0.03673962719339688,False,2761.0393659082797,5697.434489692814,False,0.8029951783265542
+combined_boundary_2px_centers_2_5px,102,True,,0.03580358725013911,0.030622110264300666,False,2761.0393659082797,6000.0,True,0.7949859135490254
+combined_boundary_2px_centers_2_5px,103,True,,0.032664009652803125,0.04124920566351048,False,2690.5225952515025,4513.939612273054,False,0.8045758741488925
+combined_boundary_2px_centers_2_5px,104,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,105,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,106,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,107,True,,0.03717582258893068,0.029607368209012774,True,2833.4043332509455,3062.079196368287,False,0.7944115379341669
+combined_boundary_2px_centers_2_5px,108,True,,0.045897698275160166,0.06828761794633376,False,2761.0393659082797,6000.0,True,0.7969453716272183
+combined_boundary_2px_centers_2_5px,109,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,110,True,,0.033403091881199345,0.0255843795254777,True,2761.0393659082797,2690.5225952515025,False,0.8018539165816014
+combined_boundary_2px_centers_2_5px,111,True,,0.030143080985327437,0.04664873577330723,False,2690.5225952515025,2303.6734300673425,False,0.7966878772179746
+combined_boundary_2px_centers_2_5px,112,True,,0.030101754495547826,0.06608317979202279,False,2833.4043332509455,6000.0,True,0.7888016793315413
+combined_boundary_2px_centers_2_5px,113,True,,0.026578153343636304,0.04131597003288519,False,2761.0393659082797,1688.8436786721554,False,0.7956682564263545
+combined_boundary_2px_centers_2_5px,114,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,115,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,116,True,,0.04448305672056809,0.02132424391745563,True,2761.0393659082797,6000.0,True,0.7933687932345086
+combined_boundary_2px_centers_2_5px,117,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,118,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,119,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,120,True,,0.02033890979743386,0.0398856484016329,False,2833.4043332509455,5271.952335738162,False,0.7943766892328039
+combined_boundary_2px_centers_2_5px,121,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,122,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,123,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,124,True,,0.029922833908883166,0.0454219076300206,False,2761.0393659082797,6000.0,True,0.7974556608156145
+combined_boundary_2px_centers_2_5px,125,False,ValueError: No camera pose passed the corner reprojection constraint,,,,,,,
+combined_boundary_2px_centers_2_5px,126,True,,0.03736217490624706,0.04805185570087773,False,2690.5225952515025,2489.5954321288264,False,0.8005643254797417
+combined_boundary_2px_centers_2_5px,127,True,,0.019275261109565723,0.024453944749931632,True,2833.4043332509455,5697.434489692814,False,0.793334793322494

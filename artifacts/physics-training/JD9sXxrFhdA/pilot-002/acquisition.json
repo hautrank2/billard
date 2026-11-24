@@ -1,0 +1,23 @@
+{
+  "created_at": "2026-11-24T08:20:22.097720+00:00",
+  "source_url": "https://www.youtube.com/watch?v=JD9sXxrFhdA",
+  "requested_start_seconds": 1366.0,
+  "requested_end_seconds": 1386.0,
+  "maximum_height": 1080,
+  "yt_dlp_version": "2026.11.23",
+  "ffmpeg_version": "9.0.2-essentials_build-www.gyan.dev",
+  "status": "downloaded_pending_decode_validation",
+  "id": "JD9sXxrFhdA",
+  "title": "SANCHEZ-RUIZ vs CORTEZA ▸ Round 1 ▸ ARAMITH MEN’S OPEN ▸ BALI 2026 PRO BILLIARD SERIES",
+  "channel": "Pro Billiard TV",
+  "duration": 6669,
+  "width": 1920,
+  "height": 1080,
+  "fps": 60,
+  "format_id": "399",
+  "vcodec": "av01.0.09M.08",
+  "local_files": [
+    "media\\source.mp4"
+  ],
+  "timing_note": "Source offset is requested, not independently verified; validate decoded duration/timestamps."
+}

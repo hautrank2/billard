@@ -1,0 +1,31 @@
+{
+  "source_id": "JD9sXxrFhdA",
+  "updated_on_local": "2026-11-24",
+  "status": "conservative_grouping_from_ordered_repeated_content",
+  "groups": [
+    {
+      "id": "JD9sXxrFhdA-shot-source-estimate-1368",
+      "members": [
+        {"run": "pilot-001", "frames_inclusive": [0, 1799]},
+        {"run": "pilot-002", "frames_inclusive": [0, 1199]}
+      ],
+      "directly_aligned_pairs": {
+        "run": "pilot-002",
+        "reference_frames_inclusive": [60, 217],
+        "repeat_frames_inclusive": [1020, 1177],
+        "repeat_frame_offset": 960,
+        "pair_manifest": "pilot-002/repeat-audit-001/frame-pairs.csv"
+      },
+      "clip_overlap_evidence": "pilot-002/reference-audit-001/reference-audit.json",
+      "repeat_evidence": "pilot-002/repeat-audit-001/repeat-report.json",
+      "split_policy": "All members must receive the same train/validation/test assignment. Do not count the repeat or overhead cut as an independent shot.",
+      "scope_note": "Entire cached clips grouped conservatively, including pre-shot, overhead and wide views. Direct matching was measured only on the stated frame pairs; whole-clip framewise identity is not asserted."
+    }
+  ],
+  "physics_fit_approved": false,
+  "limitations": [
+    "The approximate source-time value in the ID is a label, not a verified absolute timestamp.",
+    "Grouping is metadata for future dataset builders; no training dataset or gameplay policy has been produced.",
+    "This grouping does not establish playback speed, original frame cadence or independent metric calibration."
+  ]
+}

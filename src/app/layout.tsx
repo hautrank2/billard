@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Black / Nine",
+  title: "RollNine",
   description: "Billiard 3D: đấu online, chơi với máy và luyện từng cú đánh.",
 };
 

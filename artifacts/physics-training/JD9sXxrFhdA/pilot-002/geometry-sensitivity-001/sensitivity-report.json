@@ -1,0 +1,217 @@
+{
+  "status": "frozen_geometry_sensitivity_audited_conditional_only",
+  "source_id": "JD9sXxrFhdA",
+  "input_sha256": "90cb0c00f87f446cfa0a7ddb84daf48d699d96e94918adee334244696d7f1696",
+  "provenance_sha256": {
+    "script": "98fdbc433c2a1e2362423dc1450738aabb296aea77aadd1af700686ceed113fb",
+    "camera_implementation": "3186de74660a6b012ccdd46cd3ac69d01d3defc479083d64447a78cb7720de1a",
+    "plan": "3778c12c7ded56875848fcad53b79ff2c022d75198fd66c80b86f7d74182aea6",
+    "geometry_config": "f6dedeba86e2f1dc15a23e6024e3dd00114238b608d70070d1cbea287ee7d6ec",
+    "visual_labels": "523d405a448cc14669d0ba41c8b8dbe59cc0179bc4bef1930c1f6556bd1b5cb2",
+    "baseline_report": "7f395c3caef96c3c0a2657c317eb5558c717f80edc7644f445d9e5ddb8b8b98a",
+    "observations": "8e97c0229ab0890e46befc300f265d3a8b27c377ed8d84978b42f6add419c154",
+    "validation_report": "e57e32be3318d293e465544f214ba2f486d010261ede1f30b4a007cbe85da36f"
+  },
+  "tool_versions": {
+    "opencv": "5.1.0",
+    "numpy": "2.5.5"
+  },
+  "plan": {
+    "purpose": "Diagnose sensitivity of the frozen geometry-001 hypothesis; no game coefficient fitting or model promotion.",
+    "decision_policy": "Preserve fit/check split, 0.03 m gate and 600..6000 px focal grid. Never select corner changes or jitter scenarios using held-out outcomes.",
+    "random_seed": 20261124,
+    "trials_per_scenario": 128,
+    "noise_model": "Independent zero-mean Gaussian x/y pixel perturbations per corner and labeled center in each view. Assumed diagnostic scales, not an empirical error model.",
+    "scenarios": [
+      {
+        "name": "boundary_sigma_1px",
+        "corner_sigma_px": 1.0,
+        "center_sigma_px": 0.0
+      },
+      {
+        "name": "boundary_sigma_2px",
+        "corner_sigma_px": 2.0,
+        "center_sigma_px": 0.0
+      },
+      {
+        "name": "boundary_sigma_4px",
+        "corner_sigma_px": 4.0,
+        "center_sigma_px": 0.0
+      },
+      {
+        "name": "centers_sigma_2_5px",
+        "corner_sigma_px": 0.0,
+        "center_sigma_px": 2.5
+      },
+      {
+        "name": "combined_boundary_2px_centers_2_5px",
+        "corner_sigma_px": 2.0,
+        "center_sigma_px": 2.5
+      }
+    ],
+    "pre_result_commitment": "Run all 640 trials and retain failed pose searches. Report conditional residual ranges, not a favorable perturbed model. No passing trial changes the failed baseline acceptance decision."
+  },
+  "baseline_reproduced": true,
+  "baseline_held_out_max_residual_m": 0.0349294655324347,
+  "frozen_crossview_gate_m": 0.03,
+  "near_best_fit_endpoint_chord": {
+    "unique_end_view_poses": 2,
+    "minimum_m_hypothesis": 0.7952159920297974,
+    "maximum_m_hypothesis": 0.7967876514072711,
+    "interpretation": "Endpoint chord under fit-compatible camera hypotheses; not distance travelled, speed or a confidence interval."
+  },
+  "track_scope": {
+    "frames": [
+      123,
+      217
+    ],
+    "observations": 95,
+    "elapsed_original_pts_s": 1.5666670000000003,
+    "near_hold_groups": 63,
+    "timestamps_resampled": false
+  },
+  "scenarios": [
+    {
+      "name": "boundary_sigma_1px",
+      "corner_sigma_px": 1.0,
+      "center_sigma_px": 0.0,
+      "attempted": 128,
+      "pose_pairs_available": 111,
+      "no_pose_pair": 17,
+      "diagnostic_gate_pass_count": 28,
+      "focal_boundary_hit_count": 50,
+      "held_out_max_residual_m": {
+        "count": 111,
+        "minimum": 0.020838061286173,
+        "p05": 0.023411705250471194,
+        "median": 0.03511240580568495,
+        "p95": 0.04625729459120707,
+        "maximum": 0.049645944026046426
+      },
+      "endpoint_chord_m_hypothesis": {
+        "count": 111,
+        "minimum": 0.7905967060305416,
+        "p05": 0.7927655570509282,
+        "median": 0.7953728557919348,
+        "p95": 0.7991610205665163,
+        "maximum": 0.8039015398288623
+      }
+    },
+    {
+      "name": "boundary_sigma_2px",
+      "corner_sigma_px": 2.0,
+      "center_sigma_px": 0.0,
+      "attempted": 128,
+      "pose_pairs_available": 62,
+      "no_pose_pair": 66,
+      "diagnostic_gate_pass_count": 17,
+      "focal_boundary_hit_count": 26,
+      "held_out_max_residual_m": {
+        "count": 62,
+        "minimum": 0.016916009340860856,
+        "p05": 0.022346459321507625,
+        "median": 0.03850891063962253,
+        "p95": 0.05426051090408369,
+        "maximum": 0.0690119541253949
+      },
+      "endpoint_chord_m_hypothesis": {
+        "count": 62,
+        "minimum": 0.7872518341359072,
+        "p05": 0.7901064678088151,
+        "median": 0.7955255839510569,
+        "p95": 0.8011352170799388,
+        "maximum": 0.8089242799122245
+      }
+    },
+    {
+      "name": "boundary_sigma_4px",
+      "corner_sigma_px": 4.0,
+      "center_sigma_px": 0.0,
+      "attempted": 128,
+      "pose_pairs_available": 16,
+      "no_pose_pair": 112,
+      "diagnostic_gate_pass_count": 9,
+      "focal_boundary_hit_count": 8,
+      "held_out_max_residual_m": {
+        "count": 16,
+        "minimum": 0.012871382335473289,
+        "p05": 0.015127424866033103,
+        "median": 0.025944211773241216,
+        "p95": 0.06751103640811644,
+        "maximum": 0.0731674940874485
+      },
+      "endpoint_chord_m_hypothesis": {
+        "count": 16,
+        "minimum": 0.7822742373373349,
+        "p05": 0.7848989460092551,
+        "median": 0.7984040989339017,
+        "p95": 0.8056822078947118,
+        "maximum": 0.8057486228964685
+      }
+    },
+    {
+      "name": "centers_sigma_2_5px",
+      "corner_sigma_px": 0.0,
+      "center_sigma_px": 2.5,
+      "attempted": 128,
+      "pose_pairs_available": 128,
+      "no_pose_pair": 0,
+      "diagnostic_gate_pass_count": 18,
+      "focal_boundary_hit_count": 88,
+      "held_out_max_residual_m": {
+        "count": 128,
+        "minimum": 0.005825071255681335,
+        "p05": 0.019784023414331053,
+        "median": 0.046992775343898695,
+        "p95": 0.07876270443788581,
+        "maximum": 0.11421494507213371
+      },
+      "endpoint_chord_m_hypothesis": {
+        "count": 128,
+        "minimum": 0.7952159920297974,
+        "p05": 0.7952159920297974,
+        "median": 0.7952159920297974,
+        "p95": 0.7967876514072711,
+        "maximum": 0.7967876514072711
+      }
+    },
+    {
+      "name": "combined_boundary_2px_centers_2_5px",
+      "corner_sigma_px": 2.0,
+      "center_sigma_px": 2.5,
+      "attempted": 128,
+      "pose_pairs_available": 47,
+      "no_pose_pair": 81,
+      "diagnostic_gate_pass_count": 8,
+      "focal_boundary_hit_count": 16,
+      "held_out_max_residual_m": {
+        "count": 47,
+        "minimum": 0.01588806138534535,
+        "p05": 0.02226315416719843,
+        "median": 0.04609259014454356,
+        "p95": 0.10421162164077556,
+        "maximum": 0.13488166316011538
+      },
+      "endpoint_chord_m_hypothesis": {
+        "count": 47,
+        "minimum": 0.7888016793315413,
+        "p05": 0.7897934398945377,
+        "median": 0.7958364925039336,
+        "p95": 0.8025907671755106,
+        "maximum": 0.8045758741488925
+      }
+    }
+  ],
+  "wall_seconds": 32.33870029999889,
+  "metric_calibration_approved": false,
+  "physics_fit_approved": false,
+  "game_parameters_changed": false,
+  "limitations": [
+    "Gaussian jitter scales are declared stress assumptions, not measured error distributions; percentiles are not confidence intervals.",
+    "Sampled pass counts are diagnostic outcomes, not a probability of calibration accuracy or approval.",
+    "Trials without a valid camera pair are retained and counted; summaries of residuals condition on surviving pose pairs.",
+    "Held-out points do not affect fit selection. They have now informed model diagnosis; future improvements require fresh validation points.",
+    "Dimensions, radius, boundary plane, principal point, distortion and timing remain conditional or unverified.",
+    "The endpoint chord varies only camera geometry; tracking errors and path curvature are not included, and no speed or friction is estimated."
+  ]
+}

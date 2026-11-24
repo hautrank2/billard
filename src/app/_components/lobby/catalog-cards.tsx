@@ -1,11 +1,10 @@
-import { LockKeyhole } from "lucide-react";
+import { Layers, LockKeyhole } from "lucide-react";
 
 import { CUE_CATALOG, CUE_TYPE_LABELS } from "~/app/billiard/_components/billiard-game/cues";
 import type { PlayerProfile, ShopCue } from "~/app/billiard/_components/billiard-game/match-types";
 import { RULES } from "~/app/billiard/_components/billiard-game/rules";
 import { Button } from "~/components/ui/button";
 
-import { HALL_CAPACITY } from "./hall-types";
 import type { HallTable } from "./hall-types";
 
 export const CueCards = ({ cues, player, busy, onCue }: {
@@ -59,12 +58,15 @@ export const CueCards = ({ cues, player, busy, onCue }: {
 
 export const TableCards = ({ tables, ownId, busy, resumable, onJoin }: {
   tables: readonly HallTable[]; ownId?: string; busy: boolean; resumable: boolean; onJoin: (table: HallTable) => void;
-}) => <div className="hall-catalog-grid hall-tables-grid">
-  {Array.from({ length: HALL_CAPACITY }, (_, index) => {
-    const slot = index + 1;
-    const table = tables.find((item) => item.slot === slot);
-    return <article className="hall-table-card" key={slot}>
-      <div className={`hall-table-art${table?.playing ? " is-playing" : table ? " is-waiting" : ""}`}>
+}) => tables.length === 0 ? <div className="hall-tables-empty" role="status">
+  <Layers size={32} aria-hidden="true" />
+  <h3>Chưa có bàn nào được tạo</h3>
+  <p>Tạo bàn đầu tiên để mời người chơi khác, hoặc vào Luyện tập để làm quen.</p>
+</div> : <div className="hall-catalog-grid hall-tables-grid">
+  {[...tables].sort((a, b) => a.slot - b.slot).map((table) => {
+    const slot = table.slot;
+    return <article className="hall-table-card" key={table.id}>
+      <div className={`hall-table-art${table.playing ? " is-playing" : " is-waiting"}`}>
         <span>BÀN {String(slot).padStart(2, "0")}</span>
         <svg viewBox="0 0 240 120" role="img" aria-label={`Bàn ${slot}`}>
           <rect x="25" y="13" width="190" height="94" rx="12" fill="#664a35" stroke="#b69c63" strokeWidth="3"/>
@@ -75,10 +77,10 @@ export const TableCards = ({ tables, ownId, busy, resumable, onJoin }: {
         </svg>
       </div>
       <div className="hall-card-body">
-        <div className="hall-table-heading"><h3>{table?.host ?? "Bàn trống"}</h3>{table?.locked && <LockKeyhole size={16} aria-label="Có mật khẩu"/>}</div>
-        <p>{table ? `${RULES[table.rule].label} · ${table.playing ? "2/2 người · Đang đấu" : "1/2 người · Chờ đối thủ"}` : "Chưa có người · Sẵn sàng mở bàn"}</p>
-        {table ? <Button className="lobby-secondary" variant="outline" size="sm" disabled={busy || !ownId || table.hostId === ownId || table.playing || resumable}
-          onClick={() => onJoin(table)}>{table.hostId === ownId ? "Bàn của bạn" : table.playing ? "Đang thi đấu" : "Vào bàn"}</Button> : <span className="hall-muted">Chọn “Tạo bàn 1v1” để được xếp bàn.</span>}
+        <div className="hall-table-heading"><h3>{table.host}</h3>{table.locked && <LockKeyhole size={16} aria-label="Có mật khẩu"/>}</div>
+        <p>{`${RULES[table.rule].label} · ${table.playing ? "2/2 người · Đang đấu" : "1/2 người · Chờ đối thủ"}`}</p>
+        <Button className="lobby-secondary" variant="outline" size="sm" disabled={busy || !ownId || table.hostId === ownId || table.playing || resumable}
+          onClick={() => onJoin(table)}>{table.hostId === ownId ? "Bàn của bạn" : table.playing ? "Đang thi đấu" : "Vào bàn"}</Button>
       </div>
     </article>;
   })}

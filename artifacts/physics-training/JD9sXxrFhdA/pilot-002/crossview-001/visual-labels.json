@@ -1,0 +1,28 @@
+{
+  "status": "approximate_agent_visual_reference_labels",
+  "source_id": "JD9sXxrFhdA",
+  "pilot_002_input_sha256": "90cb0c00f87f446cfa0a7ddb84daf48d699d96e94918adee334244696d7f1696",
+  "coordinate_size": [1280, 720],
+  "method": "Visual reading of detector-free fixed crops in blind-sheet-1/2/3.jpg before looking up algorithm positions for these frames.",
+  "independent_expert_ground_truth": false,
+  "label_uncertainty_px": 2.5,
+  "center_definition": "Approximate center of visible spherical body; exclude lower cast shadow and highlight-only center.",
+  "cue_ball_centers": [
+    {"frame": 129, "center_px": [585, 369], "visible": true},
+    {"frame": 139, "center_px": [610.5, 370], "visible": true},
+    {"frame": 149, "center_px": [647, 370], "visible": true},
+    {"frame": 159, "center_px": [683.5, 371], "visible": true},
+    {"frame": 169, "center_px": [715.5, 372], "visible": true},
+    {"frame": 179, "center_px": [749.5, 373], "visible": true},
+    {"frame": 189, "center_px": [775, 373], "visible": true},
+    {"frame": 199, "center_px": [803, 374], "visible": true},
+    {"frame": 209, "center_px": [833, 375], "visible": true}
+  ],
+  "crossview_stationary_ball_correspondences": [
+    {"name": "brown_orange_solid", "end_frame": 300, "end_center_px": [543, 352], "overhead_frame": 510, "overhead_center_px": [713, 228]},
+    {"name": "far_blue_white_stripe", "end_frame": 300, "end_center_px": [681, 324], "overhead_frame": 510, "overhead_center_px": [809, 353]},
+    {"name": "near_yellow_white_stripe", "end_frame": 300, "end_center_px": [608, 517], "overhead_frame": 510, "overhead_center_px": [291, 293]},
+    {"name": "dark_ball_near_left_rail", "end_frame": 300, "end_center_px": [430, 416], "overhead_frame": 510, "overhead_center_px": [529, 143]}
+  ],
+  "crossview_note": "Correspondences chosen visually by color/stripe and layout; no official ball-number identity asserted. Must verify their stationary status over surrounding frames."
+}

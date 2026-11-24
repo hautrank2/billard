@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 
 import { disposeGroup } from "../../billiard/_components/billiard-game/table-scene";
+import { animateAvatar } from "./avatar-motion";
+import { HALL_SCALE } from "./hall-layout";
 import { createAvatar } from "./avatar";
 import { createHallRoom, hallLabel, tablePositions } from "./hall-room";
 import { createHallWalk } from "./hall-walk";
@@ -85,26 +87,23 @@ export const LobbyScene = ({ people, tables, selfId, overhead, paused, onMotion 
 
     const scene = new THREE.Scene();
     const overviewCamera = new THREE.OrthographicCamera(-1, 1, 1, -1, .1, 160);
-    const firstPerson = new THREE.PerspectiveCamera(72, 1, .045, 90);
-    const walk = createHallWalk(renderer.domElement, firstPerson, (motion) => publish.current(motion), setLocked);
+    const followCamera = new THREE.PerspectiveCamera(65, 1, .045, 90);
+    const walk = createHallWalk(renderer.domElement, followCamera, (motion) => publish.current(motion), setLocked);
     controls.current = walk;
-    const handMaterial = new THREE.MeshStandardMaterial({ color: "#bc9368", roughness: .8 });
-    const hand = new THREE.Mesh(new THREE.CapsuleGeometry(.045, .13, 5, 10), handMaterial);
-    hand.rotation.x = Math.PI / 3;
-    hand.position.set(.24, -.28, -.42);
-    firstPerson.add(hand);
-    scene.add(firstPerson);
+    scene.add(followCamera);
     const key = lights(scene);
     scene.background = new THREE.Color("#172a2d");
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFShadowMap;
     key.castShadow = true;
-    key.shadow.mapSize.set(2048, 2048);
+    key.shadow.mapSize.set(1024, 1024);
+    key.shadow.autoUpdate = false;
+    key.shadow.needsUpdate = true;
     key.shadow.camera.left = key.shadow.camera.bottom = -16;
     key.shadow.camera.right = key.shadow.camera.top = 16;
     key.shadow.camera.far = 38;
     key.shadow.normalBias = .04;
-    const { room, updateTables, dispose } = createHallRoom();
+    const { room, updateTables, setOverview, dispose } = createHallRoom();
     scene.add(room);
     let topDown = false;
     let ownId: string | undefined;
@@ -120,8 +119,8 @@ export const LobbyScene = ({ people, tables, selfId, overhead, paused, onMotion 
       overviewCamera.updateMatrixWorld();
       let extentX = 0;
       let extentY = 0;
-      for (const x of [-12.8, 12.8]) {
-        for (const z of [-5, 5]) {
+      for (const x of [-19.2, 19.2]) {
+        for (const z of [-7.5, 7.5]) {
           for (const y of [-.45, 2.15]) {
             const point = new THREE.Vector3(x, y, z).applyMatrix4(overviewCamera.matrixWorldInverse);
             extentX = Math.max(extentX, Math.abs(point.x));
@@ -136,16 +135,21 @@ export const LobbyScene = ({ people, tables, selfId, overhead, paused, onMotion 
       overviewCamera.top = scale - offset;
       overviewCamera.bottom = -scale - offset;
       overviewCamera.updateProjectionMatrix();
+      // Bound the fill cost on large/high-DPI screens without shrinking the UI.
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5, Math.sqrt(1_600_000 / (width * height))));
       renderer.setSize(width, height, false);
-      firstPerson.aspect = aspect;
-      firstPerson.updateProjectionMatrix();
+      followCamera.aspect = aspect;
+      followCamera.updateProjectionMatrix();
     };
 
     update.current = ({ people: current, tables: entries, selfId: me, overhead: angle, paused: blocked }) => {
       const nextSignature = JSON.stringify([current, blocked, entries.map(({ hostId, slot, playing }) => [hostId, slot, playing]), me, angle]);
       if (signature === nextSignature) return;
       signature = nextSignature;
+      key.shadow.needsUpdate = true;
+      const angleChanged = topDown !== angle;
       topDown = angle;
+      setOverview(angle);
       ownId = me;
       walk.setEnabled(!angle, blocked);
       updateTables(new Map(entries.map(({ slot, playing }) => [slot, playing])));
@@ -157,12 +161,12 @@ export const LobbyScene = ({ people, tables, selfId, overhead, paused, onMotion 
         avatars.delete(id);
       }
       visible.forEach(({ id, name, gender, motion }, index) => {
-        const tag = `${gender}:${name}:${id === me}:${motion?.action}:${motion?.sitting}`;
+        const tag = `${gender}:${name}:${id === me}`;
         let avatar = avatars.get(id);
         if (avatar?.tag !== tag) {
           if (avatar) removeAvatar(avatar.model);
           const model = createAvatar(gender);
-          model.add(nameSprite(`${name}${motion?.action === "hit" ? " · Đánh" : motion?.action === "wave" ? " · Chào!" : motion?.sitting ? " · Đang ngồi" : ""}`, id === me));
+          model.add(nameSprite(name, id === me));
           scene.add(model);
           avatar = { model, tag, target: new THREE.Vector3() };
           avatars.set(id, avatar);
@@ -172,58 +176,83 @@ export const LobbyScene = ({ people, tables, selfId, overhead, paused, onMotion 
         const [x = -11, z = 0] = waitingSpots[index % waitingSpots.length] ?? [];
         const offset = Math.floor(index / waitingSpots.length) * .46;
         avatar.motion = motion;
-        avatar.target.set(motion?.x ?? (table ? table.x + (table.rotated ? 1.8 : 1.18) : x), motion?.y ?? .02,
-          motion?.z ?? (table ? table.z + (table.rotated ? .65 : -.66) : z + offset));
+        avatar.target.set(motion?.x ?? (table ? table.x + (table.rotated ? 1.8 : 1.18) : x * HALL_SCALE), motion?.y ?? .02,
+          motion?.z ?? (table ? table.z + (table.rotated ? .65 : -.66) : z * HALL_SCALE + offset));
         if (avatar.model.position.lengthSq() === 0) avatar.model.position.copy(avatar.target);
         avatar.model.rotation.y = motion ? motion.yaw + Math.PI : .31;
 
       });
       walk.place(me, current.find((person) => person.id === me)?.motion,
         [...avatars].filter(([id]) => id !== me).map(([, avatar]) => ({ x: avatar.target.x, z: avatar.target.z })));
-      draw();
+      if (angleChanged) {
+        key.shadow.needsUpdate = true;
+        draw();
+      }
     };
 
     const observer = new ResizeObserver(draw);
     observer.observe(container);
     draw();
     let last = performance.now();
+    let lastShadow = 0;
     let frame = 0;
     const animate = (now: number) => {
+      frame = requestAnimationFrame(animate);
+      // Avoid running a full room render at 120/144 Hz on high-refresh displays.
+      if (now - last < 1000 / 60 - 1) return;
       const dt = Math.min((now - last) / 1000, .05);
       last = now;
       walk.step(dt, now);
-      hand.visible = !topDown;
-      const punch = walk.motion.action === "hit" ? Math.max(0, Math.sin(now * .018)) : 0;
-      hand.position.set(.24 - punch * .12, -.28 + punch * .12, -.42 - punch * .25);
       for (const [id, avatar] of avatars) {
         const local = id === ownId;
-        avatar.model.visible = !local || topDown;
+        avatar.model.visible = true;
+        const name = avatar.model.children.find((child) => child instanceof THREE.Sprite);
+        if (name) name.visible = !local || topDown;
         if (local) {
           avatar.model.position.set(walk.motion.x, walk.motion.y, walk.motion.z);
           avatar.model.rotation.y = walk.motion.yaw + Math.PI;
-        } else avatar.model.position.lerp(avatar.target, 1 - Math.exp(-dt * 10));
-        const pose = local ? walk.motion : avatar.motion;
-        avatar.model.scale.y = pose?.sitting ? .64 : 1;
-        for (const child of avatar.model.children) {
-          if (!(child instanceof THREE.Mesh) || Math.abs(child.position.x) < .26 || child.position.y > 1.1) continue;
-          child.rotation.x = pose?.action === "hit" ? -.9 + Math.sin(now * .018) * .65 : pose?.action === "wave" ? -2 + Math.sin(now * .012) * .3 : 0;
+        } else {
+          avatar.model.position.x = THREE.MathUtils.lerp(avatar.model.position.x, avatar.target.x, 1 - Math.exp(-dt * 10));
+          avatar.model.position.z = THREE.MathUtils.lerp(avatar.model.position.z, avatar.target.z, 1 - Math.exp(-dt * 10));
+          avatar.model.position.y = avatar.target.y;
         }
+        const pose = local ? walk.motion : avatar.motion;
+        animateAvatar(avatar.model, pose, dt, now);
       }
-      renderer.render(scene, topDown ? overviewCamera : firstPerson);
-      frame = requestAnimationFrame(animate);
+      if (avatars.size && now - lastShadow >= 100) {
+        key.shadow.needsUpdate = true;
+        lastShadow = now;
+      }
+      renderer.render(scene, topDown ? overviewCamera : followCamera);
     };
-    frame = requestAnimationFrame(animate);
+    const visibility = () => {
+      cancelAnimationFrame(frame);
+      if (!document.hidden) {
+        last = performance.now();
+        frame = requestAnimationFrame(animate);
+      }
+    };
+    document.addEventListener("visibilitychange", visibility);
+    let disposed = false;
+    // Let the menu paint before GPU shader compilation, then warm programs in
+    // parallel where KHR_parallel_shader_compile is available.
+    const warmup = requestAnimationFrame(() => {
+      void renderer.compileAsync(scene, followCamera).catch(() => undefined).then(() => {
+        if (!disposed) visibility();
+      });
+    });
 
     return () => {
+      disposed = true;
+      cancelAnimationFrame(warmup);
       cancelAnimationFrame(frame);
+      document.removeEventListener("visibilitychange", visibility);
       walk.dispose();
       controls.current = null;
       update.current = null;
       observer.disconnect();
       for (const { model } of avatars.values()) removeAvatar(model);
       dispose();
-      hand.geometry.dispose();
-      handMaterial.dispose();
       key.shadow.dispose();
       renderer.dispose();
       renderer.domElement.remove();
@@ -243,7 +272,7 @@ export const LobbyScene = ({ people, tables, selfId, overhead, paused, onMotion 
       <div className="hall-crosshair" aria-hidden="true">+</div>
       <div className="hall-glass hall-walk-help">
         <button type="button" onClick={() => void controls.current?.lock()}>{locked ? "Esc để thả chuột" : "Bấm để điều khiển chuột"}</button>
-        <p>WASD: đi · Chuột: nhìn / ngước · Space: nhảy · C: ngồi · F: đánh · E: chào</p>
+        <p>WASD: đi · Chuột: nhìn / ngước · Space: nhảy · C: ngồi ghế / đứng · Click trái / F: đánh · E: chào</p>
         <p className="hall-touch-help">Kéo trên phòng để nhìn, dùng các nút bên dưới để di chuyển.</p>
       </div>
       <div className="hall-walk-actions hall-glass" aria-label="Động tác trong sảnh">

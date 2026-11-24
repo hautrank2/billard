@@ -1,4 +1,4 @@
-# Black / Nine
+# RollNine
 
 Game billiard 3D với luật 8, 9 và 10 bi. Sảnh tại `/` có hồ sơ, kho gậy, ghép trận và chơi với máy. `/billiard` có chơi tự do và các bài tập từ Util4us. Xem [hướng dẫn chơi và mô phỏng](docs/billiard.md).
 

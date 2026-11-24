@@ -75,7 +75,7 @@ export const useLobby = () => {
   };
 
   const refresh = useEffectEvent(async () => {
-    if (running.current || polling.current) return;
+    if (document.hidden || running.current || polling.current) return;
     polling.current = true;
     const current = ++revision.current;
     const queue = !open && view?.queued;

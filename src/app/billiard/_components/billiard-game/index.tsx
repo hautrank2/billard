@@ -9,6 +9,7 @@ import Link from "next/link";
 import { useState } from "react";
 import type { CSSProperties } from "react";
 
+import { BrandLogo } from "~/components/brand-logo";
 import { Button } from "~/components/ui/button";
 import {
   Dialog, DialogContent, DialogDescription, DialogHeader,
@@ -93,7 +94,7 @@ export const BilliardGame = (props: BilliardGameProps) => {
               {onBack
                 ? <Button variant="ghost" size="icon" onClick={onBack} className="size-7" aria-label="Về sảnh"><ArrowLeft /></Button>
                 : <Link href="/" aria-label="Về sảnh" className="rounded-full border border-border p-1.5 text-muted-foreground hover:text-foreground focus-visible:outline-2 focus-visible:outline-primary"><ArrowLeft className="size-3.5" /></Link>}
-              <h1 className="text-xs font-black tracking-[0.16em] sm:text-sm">BLACK <span className="font-light text-primary">/</span> NINE<span className="text-primary">.</span></h1>
+              <h1><BrandLogo compact /></h1>
             </div>
             <p className="billiard-mode-label text-[9px] tracking-wider text-muted-foreground">{modeLabel}</p>
           </header>
@@ -327,9 +328,23 @@ export const BilliardGame = (props: BilliardGameProps) => {
       <DialogContent className="billiard-game max-h-[85dvh] overflow-y-auto bg-card p-5 sm:max-w-xl 2xl:max-w-3xl">
         <DialogHeader>
           <DialogTitle>Hướng dẫn chơi</DialogTitle>
-          <DialogDescription>Ba góc nhìn; luật 8, 9, 10 bi và bài luyện tập. Bấm 1, 2 hoặc 3 để đổi góc nhìn.</DialogDescription>
+          <DialogDescription>Chào mừng đến RollNine! Làm quen với cú đánh đầu tiên qua 3 bước.</DialogDescription>
         </DialogHeader>
         <div className="billiard-help space-y-4 text-sm leading-relaxed text-muted-foreground">
+          <ol className="grid gap-3" aria-label="Ba bước bắt đầu">
+            {[
+              ["Đặt bi cái", "Khi bàn yêu cầu đặt bi, bấm vào vùng sáng để chọn vị trí rồi nhấn Chốt hoặc Space."],
+              ["Ngắm bi mục tiêu", "Kéo ngang trên bàn hoặc nhấn A / D để chỉnh hướng. Ở 9 bi và 10 bi, hãy chạm bi có số nhỏ nhất trước."],
+              ["Chọn lực và đánh", "Chỉnh thanh Lực rồi bấm Đánh ở bên phải. Với chuột: giữ Space, nhấn trên bàn và kéo xuống, rồi thả chuột để đánh."],
+            ].map(([title, description], index) => <li key={title} className="flex gap-3 rounded-lg border border-border bg-muted/25 p-3">
+              <span className="grid size-7 shrink-0 place-items-center rounded-full bg-primary/15 text-sm font-bold text-primary">{index + 1}</span>
+              <div><h3 className="font-semibold text-foreground">{title}</h3><p className="mt-1 text-xs leading-relaxed">{description}</p></div>
+            </li>)}
+          </ol>
+          <p className="text-xs">Bấm 1 / 2 / 3 để đổi góc nhìn. Bạn luôn có thể mở lại bảng này bằng nút Hướng dẫn.</p>
+          <details className="rounded-lg border border-border p-3">
+            <summary className="cursor-pointer font-medium text-foreground">Xem phím điều khiển và luật chơi chi tiết</summary>
+            <div className="mt-4 space-y-4">
           <ControlsIllustration />
           <div className="grid gap-2">
             <p><strong className="text-foreground">1 · Ngắm.</strong> Nhấn A hoặc D để xoay hướng bắn sang trái hoặc phải. Có thể kéo ngang để ngắm, hoặc giữ Shift cùng A hoặc D để chỉnh hướng từng bước nhỏ. Nhấn W để nhìn lên và S để nhìn xuống. Giữ Shift và rê chuột để dời điểm chạm trên bi cái.</p>
@@ -345,6 +360,9 @@ export const BilliardGame = (props: BilliardGameProps) => {
           <p><strong className="text-foreground">Luyện tập:</strong> ăn băng, đá băng, nhảy bi, cắt mỏng và về vị trí. Mỗi bài có ba vị trí; mỗi lần thử là một cú đánh. {DRILL_RETRY_KEY} bày lại vị trí, {DRILL_NEXT_KEY} sang vị trí khác; điểm Đạt / số lần thử được giữ trong lúc luyện.</p>
           <p><strong className="text-foreground">Điểm chạm:</strong> chọn trực tiếp trên bi cái ở góc dưới. Khi ô này có focus, dùng phím mũi tên để chỉnh hoặc Home để về tâm. Phím <kbd>`</kbd> cũng trả về tâm. 12 giờ: cu-lê; 6 giờ: trô; 3/9 giờ: ép-phê. Sau mỗi cú đánh điểm chạm tự về tâm.</p>
           <p className="text-xs">Sau va chạm cần có bi vào lỗ hoặc chạm băng. Ba ô bếp bằng nhau dành cho bi cái khi phá. Đây là chế độ tập luyện một người với vật lý ép-phê mô phỏng; không có lượt đối thủ, gọi lỗ và lỗi ba lần liên tiếp.</p>
+            </div>
+          </details>
+          <Button className="w-full" onClick={() => setHelp(false)}>Đã hiểu, bắt đầu chơi</Button>
         </div>
       </DialogContent>
     </Dialog>

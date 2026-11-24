@@ -1,22 +1,31 @@
 "use client";
 
 import { ArrowUpRight, ChevronLeft, ChevronRight, Coins, Crosshair, Layers, MessageCircle, Plus, Send, Target, Trophy, Users, X } from "lucide-react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
+import { BrandLogo } from "~/components/brand-logo";
 import { Button } from "~/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "~/components/ui/dialog";
 import { Input } from "~/components/ui/input";
 
-import { BilliardGame } from "../../billiard/_components/billiard-game";
 import { RULES } from "../../billiard/_components/billiard-game/rules";
 import type { GameRule } from "../../billiard/_components/billiard-game/type";
 import type { HallMessage, HallTable } from "./hall-types";
 import { CueCards, TableCards } from "./catalog-cards";
 import { useLobby } from "./hook";
-import { LobbyScene } from "./lobby-scene";
 import "./lobby.css";
+
+const BilliardGame = dynamic(() => import("../../billiard/_components/billiard-game").then((module) => module.BilliardGame), {
+  ssr: false,
+  loading: () => <p className="hall-glass hall-feedback" role="status">Đang tải bàn chơi…</p>,
+});
+const LobbyScene = dynamic(() => import("./lobby-scene").then((module) => module.LobbyScene), {
+  ssr: false,
+  loading: () => <div className="hall-scene" role="status" aria-label="Đang tải sảnh 3D" />,
+});
 
 type Panel = "create" | "tables" | "cues" | "history" | "chat";
 const gameRules: GameRule[] = ["eight", "nine", "ten"];
@@ -86,6 +95,7 @@ export const Lobby = () => {
   const [panel, setPanel] = useState<Panel | null>(null);
   const [overhead, setOverhead] = useState(false);
   const [password, setPassword] = useState("");
+  const [tablePassword, setTablePassword] = useState("");
   const [selectedTable, setSelectedTable] = useState<string | null>(null);
   const [listPage, setListPage] = useState(0);
   const player = view?.player;
@@ -109,6 +119,7 @@ export const Lobby = () => {
     setPanel(next);
     setSelectedTable(null);
     setPassword("");
+    setTablePassword("");
     setListPage(0);
   };
 
@@ -122,14 +133,13 @@ export const Lobby = () => {
   }
 
   return (
-    <main className="black-nine billiard-lobby" onKeyDown={(event) => {
+    <main className="rollnine billiard-lobby" onKeyDown={(event) => {
       if (event.key === "Escape" && panel) showPanel(null);
     }}>
       <LobbyScene people={people} tables={tables} selfId={player?.id} overhead={overhead} paused={Boolean(panel || resumable) || !player} onMotion={publishMotion} />
       <header className="hall-header">
-        <div className="lobby-wordmark"><span className="lobby-mark" aria-hidden="true">9</span> BLACK<span className="lobby-gold"> / </span>NINE</div>
+        <BrandLogo />
         <nav className="hall-glass hall-nav" aria-label="Điều hướng">
-          <Link href="/billiard">Luyện tập <ArrowUpRight size={14} aria-hidden="true" /></Link>
           <button type="button" aria-pressed={panel === "cues"} onClick={() => showPanel(panel === "cues" ? null : "cues")}>Gậy</button>
           <button type="button" aria-pressed={panel === "history"} onClick={() => showPanel(panel === "history" ? null : "history")}>Lịch sử</button>
         </nav>
@@ -145,52 +155,17 @@ export const Lobby = () => {
         <p aria-label={`${people.length} người trong sảnh`}><Users size={15} aria-hidden="true" /> {people.length} trong sảnh</p>
       </div>
       <button className="hall-glass hall-camera" type="button" aria-pressed={overhead} onClick={() => setOverhead(!overhead)}>
-        <Layers size={16} aria-hidden="true" /> {overhead ? "Góc nhìn thứ nhất" : "Toàn cảnh"}
+        <Layers size={16} aria-hidden="true" /> {overhead ? "Góc nhìn sau lưng" : "Toàn cảnh"}
       </button>
 
-      <Dialog open={panel === "tables" || panel === "cues"} onOpenChange={(visible) => { if (!visible) showPanel(null); }}>
-        <DialogContent className="black-nine hall-catalog-dialog">
+      <Dialog open={panel === "create" || panel === "tables" || panel === "cues"} onOpenChange={(visible) => { if (!visible) showPanel(null); }}>
+        <DialogContent className="rollnine hall-catalog-dialog">
           <DialogHeader>
-            <DialogTitle>{panel === "cues" ? "Bộ sưu tập gậy" : "Bàn trong sảnh"}</DialogTitle>
-            <DialogDescription>{panel === "cues" ? "Hình minh họa và thông số gậy được dùng trong trò chơi." : "10 bàn thi đấu · Chọn bàn đang chờ để gặp đối thủ."}</DialogDescription>
+            <DialogTitle>{panel === "cues" ? "Bộ sưu tập gậy" : panel === "create" ? "Tạo bàn 1v1" : "Bàn đã tạo"}</DialogTitle>
+            <DialogDescription>{panel === "cues" ? "Hình minh họa và thông số gậy được dùng trong trò chơi." : "Tạo bàn mới hoặc chọn một bàn đang chờ để gặp đối thủ."}</DialogDescription>
           </DialogHeader>
           {error && <p className="lobby-error" role="alert">{error}</p>}
           <div className="hall-catalog-scroll">
-            {panel === "cues" && player && <>
-              <div className="hall-shop-account">{player.registered ? <span><Coins size={16}/> {player.coins.toLocaleString("vi-VN")} xu</span> : <><p>Khách dùng gậy tiêu chuẩn. Đăng ký Gmail để nhận xu và mua gậy.</p><a href="/api/auth/google" className="lobby-gold">Đăng ký bằng Gmail →</a></>}</div>
-              <CueCards cues={view?.cues ?? []} player={player} busy={busy} onCue={(id, action) => { void send({ type: "cue", id, action }); }}/>
-            </>}
-            {panel === "tables" && <TableCards tables={tables} ownId={player?.id} busy={busy} resumable={Boolean(resumable)} onJoin={(table) => {
-              if (!table.locked) void join(table);
-              else { setSelectedTable(table.id); setPassword(""); }
-            }}/>}
-          </div>
-              {selectedTable && (selected ? <form className="hall-inline-form hall-table-key" onSubmit={(event) => {
-                event.preventDefault();
-                if (password) void join(selected, password);
-              }}>
-                <Input autoFocus aria-label={`Mật khẩu bàn ${tableNumber(selected.slot)}`} type="password" value={password} maxLength={64}
-                  autoComplete="off" placeholder={`Mật khẩu bàn ${tableNumber(selected.slot)}`}
-                  onChange={(event) => setPassword(event.currentTarget.value)} required />
-                <Button className="lobby-primary" disabled={busy || !password} type="submit">Vào</Button>
-              </form> : <p className="hall-empty">Bàn đã đóng hoặc đã đủ người.</p>)}
-        </DialogContent>
-      </Dialog>
-
-      <div className="hall-dock">
-        <RoomChat messages={hall?.messages ?? []} ownId={player?.id} busy={busy || !player} visible={panel === "chat"}
-          onClose={() => showPanel(null)} onSend={async (text) => Boolean(await send({ type: "chat", text }))} />
-        <div className={`hall-side${panel === "chat" ? " chat-selected" : ""}`}>
-          {!view && !error && <p className="hall-glass hall-feedback" role="status">Đang kết nối sảnh…</p>}
-          {(error || motionError) && <p className="hall-glass hall-feedback lobby-error" role="alert">{error || motionError}</p>}
-
-          {panel && panel !== "chat" && panel !== "tables" && panel !== "cues" && <section className="hall-glass hall-popup" aria-labelledby="hall-popup-title">
-            <div className="hall-panel-heading">
-              <Target size={18} aria-hidden="true" />
-              <h2 id="hall-popup-title">{panelTitle[panel]}</h2>
-              <button className="hall-close" type="button" aria-label="Đóng bảng" onClick={() => showPanel(null)}><X size={19} /></button>
-            </div>
-
             {panel === "create" && <form className="hall-create" onSubmit={async (event) => {
               event.preventDefault();
               if (await send({ type: "table-open", ...options, password: password || undefined })) showPanel(null);
@@ -208,6 +183,43 @@ export const Lobby = () => {
                 placeholder="Để trống nếu mở cho mọi người" onChange={(event) => setPassword(event.currentTarget.value)} />
               <Button className="lobby-primary w-full" disabled={busy || !player} type="submit"><Plus /> Tạo bàn</Button>
             </form>}
+            {(panel === "create" || panel === "tables") && <div className="hall-created-heading"><h3>Bàn đã tạo <span>({tables.length})</span></h3>{panel === "tables" && !ownTable && !resumable && <Button className="lobby-primary" size="sm" disabled={busy || !player} onClick={() => showPanel("create")}><Plus size={15} /> Tạo bàn</Button>}</div>}
+            {panel === "cues" && player && <>
+              <div className="hall-shop-account">{player.registered ? <span><Coins size={16}/> {player.coins.toLocaleString("vi-VN")} xu</span> : <><p>Khách dùng gậy tiêu chuẩn. Đăng ký Gmail để nhận xu và mua gậy.</p><a href="/api/auth/google" className="lobby-gold">Đăng ký bằng Gmail →</a></>}</div>
+              <CueCards cues={view?.cues ?? []} player={player} busy={busy} onCue={(id, action) => { void send({ type: "cue", id, action }); }}/>
+            </>}
+            {(panel === "tables" || panel === "create") && <TableCards tables={tables} ownId={player?.id} busy={busy} resumable={Boolean(resumable)} onJoin={(table) => {
+              if (!table.locked) void join(table);
+              else { setSelectedTable(table.id); setTablePassword(""); }
+            }}/>}
+          </div>
+              {selectedTable && (selected ? <form className="hall-inline-form hall-table-key" onSubmit={(event) => {
+                event.preventDefault();
+                if (tablePassword) void join(selected, tablePassword);
+              }}>
+                <Input autoFocus aria-label={`Mật khẩu bàn ${tableNumber(selected.slot)}`} type="password" value={tablePassword} maxLength={64}
+                  autoComplete="off" placeholder={`Mật khẩu bàn ${tableNumber(selected.slot)}`}
+                  onChange={(event) => setTablePassword(event.currentTarget.value)} required />
+                <Button className="lobby-primary" disabled={busy || !tablePassword} type="submit">Vào</Button>
+              </form> : <p className="hall-empty">Bàn đã đóng hoặc đã đủ người.</p>)}
+        </DialogContent>
+      </Dialog>
+
+      <div className="hall-dock">
+        <RoomChat messages={hall?.messages ?? []} ownId={player?.id} busy={busy || !player} visible={panel === "chat"}
+          onClose={() => showPanel(null)} onSend={async (text) => Boolean(await send({ type: "chat", text }))} />
+        <div className={`hall-side${panel === "chat" ? " chat-selected" : ""}`}>
+          {!view && !error && <p className="hall-glass hall-feedback" role="status">Đang kết nối sảnh…</p>}
+          {(error || motionError) && <p className="hall-glass hall-feedback lobby-error" role="alert">{error || motionError}</p>}
+
+          {panel === "history" && <section className="hall-glass hall-popup" aria-labelledby="hall-popup-title">
+            <div className="hall-panel-heading">
+              <Target size={18} aria-hidden="true" />
+              <h2 id="hall-popup-title">{panelTitle[panel]}</h2>
+              <button className="hall-close" type="button" aria-label="Đóng bảng" onClick={() => showPanel(null)}><X size={19} /></button>
+            </div>
+
+
 
             {panel === "history" && <>
               {!rows && <p className="hall-empty">Chưa có trận hoàn tất.</p>}
@@ -240,6 +252,11 @@ export const Lobby = () => {
             <Button className="lobby-secondary hall-chat-toggle" variant="outline" aria-pressed={panel === "chat"}
               onClick={() => showPanel(panel === "chat" ? null : "chat")}><MessageCircle /><span>Chat</span></Button>
           </div>
+          <Link href="/billiard" prefetch={false} className="hall-practice" aria-label="Luyện tập">
+            <span className="hall-practice-icon"><Crosshair size={27} aria-hidden="true" /></span>
+            <span><small>BẮT ĐẦU TẠI ĐÂY</small><strong>Luyện tập ngay</strong><span>Làm quen bàn · Chơi ngay, không cần chờ</span></span>
+            <ArrowUpRight size={24} aria-hidden="true" />
+          </Link>
         </div>
       </div>
     </main>

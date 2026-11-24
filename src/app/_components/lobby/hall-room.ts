@@ -1,6 +1,9 @@
 import * as THREE from "three";
 
-import { tablePositions } from "./hall-layout";
+import { createTable } from "../../billiard/_components/billiard-game/table-scene";
+import { TABLE_PRESETS } from "../../billiard/_components/billiard-game/config";
+import { HALL_SCALE, sofaPositions, tablePositions } from "./hall-layout";
+import { instanceStaticMeshes } from "./static-meshes";
 export { tablePositions } from "./hall-layout";
 
 const WIDTH = 25;
@@ -33,6 +36,7 @@ export function hallLabel(text: string, color = "#fff0ce", background = "#0c151c
 
 export function createHallRoom() {
   const room = new THREE.Group();
+  room.scale.set(HALL_SCALE, 1, HALL_SCALE);
   const paint = (color: string, metalness = 0, roughness = 0.72) =>
     new THREE.MeshStandardMaterial({ color, metalness, roughness });
   const box = (parent: THREE.Group, mat: THREE.Material, w: number, h: number, d: number, x: number, y: number, z: number, shadow = true) => {
@@ -56,14 +60,9 @@ export function createHallRoom() {
   const slate = paint("#25363d", 0.14);
   const wall = paint("#26323b");
   const edge = paint("#c69355", 0.42);
-  const pocket = new THREE.MeshBasicMaterial({ color: "#080e13" });
   const bulb = new THREE.MeshBasicMaterial({ color: "#ffe4a5" });
   const cyan = new THREE.MeshBasicMaterial({ color: "#78e6dc" });
   const beige = paint("#dac69a");
-  const feltColors = ["#335e79", "#687d7e"];
-  const openFelt = paint("#478a7e");
-  const liveFelt = paint("#c18e51");
-  const ordinaryFelt = feltColors.map((color) => paint(color));
   const plank = ["#594132", "#513a2d", "#624735", "#584134", "#634a39"].map((color) => paint(color));
   const ballColors = ["#f8eac9", "#ffcb56", "#d6694f", "#4e82cb", "#22252d"].map((color) => paint(color, 0, 0.27));
   const fabrics = [paint("#3c5754"), paint("#654738")];
@@ -78,11 +77,47 @@ export function createHallRoom() {
     }
   }
 
-  box(room, wall, WIDTH, 2.1, .22, 0, 1.05, -4.75);
-  box(room, edge, WIDTH + .2, .09, .34, 0, 2.13, -4.75);
-  box(room, black, WIDTH, .18, .13, 0, .12, -4.61);
-  box(room, wall, .22, 1.55, DEPTH, 12.48, .77, 0);
-  box(room, edge, .33, .08, DEPTH + .2, 12.48, 1.565, 0);
+  // A complete interior; only the overview removes the near walls and roof.
+  const cutaway = new THREE.Group();
+  room.add(cutaway);
+  const height = 3.65;
+  const ceiling = paint("#343d42");
+  box(room, wall, WIDTH + .24, height, .24, 0, height / 2, -4.75);
+  box(room, wall, .24, height, DEPTH, 12.48, height / 2, 0);
+  box(cutaway, wall, WIDTH + .24, height, .24, 0, height / 2, 4.75);
+  box(cutaway, wall, .24, height, DEPTH, -12.48, height / 2, 0);
+  box(cutaway, ceiling, WIDTH + .5, .22, DEPTH + .5, 0, height + .11, 0);
+  for (const z of [-4.59, 4.59]) {
+    const parent = z > 0 ? cutaway : room;
+    box(parent, wood, WIDTH - .2, .82, .065, 0, .43, z);
+    box(parent, edge, WIDTH - .2, .045, .09, 0, .87, z);
+    box(parent, black, WIDTH - .2, .16, .09, 0, .09, z);
+    box(parent, metal, WIDTH - .2, .09, .12, 0, 3.48, z);
+    for (let x = -12; x < 12; x += .65) {
+      box(parent, edge, .022, .69, .025, x, .43, z + (z > 0 ? -.04 : .04), false);
+    }
+  }
+  for (const x of [-12.32, 12.32]) {
+    const parent = x < 0 ? cutaway : room;
+    box(parent, wood, .06, .82, DEPTH - .2, x, .43, 0);
+    box(parent, edge, .09, .045, DEPTH - .2, x, .87, 0);
+    box(parent, black, .09, .16, DEPTH - .2, x, .09, 0);
+    box(parent, metal, .12, .09, DEPTH - .2, x, 3.48, 0);
+  }
+  // Glazed entrance and framed windows sit inside the solid wall shell.
+  const glass = paint("#42616c", .42, .22);
+  box(cutaway, black, .075, 2.65, 2.85, -12.29, 1.34, 0);
+  box(cutaway, glass, .08, 2.4, 2.55, -12.24, 1.36, 0);
+  box(cutaway, metal, .10, 2.55, .055, -12.18, 1.34, 0);
+  for (const z of [-.16, .16]) box(cutaway, edge, .14, .36, .045, -12.13, 1.15, z);
+  for (const x of [-8.4, -2.8, 2.8, 8.4]) {
+    box(cutaway, black, 3.55, 1.65, .09, x, 2.15, 4.57);
+    box(cutaway, glass, 3.35, 1.45, .1, x, 2.15, 4.51);
+    box(cutaway, metal, .055, 1.5, .12, x, 2.15, 4.44);
+  }
+  for (const x of [-10.5, -5.25, 0, 5.25, 10.5]) {
+    box(cutaway, black, .14, .17, DEPTH, x, 3.53, 0);
+  }
   for (const x of [-10.2, -6, -1.8, 2.4, 6.6, 10.8]) {
     box(room, slate, 3.3, 1.1, .075, x, 1.42, -4.6);
     box(room, metal, 3.42, .055, .12, x, .85, -4.57);
@@ -94,7 +129,8 @@ export function createHallRoom() {
 
   const sofa = (x: number, z: number, turned: boolean, index: number) => {
     const group = new THREE.Group();
-    group.position.set(x, .01, z);
+    group.position.set(x / HALL_SCALE, .01, z / HALL_SCALE);
+    group.scale.set(1 / HALL_SCALE, 1, 1 / HALL_SCALE);
     group.rotation.y = turned ? Math.PI : 0;
     room.add(group);
     box(group, wood, 2.15, .23, .68, 0, .14, 0);
@@ -105,8 +141,7 @@ export function createHallRoom() {
     box(group, wood, .62, .08, .39, 0, .39, .72);
     box(group, black, .13, .35, .14, 0, .18, .72);
   };
-  [-10.6, -7.9, -3.35, 1.2, 5.75].forEach((x, index) => sofa(x, -4.22, false, index));
-  [-10.25, -7.15, -3.95, -.75, 2.45, 5.65, 8.75].forEach((x, index) => sofa(x, 4.32, true, index + 1));
+  sofaPositions.forEach(({ x, z, turned }, index) => sofa(x, z, turned, index));
 
   const entrance = new THREE.Group();
   entrance.position.set(-11.35, 0, 0);
@@ -131,8 +166,6 @@ export function createHallRoom() {
   box(counter, cyan, .024, .24, .35, -.205, 1.25, -1.02, false);
   for (let i = 0; i < 5; i += 1) {
     const z = -1.32 + i * .55;
-    round(counter, tube, metal, .16, .47, .16, -.95, .265, z);
-    round(counter, tube, fabrics[0]!, .29, .13, .29, -.95, .54, z);
     round(counter, tube, ballColors[i]!, .09, .23, .09, 1.08, 1.12, z);
   }
   for (const z of [1.7, 3.45]) {
@@ -149,32 +182,29 @@ export function createHallRoom() {
     mesh.position.set(x, y, z);
     room.add(mesh);
   };
-  plaque("BLACK / NINE", 0, 1.45, -4.45, 5.5);
+  const brandTexture = new THREE.TextureLoader().load("/brand/rollnine-3d.png");
+  brandTexture.colorSpace = THREE.SRGBColorSpace;
+  const brandSign = new THREE.Mesh(new THREE.PlaneGeometry(5.5, 5.5 * HALL_SCALE / 3), new THREE.MeshBasicMaterial({
+    map: brandTexture, transparent: true, alphaTest: .02, depthWrite: false, toneMapped: false,
+  }));
+  brandSign.position.set(0, 1.8, -4.44);
+  room.add(brandSign);
   plaque("LỐI VÀO", -11.36, 1.85, .93, 1.7);
   plaque("QUẦY", 11.1, 1.5, -.59, 1.7);
 
+  // Clones share GPU resources; build each detailed table preset only once.
+  const prototypes = [createTable(TABLE_PRESETS.predator), createTable(TABLE_PRESETS["mr-sung"])];
   const tables = tablePositions.map(({ x, z, rotated }, index) => {
     const group = new THREE.Group();
     room.add(group);
-    group.position.set(x, 0, z);
+    group.position.set(x / HALL_SCALE, 0, z / HALL_SCALE);
     if (rotated) group.rotation.y = Math.PI / 2;
-    for (const side of [-1, 1]) {
-      box(group, black, 1.19, .565, .22, 0, .295, side * .95);
-      box(group, metal, 1.27, .075, .28, 0, .043, side * .95);
-    }
-    box(group, black, 1.65, .25, 2.92, 0, .665, 0);
-    box(group, wood, 1.66, .13, 2.94, 0, .83, 0);
-    box(group, edge, 1.63, .023, 2.9, 0, .906, 0, false);
-    const felt = box(group, ordinaryFelt[index % 2]!, 1.46, .028, 2.74, 0, .93, 0, false);
-    for (const side of [-1, 1]) {
-      box(group, black, .085, .045, 2.75, side * .74, .958, 0);
-      box(group, black, 1.48, .045, .085, 0, .958, side * 1.37);
-      for (const corner of [-1.29, 0, 1.29]) {
-        round(group, tube, pocket, .088, .012, .088, side * .689, .956, corner);
-      }
-    }
+    group.scale.set(1 / HALL_SCALE, 1, 1 / HALL_SCALE);
+    const table = prototypes[index % 2]!.clone();
+    table.position.y = .8;
+    group.add(table);
     for (const [id, bx, bz] of [[0, .17, .72], [1, -.14, -.35], [2, -.02, -.51], [3, .11, -.62], [4, -.04, -.7]] as const) {
-      round(group, ball, ballColors[id]!, .045, .045, .045, bx, .987, bz);
+      round(group, ball, ballColors[id]!, .0286, .0286, .0286, bx, .829, bz);
     }
     const number = new THREE.Sprite(new THREE.SpriteMaterial({
       map: hallLabel(String(index + 1).padStart(2, "0"), "#ffe7aa"),
@@ -183,21 +213,46 @@ export function createHallRoom() {
     number.position.set(.67, 1.12, 1.04);
     number.scale.set(.41, .34, 1);
     group.add(number);
-    return felt;
+    return number.material;
   });
+
+  // Suspended shades and warm practical lighting make the roofed room readable.
+  for (const { x, z, rotated } of tablePositions) {
+    const fixture = new THREE.Group();
+    fixture.position.set(x / HALL_SCALE, 0, z / HALL_SCALE);
+    fixture.scale.set(1 / HALL_SCALE, 1, 1 / HALL_SCALE);
+    if (rotated) fixture.rotation.y = Math.PI / 2;
+    cutaway.add(fixture);
+    for (const side of [-1, 1]) {
+      box(fixture, metal, .025, .48, .025, 0, 3.27, side * .65, false);
+    }
+    box(fixture, black, .62, .17, 1.95, 0, 2.96, 0, false);
+    box(fixture, bulb, .51, .025, 1.82, 0, 2.865, 0, false);
+  }
+
+  // A pair of broad fills avoids evaluating ten point lights for every fragment.
+  for (const x of [-6, 6]) {
+    const light = new THREE.PointLight("#ffe2b3", 35, 22, 2);
+    light.position.set(x, 2.72, 0);
+    cutaway.add(light);
+  }
+  instanceStaticMeshes(room, cutaway);
+  instanceStaticMeshes(cutaway);
 
   return {
     room,
-    updateTables: (states: ReadonlyMap<number, boolean>) => tables.forEach((felt, index) => {
+    setOverview: (enabled: boolean) => { cutaway.visible = !enabled; },
+    updateTables: (states: ReadonlyMap<number, boolean>) => tables.forEach((label, index) => {
       const state = states.get(index + 1);
-      felt.material = state === undefined ? ordinaryFelt[index % 2]! : state ? liveFelt : openFelt;
+      label.color.set(state === undefined ? "#ffffff" : state ? "#ffbf73" : "#79f5c1");
     }),
     dispose: () => {
-      const materials = new Set<THREE.Material>([openFelt, liveFelt, ...ordinaryFelt]);
+      const materials = new Set<THREE.Material>();
       const labelGeometries = new Set<THREE.BufferGeometry>();
       room.traverse((object) => {
-        if (object instanceof THREE.Mesh || object instanceof THREE.Sprite) {
-          if (object instanceof THREE.Mesh && ![cube, tube, ball].includes(object.geometry)) labelGeometries.add(object.geometry);
+        if (object instanceof THREE.InstancedMesh) object.dispose();
+        if (object instanceof THREE.Mesh || object instanceof THREE.Sprite || object instanceof THREE.Line) {
+          if ((object instanceof THREE.Mesh || object instanceof THREE.Line) && ![cube, tube, ball].includes(object.geometry)) labelGeometries.add(object.geometry);
           if (!Array.isArray(object.material)) materials.add(object.material);
         }
       });

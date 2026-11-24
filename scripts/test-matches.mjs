@@ -57,11 +57,16 @@ test("hall movement blocks walls, tables and counter while sliding along obstacl
   assert.equal(isHallWalkable(-11, 0), true);
   assert.equal(isHallWalkable(0, 0), true);
   for (const table of tablePositions) assert.equal(isHallWalkable(table.x, table.z), false);
-  assert.equal(isHallWalkable(12.1, 0), false);
-  assert.equal(isHallWalkable(11, -2), false);
+  assert.equal(isHallWalkable(18.4, 0), false);
+  assert.equal(isHallWalkable(17, 0), true);
+  assert.equal(isHallWalkable(16.5, -3), false);
   assert.equal(isHallWalkable(NaN, 0), false);
-  assert.deepEqual(moveHallPosition(-11.9, 0, -.3, .2), { x: -11.9, z: .2 });
-  assert.deepEqual(moveHallPosition(-8.25, -.9, .1, -.6), { x: -8.15, z: -.9 });
+  assert.deepEqual(moveHallPosition(-18.2, 0, -.3, .2), { x: -18.2, z: .2 });
+  const table = tablePositions[0];
+  const z = table.z + 1.15;
+  const slide = moveHallPosition(table.x, z, .1, -.6);
+  assert.ok(Math.abs(slide.x - (table.x + .1)) < 1e-8);
+  assert.equal(slide.z, z);
 });
 
 test("guests can play but cannot earn or spend coins; Gmail upgrade is persistent and granted once", mongoTest, async (t) => {

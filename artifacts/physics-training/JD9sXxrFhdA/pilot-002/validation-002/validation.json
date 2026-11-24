@@ -1,0 +1,58 @@
+{
+  "status": "cadence_and_center_consistency_audited_not_ground_truth",
+  "script_sha256": "416c35ae67066b0e06d496eddfe3c484a093dd91d5e856abc90565cd597c8bb6",
+  "input_sha256": "90cb0c00f87f446cfa0a7ddb84daf48d699d96e94918adee334244696d7f1696",
+  "selection": "artifacts\\physics-training\\JD9sXxrFhdA\\pilot-002\\curated-cue-fragment",
+  "decoded_fps": 60.0,
+  "observations": 95,
+  "frames": [
+    123,
+    217
+  ],
+  "duration_s": 1.5666670000000003,
+  "cadence": {
+    "fixed_roi_analysis_pixels": [
+      500,
+      330,
+      900,
+      415
+    ],
+    "mad_units": "mean absolute BGR channel difference, 0..255, native resolution",
+    "exact_unique_full_frame_hashes": 95,
+    "near_hold_threshold": 0.2,
+    "near_hold_pairs": 32,
+    "zero_dx_pairs_also_near_holds": 32,
+    "content_groups_at_threshold": 63,
+    "threshold_sensitivity": {
+      "0.05": 26,
+      "0.1": 31,
+      "0.2": 32,
+      "0.3": 32
+    },
+    "mad_percentiles": {
+      "p0": 0.010625546806649169,
+      "p25": 0.0391590113735783,
+      "p50": 0.540074365704287,
+      "p75": 1.3160990813648294,
+      "p100": 5.467646544181977
+    },
+    "interpretation": "Near-held decoded content is consistent with repeated source images plus encoding noise; origin and effective real-time FPS are unverified.",
+    "rule": "Preserve original PTS and hold groups; do not compress time or assume every frame is a fresh observation."
+  },
+  "edge_circle_cross_check": {
+    "method": "Hough gradient circles on native pixels; search location/radius seeded by baseline, not independent labels",
+    "found_frames": 86,
+    "missing_frames": 9,
+    "center_difference_analysis_px_median": 2.7891726257049347,
+    "center_difference_analysis_px_p95": 3.9718450085468735,
+    "center_difference_analysis_px_max": 4.365341898281155,
+    "note": "Agreement supports center consistency only; neither detector is ground truth and both can share errors."
+  },
+  "physics_fit_approved": false,
+  "limitations": [
+    "No independent all-frame annotations",
+    "No verified real-time cadence or replay speed",
+    "No approved metric camera model",
+    "Spin and sliding/rolling phase unobserved"
+  ]
+}

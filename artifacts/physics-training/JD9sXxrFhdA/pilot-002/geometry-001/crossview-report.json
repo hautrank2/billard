@@ -1,0 +1,699 @@
+{
+  "status": "height_aware_crossview_model_evaluated_conditional_only",
+  "input_sha256": "90cb0c00f87f446cfa0a7ddb84daf48d699d96e94918adee334244696d7f1696",
+  "script_sha256": "3186de74660a6b012ccdd46cd3ac69d01d3defc479083d64447a78cb7720de1a",
+  "config": {
+    "table_width_m_hypothesis": 1.27,
+    "table_length_m_hypothesis": 2.54,
+    "ball_radius_m_hypothesis": 0.0286,
+    "size_status": "Standard pool size assumptions, not direct equipment measurements.",
+    "analysis_size": [
+      1280,
+      720
+    ],
+    "end_boundary_corners_px": [
+      [
+        459,
+        267
+      ],
+      [
+        868,
+        267
+      ],
+      [
+        957,
+        550
+      ],
+      [
+        383,
+        550
+      ]
+    ],
+    "overhead_boundary_corners_px": [
+      [
+        1041,
+        139
+      ],
+      [
+        1036,
+        539
+      ],
+      [
+        239,
+        535
+      ],
+      [
+        239,
+        135
+      ]
+    ],
+    "corner_order_world": [
+      "far_left",
+      "far_right",
+      "near_right",
+      "near_left"
+    ],
+    "focal_grid_px": {
+      "min": 600,
+      "max": 6000,
+      "steps": 90
+    },
+    "intrinsic_assumptions": "Square pixels, principal point at image center, zero lens distortion, single constant pose per view.",
+    "maximum_corner_rms_px": 1.0,
+    "training_ball_names": [
+      "brown_orange_solid",
+      "near_yellow_white_stripe"
+    ],
+    "held_out_ball_names": [
+      "far_blue_white_stripe",
+      "dark_ball_near_left_rail"
+    ],
+    "split_note": "Chosen before focal search. Do not use held-out balls to select focal lengths, radius, corners or model penalties.",
+    "joint_corner_penalty_m_per_px": 0.002,
+    "proposed_crossview_gate_m": 0.03,
+    "near_best_training_margin_m": 0.005,
+    "end_stability_frames": [
+      270,
+      300,
+      330,
+      360,
+      390,
+      420
+    ],
+    "overhead_stability_frames": [
+      450,
+      480,
+      510,
+      540,
+      570,
+      600
+    ],
+    "limitations": [
+      "Approximate visible boundary is not surveyed geometry",
+      "Lens distortion and principal-point crop unknown",
+      "Visual correspondences have finite annotation uncertainty",
+      "Two training and two held-out balls do not establish whole-table accuracy",
+      "Metric dimensions are assumptions"
+    ]
+  },
+  "end_pose_hypothesis": {
+    "focal_px": 2761.0393659082797,
+    "corner_rms_px": 0.38405938285903796,
+    "camera_center": [
+      0.5850031775743191,
+      8.294052119559398,
+      -2.110256577130068
+    ],
+    "ball_plane_height": -0.0286,
+    "inverse_ball_plane": [
+      [
+        0.00036226522575686195,
+        9.770784525752657e-05,
+        -0.19125676651827894
+      ],
+      [
+        2.776679903126651e-07,
+        0.0014868056739720098,
+        -0.3838541040802573
+      ],
+      [
+        1.4368016135873047e-07,
+        0.00016707600665138362,
+        0.07381405454376902
+      ]
+    ],
+    "grid_index": 59
+  },
+  "overhead_pose_hypothesis": {
+    "focal_px": 6000.0,
+    "corner_rms_px": 0.6099538824959634,
+    "camera_center": [
+      -0.5591969396905263,
+      1.4740493387506088,
+      -19.012557110602245
+    ],
+    "ball_plane_height": -0.0286,
+    "inverse_ball_plane": [
+      [
+        -9.130275906597845e-07,
+        0.00016662210446089908,
+        -0.022354543567509867
+      ],
+      [
+        -0.00016679088952847968,
+        -1.7064458998163416e-06,
+        0.17394136393805312
+      ],
+      [
+        -9.243449816089824e-08,
+        -5.83762907055463e-07,
+        0.05282586612678467
+      ]
+    ],
+    "grid_index": 89
+  },
+  "training_score_m": 0.027181834472419043,
+  "training_rms_m": 0.02519380794170904,
+  "comparison": [
+    {
+      "name": "brown_orange_solid",
+      "role": "fit",
+      "planar_crossview_residual_m": 0.0822343756747301,
+      "height_aware_crossview_residual_m": 0.021117393883655144,
+      "end_conditional_xy_m": [
+        0.30026800057912334,
+        1.0523684371307231
+      ],
+      "overhead_conditional_xy_m": [
+        0.284727359714242,
+        1.038070437062664
+      ]
+    },
+    {
+      "name": "far_blue_white_stripe",
+      "role": "held_out",
+      "planar_crossview_residual_m": 0.06463553208349807,
+      "height_aware_crossview_residual_m": 0.0349294655324347,
+      "end_conditional_xy_m": [
+        0.6802570652730319,
+        0.7658275489846705
+      ],
+      "overhead_conditional_xy_m": [
+        0.6798821493315454,
+        0.7309000955931282
+      ]
+    },
+    {
+      "name": "near_yellow_white_stripe",
+      "role": "fit",
+      "planar_crossview_residual_m": 0.05341925120104078,
+      "height_aware_crossview_residual_m": 0.028696891691784444,
+      "end_conditional_xy_m": [
+        0.49610426653539114,
+        2.4020086975252517
+      ],
+      "overhead_conditional_xy_m": [
+        0.49783535894609304,
+        2.3733640660590307
+      ]
+    },
+    {
+      "name": "dark_ball_near_left_rail",
+      "role": "held_out",
+      "planar_crossview_residual_m": 0.07378566696291732,
+      "height_aware_crossview_residual_m": 0.02319621055342745,
+      "end_conditional_xy_m": [
+        0.03601453329702494,
+        1.637448351652003
+      ],
+      "overhead_conditional_xy_m": [
+        0.018777002083762873,
+        1.6219263768513936
+      ]
+    }
+  ],
+  "held_out_planar_max_residual_m": 0.07378566696291732,
+  "held_out_height_aware_max_residual_m": 0.0349294655324347,
+  "proposed_crossview_gate_passed": false,
+  "near_best_training_focal_ranges_px": {
+    "end": [
+      2690.5225952515025,
+      2761.0393659082797
+    ],
+    "overhead": [
+      777.1606466131961,
+      6000.0
+    ],
+    "candidate_pairs": 145
+  },
+  "focal_search_boundary_hit": true,
+  "stationary_reference_checks": [
+    {
+      "view": "end",
+      "name": "brown_orange_solid",
+      "frames": [
+        {
+          "frame": 270,
+          "score": 0.9989054799079895,
+          "shift_px": [
+            0,
+            0
+          ]
+        },
+        {
+          "frame": 300,
+          "score": 1.0,
+          "shift_px": [
+            0,
+            0
+          ]
+        },
+        {
+          "frame": 330,
+          "score": 0.9990322589874268,
+          "shift_px": [
+            0,
+            0
+          ]
+        },
+        {
+          "frame": 360,
+          "score": 0.9979881048202515,
+          "shift_px": [
+            0,
+            0
+          ]
+        },
+        {
+          "frame": 390,
+          "score": 0.9963580369949341,
+          "shift_px": [
+            0,
+            0
+          ]
+        },
+        {
+          "frame": 420,
+          "score": 0.9903436303138733,
+          "shift_px": [
+            0,
+            0
+          ]
+        }
+      ],
+      "high_similarity_samples": 6,
+      "max_shift_px_in_high_similarity_samples": 0.0,
+      "stationary_support": true
+    },
+    {
+      "view": "end",
+      "name": "far_blue_white_stripe",
+      "frames": [
+        {
+          "frame": 270,
+          "score": 0.9976677894592285,
+          "shift_px": [
+            0,
+            0
+          ]
+        },
+        {
+          "frame": 300,
+          "score": 1.0,
+          "shift_px": [
+            0,
+            0
+          ]
+        },
+        {
+          "frame": 330,
+          "score": 0.997624397277832,
+          "shift_px": [
+            0,
+            0
+          ]
+        },
+        {
+          "frame": 360,
+          "score": 0.9973942637443542,
+          "shift_px": [
+            0,
+            0
+          ]
+        },
+        {
+          "frame": 390,
+          "score": 0.4462778568267822,
+          "shift_px": [
+            0,
+            0
+          ]
+        },
+        {
+          "frame": 420,
+          "score": 0.9930754899978638,
+          "shift_px": [
+            0,
+            0
+          ]
+        }
+      ],
+      "high_similarity_samples": 5,
+      "max_shift_px_in_high_similarity_samples": 0.0,
+      "stationary_support": true
+    },
+    {
+      "view": "end",
+      "name": "near_yellow_white_stripe",
+      "frames": [
+        {
+          "frame": 270,
+          "score": 0.9997045993804932,
+          "shift_px": [
+            0,
+            0
+          ]
+        },
+        {
+          "frame": 300,
+          "score": 1.0,
+          "shift_px": [
+            0,
+            0
+          ]
+        },
+        {
+          "frame": 330,
+          "score": 0.998802900314331,
+          "shift_px": [
+            0,
+            0
+          ]
+        },
+        {
+          "frame": 360,
+          "score": 0.9988133907318115,
+          "shift_px": [
+            0,
+            0
+          ]
+        },
+        {
+          "frame": 390,
+          "score": 0.11764262616634369,
+          "shift_px": [
+            6,
+            6
+          ]
+        },
+        {
+          "frame": 420,
+          "score": 0.9929710626602173,
+          "shift_px": [
+            0,
+            0
+          ]
+        }
+      ],
+      "high_similarity_samples": 5,
+      "max_shift_px_in_high_similarity_samples": 0.0,
+      "stationary_support": true
+    },
+    {
+      "view": "end",
+      "name": "dark_ball_near_left_rail",
+      "frames": [
+        {
+          "frame": 270,
+          "score": 0.9993036389350891,
+          "shift_px": [
+            0,
+            0
+          ]
+        },
+        {
+          "frame": 300,
+          "score": 1.0,
+          "shift_px": [
+            0,
+            0
+          ]
+        },
+        {
+          "frame": 330,
+          "score": 0.9983860850334167,
+          "shift_px": [
+            0,
+            0
+          ]
+        },
+        {
+          "frame": 360,
+          "score": 0.9956957697868347,
+          "shift_px": [
+            0,
+            0
+          ]
+        },
+        {
+          "frame": 390,
+          "score": 0.994828999042511,
+          "shift_px": [
+            0,
+            0
+          ]
+        },
+        {
+          "frame": 420,
+          "score": 0.44253429770469666,
+          "shift_px": [
+            6,
+            -6
+          ]
+        }
+      ],
+      "high_similarity_samples": 5,
+      "max_shift_px_in_high_similarity_samples": 0.0,
+      "stationary_support": true
+    },
+    {
+      "view": "overhead",
+      "name": "brown_orange_solid",
+      "frames": [
+        {
+          "frame": 450,
+          "score": 0.9934669733047485,
+          "shift_px": [
+            0,
+            0
+          ]
+        },
+        {
+          "frame": 480,
+          "score": 0.9955350756645203,
+          "shift_px": [
+            0,
+            0
+          ]
+        },
+        {
+          "frame": 510,
+          "score": 1.0,
+          "shift_px": [
+            0,
+            0
+          ]
+        },
+        {
+          "frame": 540,
+          "score": 0.998802125453949,
+          "shift_px": [
+            0,
+            0
+          ]
+        },
+        {
+          "frame": 570,
+          "score": 0.9952253699302673,
+          "shift_px": [
+            0,
+            0
+          ]
+        },
+        {
+          "frame": 600,
+          "score": 0.993890643119812,
+          "shift_px": [
+            0,
+            0
+          ]
+        }
+      ],
+      "high_similarity_samples": 6,
+      "max_shift_px_in_high_similarity_samples": 0.0,
+      "stationary_support": true
+    },
+    {
+      "view": "overhead",
+      "name": "far_blue_white_stripe",
+      "frames": [
+        {
+          "frame": 450,
+          "score": 0.9975177645683289,
+          "shift_px": [
+            0,
+            0
+          ]
+        },
+        {
+          "frame": 480,
+          "score": 0.9974856972694397,
+          "shift_px": [
+            0,
+            0
+          ]
+        },
+        {
+          "frame": 510,
+          "score": 1.0,
+          "shift_px": [
+            0,
+            0
+          ]
+        },
+        {
+          "frame": 540,
+          "score": 0.9995293617248535,
+          "shift_px": [
+            0,
+            0
+          ]
+        },
+        {
+          "frame": 570,
+          "score": 0.9974822998046875,
+          "shift_px": [
+            0,
+            0
+          ]
+        },
+        {
+          "frame": 600,
+          "score": 0.9974149465560913,
+          "shift_px": [
+            0,
+            0
+          ]
+        }
+      ],
+      "high_similarity_samples": 6,
+      "max_shift_px_in_high_similarity_samples": 0.0,
+      "stationary_support": true
+    },
+    {
+      "view": "overhead",
+      "name": "near_yellow_white_stripe",
+      "frames": [
+        {
+          "frame": 450,
+          "score": 0.9986376166343689,
+          "shift_px": [
+            0,
+            0
+          ]
+        },
+        {
+          "frame": 480,
+          "score": 0.9986391067504883,
+          "shift_px": [
+            0,
+            0
+          ]
+        },
+        {
+          "frame": 510,
+          "score": 1.0,
+          "shift_px": [
+            0,
+            0
+          ]
+        },
+        {
+          "frame": 540,
+          "score": 0.999590277671814,
+          "shift_px": [
+            0,
+            0
+          ]
+        },
+        {
+          "frame": 570,
+          "score": 0.9988658428192139,
+          "shift_px": [
+            0,
+            0
+          ]
+        },
+        {
+          "frame": 600,
+          "score": 0.9986056685447693,
+          "shift_px": [
+            0,
+            0
+          ]
+        }
+      ],
+      "high_similarity_samples": 6,
+      "max_shift_px_in_high_similarity_samples": 0.0,
+      "stationary_support": true
+    },
+    {
+      "view": "overhead",
+      "name": "dark_ball_near_left_rail",
+      "frames": [
+        {
+          "frame": 450,
+          "score": 0.9962853789329529,
+          "shift_px": [
+            0,
+            0
+          ]
+        },
+        {
+          "frame": 480,
+          "score": 0.9972073435783386,
+          "shift_px": [
+            0,
+            0
+          ]
+        },
+        {
+          "frame": 510,
+          "score": 1.0,
+          "shift_px": [
+            0,
+            0
+          ]
+        },
+        {
+          "frame": 540,
+          "score": 0.9989008903503418,
+          "shift_px": [
+            0,
+            0
+          ]
+        },
+        {
+          "frame": 570,
+          "score": 0.997590184211731,
+          "shift_px": [
+            0,
+            0
+          ]
+        },
+        {
+          "frame": 600,
+          "score": 0.997292697429657,
+          "shift_px": [
+            0,
+            0
+          ]
+        }
+      ],
+      "high_similarity_samples": 6,
+      "max_shift_px_in_high_similarity_samples": 0.0,
+      "stationary_support": true
+    }
+  ],
+  "metric_calibration_approved": false,
+  "physics_fit_approved": false,
+  "game_parameters_changed": false,
+  "limitations": [
+    "Approximate visible boundary is not surveyed geometry",
+    "Lens distortion and principal-point crop unknown",
+    "Visual correspondences have finite annotation uncertainty",
+    "Two training and two held-out balls do not establish whole-table accuracy",
+    "Metric dimensions are assumptions",
+    "Focal-grid selection uses two ball references; passing two other balls is a small conditional cross-view test, not external accuracy validation."
+  ]
+}
