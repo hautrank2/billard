@@ -1,12 +1,13 @@
 "use client";
 
-import { ArrowUpRight, ChevronLeft, ChevronRight, Coins, Crosshair, Layers, MessageCircle, Plus, Send, Target, Trophy, Users, X } from "lucide-react";
+import { ArrowUpRight, ChevronLeft, ChevronRight, Coins, Crosshair, History, Layers, MessageCircle, Plus, Send, Target, Trophy, Users, X } from "lucide-react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
 import { BrandLogo } from "~/components/brand-logo";
+import { CueIcon, GoogleIcon } from "~/components/icons";
 import { Button } from "~/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "~/components/ui/dialog";
 import { Input } from "~/components/ui/input";
@@ -140,12 +141,12 @@ export const Lobby = () => {
       <header className="hall-header">
         <BrandLogo />
         <nav className="hall-glass hall-nav" aria-label="Điều hướng">
-          <button type="button" aria-pressed={panel === "cues"} onClick={() => showPanel(panel === "cues" ? null : "cues")}>Gậy</button>
-          <button type="button" aria-pressed={panel === "history"} onClick={() => showPanel(panel === "history" ? null : "history")}>Lịch sử</button>
+          <button type="button" aria-pressed={panel === "cues"} onClick={() => showPanel(panel === "cues" ? null : "cues")}><CueIcon />Gậy</button>
+          <button type="button" aria-pressed={panel === "history"} onClick={() => showPanel(panel === "history" ? null : "history")}><History size={16} aria-hidden="true" />Lịch sử</button>
         </nav>
         {player && <div className="hall-glass hall-wallet">
           <Link href="/login" title="Cập nhật hồ sơ">{player.name}</Link>
-          {player.registered ? <span><Coins size={15} aria-hidden="true" />{player.coins} xu</span> : <a href="/api/auth/google" className="lobby-gold" title="Đăng ký Gmail để nhận xu">Đăng ký Gmail</a>}
+          {player.registered ? <span><Coins size={15} aria-hidden="true" />{player.coins} xu</span> : <a href="/api/auth/google" className="lobby-gold gmail-link" title="Đăng ký Gmail để nhận xu"><GoogleIcon />Đăng ký Gmail</a>}
           {player.registered && <span><Trophy size={15} aria-hidden="true" />{player.points} điểm</span>}
         </div>}
       </header>
@@ -185,7 +186,7 @@ export const Lobby = () => {
             </form>}
             {(panel === "create" || panel === "tables") && <div className="hall-created-heading"><h3>Bàn đã tạo <span>({tables.length})</span></h3>{panel === "tables" && !ownTable && !resumable && <Button className="lobby-primary" size="sm" disabled={busy || !player} onClick={() => showPanel("create")}><Plus size={15} /> Tạo bàn</Button>}</div>}
             {panel === "cues" && player && <>
-              <div className="hall-shop-account">{player.registered ? <span><Coins size={16}/> {player.coins.toLocaleString("vi-VN")} xu</span> : <><p>Khách dùng gậy tiêu chuẩn. Đăng ký Gmail để nhận xu và mua gậy.</p><a href="/api/auth/google" className="lobby-gold">Đăng ký bằng Gmail →</a></>}</div>
+              <div className="hall-shop-account">{player.registered ? <span><Coins size={16}/> {player.coins.toLocaleString("vi-VN")} xu</span> : <><p>Khách dùng gậy tiêu chuẩn. Đăng ký Gmail để nhận xu và mua gậy.</p><a href="/api/auth/google" className="lobby-gold gmail-link"><GoogleIcon />Đăng ký bằng Gmail →</a></>}</div>
               <CueCards cues={view?.cues ?? []} player={player} busy={busy} onCue={(id, action) => { void send({ type: "cue", id, action }); }}/>
             </>}
             {(panel === "tables" || panel === "create") && <TableCards tables={tables} ownId={player?.id} busy={busy} resumable={Boolean(resumable)} onJoin={(table) => {

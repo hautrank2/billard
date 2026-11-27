@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { BrandLogo } from "~/components/brand-logo";
+import { GoogleIcon } from "~/components/icons";
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 import type { Gender } from "../_components/lobby/hall-types";
@@ -57,7 +58,7 @@ export default function LoginPage() {
         <section className="login-card" aria-labelledby="login-title">
           <h1 id="login-title">Vào quán bida</h1>
           <p>{registered ? "Tài khoản Gmail đã liên kết. Cập nhật hồ sơ của bạn." : "Chơi ngay với tư cách khách, hoặc đăng ký bằng Gmail để nhận xu và mua gậy."}</p>
-          {!registered && <a className="lobby-primary login-google" href="/api/auth/google">Đăng ký / Đăng nhập bằng Gmail</a>}
+          {!registered && <a className="lobby-primary login-google" href="/api/auth/google"><GoogleIcon size={18} />Đăng ký / Đăng nhập bằng Gmail</a>}
           {!registered && <p className="login-account-note">Tặng 200 xu khi đăng ký Gmail lần đầu. Khách vẫn có thể đấu 1v1, dùng gậy tiêu chuẩn.</p>}
           <form onSubmit={async (event) => {
             event.preventDefault();
